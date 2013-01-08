@@ -105,13 +105,9 @@ SerialState_t   SerialState;
   GLCD_Cursor_Dis(0);
   // Init UART 0
   UartInit(UART_0,4,NORM);
-  // Init USB
-  UsbCdcInit();
 
   __enable_interrupt();
 
-  // Soft connection enable
-  USB_ConnectRes(TRUE);
   // Enable GLCD
   GLCD_Ctrl (TRUE);
 
@@ -125,89 +121,29 @@ SerialState_t   SerialState;
   GLCD_TextSetPos(0,0);
   GLCD_print("\fCommunication device class");
 
-  CdcConfigureStateHold = !IsUsbCdcConfigure();
+  // Init UART
+  // Update the baud rate
+  UartLineCoding.dwDTERate = 115200;
+  // Update the stop bits number
+  UartLineCoding.bStopBitsFormat = UART_ONE_STOP_BIT;
+  // Update the parity type
+  UartLineCoding.bParityType = UART_NO_PARITY;
+  // Update the word width
+  UartLineCoding.bDataBits = UART_WORD_WIDTH_8;
+  // Set UART line coding
+  UartSetLineCoding(UART_0,UartLineCoding);
 
   while(1)
   {
-    if (IsUsbCdcConfigure())
-    {
-      // Data from USB
-      Size = UsbCdcRead(Buffer,sizeof(Buffer)-1);
-      if(Size)
-      {
-#ifdef DATA_LOGGING
-        Buffer[Size] = 0;
-        printf("> %s\n",Buffer);
-#endif // DATA_LOGGING
-        TranSize = 0;
-        pBuffer = Buffer;
-        do
-        {
-          Size -= TranSize;
-          pBuffer += TranSize;
-          TranSize = UartWrite(UART_0,pBuffer,Size);
-        }
-        while(Size != TranSize);
-      }
-
-      // Data from UART1
+    // Data from UART1
       Size = UartRead(UART_0,Buffer,sizeof(Buffer)-1);
-      if(Size)
-      {
-#ifdef DATA_LOGGING
-        Buffer[Size] = 0;
-        printf("< %s\n",Buffer);
-#endif  // DATA_LOGGING
-        while(!UsbCdcWrite(Buffer,Size));
+      
+      if (Size){
+        char str[] = {Buffer[0], Buffer[1], '\0'};
+        GLCD_TextSetPos(0,0);
+        GLCD_print(Buffer);
       }
-
-      // Get line and modem events from UART
-#if CDC_DEVICE_SUPPORT_LINE_STATE > 0
-      // Get line events - BI, FE, PE, OE
-      UartLineEvents = UartGetUartLineEvents(UART_0);
-      if(UartLineEvents.Data)
-      {
-        SerialState.Data = 0;
-        // Line events report BI, PE, FE and OE
-        SerialState.bBreak = UartLineEvents.bBI;
-        SerialState.bFraming = UartLineEvents.bFE;
-        SerialState.bOverRun = UartLineEvents.bOE;
-        SerialState.bParity = UartLineEvents.bPE;
-        // Send events
-        UsbCdcReportSerialCommState(SerialState);
-      }
-#endif // CDC_DEVICE_SUPPORT_LINE_STATE > 0
-    }
-    else
-    {
-      if(CdcConfigureStateHold == TRUE)
-      {
-        CdcConfigureStateHold = FALSE;
-      }
-    }
-
-    // UART line coding - Baud rate, number of the stop bits,
-    // number of bits of the data word and parity type
-#if CDC_DEVICE_SUPPORT_LINE_CODING > 0
-    if(UsbCdcIsNewLineCodingSettings())
-    {
-      CDC_LineCoding = UsbCdcGetLineCodingSettings();
-      // Update the baud rate
-      UartLineCoding.dwDTERate = CDC_LineCoding.dwDTERate;
-      // Update the stop bits number
-      UartLineCoding.bStopBitsFormat = CDC_LineCoding.bCharFormat?UART_TWO_STOP_BIT:UART_ONE_STOP_BIT;
-      // Update the parity type
-      UartLineCoding.bParityType = (CDC_LineCoding.bParityType == 0)?UART_NO_PARITY:(UartParity_t)(CDC_LineCoding.bParityType-1);
-      // Update the word width
-      UartLineCoding.bDataBits = (UartWordWidth_t)(CDC_LineCoding.bDataBits - 5);
-      // Set UART line coding
-      UartSetLineCoding(UART_0,UartLineCoding);
-    }
-#endif // CDC_DEVICE_SUPPORT_LINE_CODING > 0
-
-#if CDC_DEVICE_SUPPORT_BREAK > 0
-    // Break event
-    UartSetUartLineState(UART_0,UsbCdcGetBreakState());
-#endif // CDC_DEVICE_SUPPORT_BREAK > 0
+      
+      Size = NULL;
   }
 }
