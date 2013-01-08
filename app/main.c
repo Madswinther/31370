@@ -1,47 +1,15 @@
-/*************************************************************************
- *
- *    Used with ICCARM and AARM.
- *
- *    (c) Copyright IAR Systems 2008
- *
- *    File name   : main.c
- *    Description : Main module
- *
- *    History :
- *    1. Date        : August 5, 2008
- *       Author      : Stanimir Bonev
- *       Description : Create
- *
- *  This example project shows how to use the IAR Embedded Workbench for ARM
- * to develop code for the IAR LPC2478-SK board.
- *  It implements USB CDC (Communication Device Class) device and install
- * it like a Virtual COM port. The UART0 is used for physical implementation
- * of the RS232 port.
- *
- * Jumpers:
- *  EXT/JLINK  - depending of power source
- *  ISP_E      - unfilled
- *  RST_E      - unfilled
- *  BDS_E      - unfilled
- *  C/SC       - SC
- *
- * Note:
- *  After power-up the controller gets it's clock from internal RC oscillator that
- * is unstable and may fail with J-Link auto detect, therefore adaptive clocking
- * should always be used. The adaptive clock can be select from menu:
- *  Project->Options..., section Debugger->J-Link/J-Trace  JTAG Speed - Adaptive.
- *
- * The LCD shares pins with Trace port. If ETM is enabled the LCD will not work.
- *
- *    $Revision: 47021 $
- **************************************************************************/
 #include "includes.h"
+#include <stdlib.h>
+#include <math.h>
 
 #define NONPROT 0xFFFFFFFF
 #define CRP1  	0x12345678
 #define CRP2  	0x87654321
 /*If CRP3 is selected, no future factory testing can be performed on the device*/
 #define CRP3  	0x43218765
+
+// DEFINED SMARTBOX VALUES
+#define POWER_OFFSET 604
 
 #ifndef SDRAM_DEBUG
 #pragma segment=".crp"
@@ -56,34 +24,26 @@ extern FontType_t Terminal_6_8_6;
 extern FontType_t Terminal_9_12_6;
 extern FontType_t Terminal_18_24_12;
 
-/*************************************************************************
- * Function Name: main
- * Parameters: none
- *
- * Return: none
- *
- * Description: main
- *
- *************************************************************************/
+
 int main(void)
 {
-Int8U Buffer[100];
-pInt8U pBuffer;
-Int32U Size,TranSize;
-
-Boolean CdcConfigureStateHold;
-
+  Int8U Buffer[50];
+  pInt8U pBuffer;
+  Int32U Size,TranSize;
+  
+  Boolean CdcConfigureStateHold;
+  
 #if CDC_DEVICE_SUPPORT_LINE_CODING > 0
-CDC_LineCoding_t CDC_LineCoding;
-UartLineCoding_t UartLineCoding;
+  CDC_LineCoding_t CDC_LineCoding;
+  UartLineCoding_t UartLineCoding;
 #endif // CDC_DEVICE_SUPPORT_LINE_CODING > 0
-
+  
 #if CDC_DEVICE_SUPPORT_LINE_STATE > 0
-UartLineEvents_t      UartLineEvents;
-
-SerialState_t   SerialState;
+  UartLineEvents_t      UartLineEvents;
+  
+  SerialState_t   SerialState;
 #endif // CDC_DEVICE_SUPPORT_LINE_STATE > 0
-
+  
   GLCD_Ctrl (FALSE);
   // Init GPIO
   GpioInit();
@@ -105,22 +65,22 @@ SerialState_t   SerialState;
   GLCD_Cursor_Dis(0);
   // Init UART 0
   UartInit(UART_0,4,NORM);
-
+  
   __enable_interrupt();
-
+  
   // Enable GLCD
   GLCD_Ctrl (TRUE);
-
+  
   GLCD_SetFont(&Terminal_18_24_12,0x0000FF,0x000cd4ff);
   GLCD_SetWindow(95,10,255,33);
   GLCD_TextSetPos(0,0);
   GLCD_print("\fIAR Systems");
-
+  
   GLCD_SetFont(&Terminal_9_12_6,0x0000FF,0x000cd4ff);
   GLCD_SetWindow(80,200,310,211);
   GLCD_TextSetPos(0,0);
   GLCD_print("\fCommunication device class");
-
+  
   // Init UART
   // Update the baud rate
   UartLineCoding.dwDTERate = 115200;
@@ -132,18 +92,51 @@ SerialState_t   SerialState;
   UartLineCoding.bDataBits = UART_WORD_WIDTH_8;
   // Set UART line coding
   UartSetLineCoding(UART_0,UartLineCoding);
-
-  while(1)
-  {
+  
+  int voltage = 0;
+  int current = 0;
+  int power = 0;
+  
+  GLCD_SetWindow(0,0,255,33);
+  
+  double VOLTAGE_GAIN = 95.70075;
+  double CURRENT_GAIN = 4600000/pow(22,2);
+  
+  while(1){
     // Data from UART1
-      Size = UartRead(UART_0,Buffer,sizeof(Buffer)-1);
-      
-      if (Size){
-        char str[] = {Buffer[0], Buffer[1], '\0'};
-        GLCD_TextSetPos(0,0);
-        GLCD_print(Buffer);
-      }
-      
-      Size = NULL;
+	printf("SLOWSLOWSLOWSLOW");
+	
+	Size = UartRead(UART_0,Buffer,sizeof(Buffer)-1);
+	
+	if (Size>1){
+	  
+	  // Get voltage
+	  int i=0;
+	  while(Buffer[i++] != 'x');
+	  
+	  char temp[9];
+	  for (int j=0; j<9; j++){
+		temp[j] = Buffer[j+i+1];
+	  }
+	  temp[8] = '\0';
+	  
+	  voltage = strtol(temp, NULL, 16);
+	  double vRMS = (double)voltage*pow(2, -22)*VOLTAGE_GAIN;
+	  
+	  // Get current
+	  i += 8;
+	  while(Buffer[i++] != 'x');
+	  
+	  for (int j=0; j<9; j++){
+		temp[j] = Buffer[j+i+1];
+	  }
+	  temp[8] = '\0';
+	  
+	  current = strtol(temp, NULL, 16);
+	  double iRMS = ((double)current)/CURRENT_GAIN;
+	  
+	  	GLCD_TextSetPos(0,0);
+	  	GLCD_print("Voltage: %f", vRMS);
+	}
   }
 }
