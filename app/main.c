@@ -8,9 +8,6 @@
 /*If CRP3 is selected, no future factory testing can be performed on the device*/
 #define CRP3  	0x43218765
 
-// DEFINED SMARTBOX VALUES
-#define POWER_OFFSET 604
-
 #ifndef SDRAM_DEBUG
 #pragma segment=".crp"
 #pragma location=".crp"
@@ -27,22 +24,16 @@ extern FontType_t Terminal_18_24_12;
 
 int main(void)
 {
-  Int8U Buffer[50];
+  char Buffer[50];
+  // Init buffer
+  for (int i=0; i<50; i++){
+	Buffer[i] = 0;
+  }
   pInt8U pBuffer;
   Int32U Size,TranSize;
   
   Boolean CdcConfigureStateHold;
-  
-#if CDC_DEVICE_SUPPORT_LINE_CODING > 0
-  CDC_LineCoding_t CDC_LineCoding;
-  UartLineCoding_t UartLineCoding;
-#endif // CDC_DEVICE_SUPPORT_LINE_CODING > 0
-  
-#if CDC_DEVICE_SUPPORT_LINE_STATE > 0
-  UartLineEvents_t      UartLineEvents;
-  
-  SerialState_t   SerialState;
-#endif // CDC_DEVICE_SUPPORT_LINE_STATE > 0
+  UartLineCoding_t UartLineCoding;  
   
   GLCD_Ctrl (FALSE);
   // Init GPIO
@@ -71,11 +62,6 @@ int main(void)
   // Enable GLCD
   GLCD_Ctrl (TRUE);
   
-  GLCD_SetFont(&Terminal_18_24_12,0x0000FF,0x000cd4ff);
-  GLCD_SetWindow(95,10,255,33);
-  GLCD_TextSetPos(0,0);
-  GLCD_print("\fIAR Systems");
-  
   GLCD_SetFont(&Terminal_9_12_6,0x0000FF,0x000cd4ff);
   GLCD_SetWindow(80,200,310,211);
   GLCD_TextSetPos(0,0);
@@ -97,22 +83,23 @@ int main(void)
   int current = 0;
   int power = 0;
   
-  GLCD_SetWindow(0,0,255,33);
+  GLCD_SetWindow(0,0,310,33);
   
-  double VOLTAGE_GAIN = 95.70075;
-  double CURRENT_GAIN = 4600000/pow(22,2);
+  double VOLTAGE_GAIN = 95.87325813;
+  double CURRENT_GAIN = 6.6072;
+  double CURRENT_OFFSET = 0.0635; 
   
   while(1){
     // Data from UART1
-	printf("SLOWSLOWSLOWSLOW");
 	
-	Size = UartRead(UART_0,Buffer,sizeof(Buffer)-1);
+	UartCheck(Buffer);
 	
-	if (Size>1){
-	  
+	if (Buffer[0] != 'E'){
+ 
 	  // Get voltage
 	  int i=0;
 	  while(Buffer[i++] != 'x');
+	  
 	  
 	  char temp[9];
 	  for (int j=0; j<9; j++){
@@ -133,10 +120,25 @@ int main(void)
 	  temp[8] = '\0';
 	  
 	  current = strtol(temp, NULL, 16);
-	  double iRMS = ((double)current)/CURRENT_GAIN;
+	  double iRMS = ((double)current*pow(2, -22))*CURRENT_GAIN+CURRENT_OFFSET;
+	  
+	  // Get Power
+	  i += 8;
+	  while(Buffer[i++] != 'x');
+	  
+	  for (int j=0; j<9; j++){
+		temp[j] = Buffer[j+i+1];
+	  }
+	  temp[8] = '\0';
+	  
+	  power = strtol(temp, NULL, 16);
+	  double pACT = ((double)(~(power & (1<<24)))*pow(2, -23));
+	  if (power & (1<<24)){
+		pACT *= -1;
+	  }
 	  
 	  	GLCD_TextSetPos(0,0);
-	  	GLCD_print("Voltage: %f", vRMS);
+	  	GLCD_print(" Voltage: %f\r\n Current: %f\r\n Power: \t%f", vRMS, iRMS, pACT);
 	}
   }
 }

@@ -1881,6 +1881,9 @@
       <file>
         <name>$PROJ_DIR$\app\uart.c</name>
       </file>
+      <file>
+        <name>$PROJ_DIR$\app\uart.h</name>
+      </file>
     </group>
     <file>
       <name>$PROJ_DIR$\board\sys.c</name>
