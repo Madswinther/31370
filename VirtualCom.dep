@@ -2,7 +2,7 @@
 
 <project>
   <fileVersion>2</fileVersion>
-  <fileChecksum>3160413022</fileChecksum>
+  <fileChecksum>3291218844</fileChecksum>
   <configuration>
     <name>Flash Debug</name>
     <outputs>
@@ -109,6 +109,10 @@
       <file>$TOOLKIT_DIR$\inc\c\stdlib.h</file>
       <file>$TOOLKIT_DIR$\inc\c\ystdio.h</file>
       <file>$TOOLKIT_DIR$\inc\c\io_macros.h</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\parsing.o</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\parsing.pbi</file>
+      <file>$PROJ_DIR$\Custom libs\parsing.c</file>
+      <file>$PROJ_DIR$\Custom libs\parsing.h</file>
     </outputs>
     <file>
       <name>[ROOT_NODE]</name>
@@ -479,6 +483,29 @@
         </tool>
       </inputs>
     </file>
+    <file>
+      <name>$PROJ_DIR$\Custom libs\parsing.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 103</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 104</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 106</file>
+        </tool>
+      </inputs>
+    </file>
+    <forcedrebuild>
+      <name>[MULTI_TOOL]</name>
+      <tool>ILINK</tool>
+    </forcedrebuild>
   </configuration>
   <configuration>
     <name>SDRAM Debug</name>

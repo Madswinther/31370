@@ -96,6 +96,8 @@ int main(void)
 	
 	if (Buffer[0] != 'E'){
  
+	  parse(Buffer);
+	  
 	  // Get voltage
 	  int i=0;
 	  while(Buffer[i++] != 'x');

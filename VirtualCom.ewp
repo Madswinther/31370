@@ -1842,6 +1842,21 @@
     </settings>
   </configuration>
   <group>
+    <name>Custom libs</name>
+    <file>
+      <name>$PROJ_DIR$\Custom libs\parsing.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Custom libs\parsing.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\app\uart.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\app\uart.h</name>
+    </file>
+  </group>
+  <group>
     <name>Modules</name>
     <group>
       <name>Fonts</name>
@@ -1878,12 +1893,6 @@
     </group>
     <group>
       <name>UARTs</name>
-      <file>
-        <name>$PROJ_DIR$\app\uart.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\app\uart.h</name>
-      </file>
     </group>
     <file>
       <name>$PROJ_DIR$\board\sys.c</name>
