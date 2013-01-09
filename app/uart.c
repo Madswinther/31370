@@ -74,6 +74,14 @@ Boolean UartInit(UartNum_t Uart,Int32U IrqSlot, UartMode_t UartMode){
   VIC_SetVectoredIRQ(Uart0Isr,IrqSlot,VIC_UART0);
   VICINTENABLE |= 1<<VIC_UART0;
   
+  // Set up Line Coding
+  UartLineCoding_t UartLineCoding;  
+  UartLineCoding.dwDTERate = 115200;	// Update the baud rate
+  UartLineCoding.bStopBitsFormat = UART_ONE_STOP_BIT;	// Update the stop bits number
+  UartLineCoding.bParityType = UART_NO_PARITY;	// Update the parity type
+  UartLineCoding.bDataBits = UART_WORD_WIDTH_8;	// Update the word width
+  UartSetLineCoding(UART_0,UartLineCoding);	// Set UART line coding
+  
   return(TRUE);
 }
 
