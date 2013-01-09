@@ -86,8 +86,8 @@ int main(void)
   GLCD_SetWindow(0,0,310,33);
   
   double VOLTAGE_GAIN = 95.87325813;
-  double CURRENT_GAIN = 6.6072;
-  double CURRENT_OFFSET = 0.0635; 
+  double CURRENT_GAIN = 6.6416;
+  double CURRENT_OFFSET = 0.0068; 
   
   while(1){
     // Data from UART1
