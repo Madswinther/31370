@@ -3,6 +3,10 @@
 #include <math.h>
 #include "../Custom libs/parsing.h"
 #include "../Custom libs/uart.h"
+#include "../Custom libs/gui.h"
+#include "../Custom libs/draw.h"
+#include "../Custom libs/graphics/winning.h"
+#include "../Custom libs/graphics/button.h"
 
 #define NONPROT 0xFFFFFFFF
 
@@ -21,28 +25,55 @@ extern FontType_t Terminal_18_24_12;
 
 void init();
 
-int main(void)
-{
+int main(void){
   char Buffer[BUFFER_SIZE];
   // Init buffer
   for (int i=0; i<BUFFER_SIZE; i++){
 	Buffer[i] = 0;
   }
   
+  // Touch init
+  ToushRes_t XY_Touch;
+  Boolean Touch = FALSE;
+  TouchScrInit();
+  
   init();
   
-  GLCD_SetFont(&Terminal_9_12_6,0x0000FF,0x000cd4ff);
-  GLCD_SetWindow(80,200,310,211);
-  GLCD_TextSetPos(0,0);
-  GLCD_print("\fCommunication device class");
+  // Init font
+  GLCD_SetFont(&Terminal_9_12_6,0xFFFFFF,0x333333);
+ 
   
   // Init UART
   UartInit(UART_0,4,NORM);
   
+  Window * button = initWindow(100, 100, 320, 240, &buttonPic);
+  draw(button);
+  
+  Window * button2 = initWindow(200, 100, 320, 240, &buttonPic);
+  draw(button2);
+  
+  Rectangle rect = {200, 200, 0, 0, 0xFFFFFF, 0xAAAAAA};
+  drawRectangle(&rect);
+  
+ 
+  
   GLCD_SetWindow(0,0,310,33);
   while(1){
-    // Data from UART0
+	if(TouchGet(&XY_Touch))
+    {
+      if (onClick(button, XY_Touch.X, XY_Touch.Y)){
+        Touch = TRUE;
+        USB_H_LINK_LED_FCLR = USB_H_LINK_LED_MASK;
+      }
+    }
+	else if(Touch)
+    {
+      USB_H_LINK_LED_FSET = USB_H_LINK_LED_MASK;
+      Touch = FALSE;
+    }
 	
+	
+    // Data from UART0
 	UartCheck(Buffer);
 	
 	if (Buffer[0] != 'E'){
@@ -77,10 +108,14 @@ void init(){
   // Init VIC
   VIC_Init();
   // GLCD init
-  GLCD_Init (IarLogoPic.pPicStream, NULL);
+  GLCD_Init (NULL, NULL);
   // Disable Hardware cursor
   GLCD_Cursor_Dis(0);
   
+  // Touched indication LED
+  USB_H_LINK_LED_SEL = 0; // GPIO
+  USB_H_LINK_LED_FSET = USB_H_LINK_LED_MASK;
+  USB_H_LINK_LED_FDIR |= USB_H_LINK_LED_MASK;
   
   __enable_interrupt();
   

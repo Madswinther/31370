@@ -1843,6 +1843,33 @@
   </configuration>
   <group>
     <name>Custom libs</name>
+    <group>
+      <name>graphics</name>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\graphics\button.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\graphics\button.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\draw.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\draw.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\graphics\winning.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\graphics\winning.h</name>
+      </file>
+    </group>
+    <file>
+      <name>$PROJ_DIR$\Custom libs\gui.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Custom libs\gui.h</name>
+    </file>
     <file>
       <name>$PROJ_DIR$\Custom libs\parsing.c</name>
     </file>
@@ -1877,18 +1904,21 @@
       </file>
     </group>
     <group>
-      <name>Pictures</name>
-      <file>
-        <name>$PROJ_DIR$\app\iar_logo.c</name>
-      </file>
-    </group>
-    <group>
       <name>SDRAM</name>
       <excluded>
         <configuration>SDRAM Debug</configuration>
       </excluded>
       <file>
         <name>$PROJ_DIR$\modules\sdram_64M_32bit_drv.c</name>
+      </file>
+    </group>
+    <group>
+      <name>TOUCHSCREEN</name>
+      <file>
+        <name>$PROJ_DIR$\modules\drv_touch_scr.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\modules\drv_touch_scr.h</name>
       </file>
     </group>
     <group>

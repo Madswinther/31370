@@ -82,9 +82,9 @@ void GLCD_SetWindow(Int32U X_Left, Int32U Y_Up,
                     Int32U X_Right, Int32U Y_Down);
 void GLCD_TextSetPos(Int32U X, Int32U Y);
 void GLCD_TextSetTabSize(Int32U Size);
-static void LCD_SET_WINDOW (Int32U X_Left, Int32U X_Right,
+void LCD_SET_WINDOW (Int32U X_Left, Int32U X_Right,
                             Int32U Y_Up, Int32U Y_Down);
-static void LCD_WRITE_PIXEL (Int32U Pixel);
+void LCD_WRITE_PIXEL (Int32U Pixel);
 static Boolean GLCD_TextCalcWindow (pInt32U pXL, pInt32U pXR,
                                     pInt32U pYU, pInt32U pYD,
                                     pInt32U pH_Size, pInt32U pV_Size);

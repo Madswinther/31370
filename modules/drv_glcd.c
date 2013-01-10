@@ -361,7 +361,6 @@ void GLCD_TextSetTabSize(Int32U Size)
  * Description: Put char function
  *
  *************************************************************************/
-static
 void LCD_SET_WINDOW (Int32U X_Left, Int32U X_Right,
                      Int32U Y_Up, Int32U Y_Down)
 {
@@ -380,7 +379,6 @@ void LCD_SET_WINDOW (Int32U X_Left, Int32U X_Right,
  * Description: Put char function
  *
  *************************************************************************/
-static
 void LCD_WRITE_PIXEL (Int32U Pixel)
 {
   *pPix++ = Pixel;

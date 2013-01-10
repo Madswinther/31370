@@ -27,7 +27,7 @@
 #include "arm_comm.h"
 #include "board.h"
 
-
+#include "drv_touch_scr.h"
 
 #include "sys.h"
 #include "sdram_64M_32bit_drv.h"
