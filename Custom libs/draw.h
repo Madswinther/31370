@@ -11,5 +11,8 @@ typedef struct {
 } Rectangle;
 
 void drawRectangle(Rectangle * rectangle);
+void drawFilledRectangle(Rectangle * rectangle, char drawBorder);
+void drawVerticalLine(int x0, int y0, int length, int lineColor);
+void drawHorizontalLine(int x0, int y0, int length, int lineColor);
 
 #endif

@@ -1882,6 +1882,12 @@
     <file>
       <name>$PROJ_DIR$\Custom libs\uart.h</name>
     </file>
+    <file>
+      <name>$PROJ_DIR$\Custom libs\vector.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Custom libs\vector.h</name>
+    </file>
   </group>
   <group>
     <name>Modules</name>

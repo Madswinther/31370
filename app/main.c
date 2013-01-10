@@ -5,6 +5,7 @@
 #include "../Custom libs/uart.h"
 #include "../Custom libs/gui.h"
 #include "../Custom libs/draw.h"
+#include "../Custom libs/vector.h"
 #include "../Custom libs/graphics/winning.h"
 #include "../Custom libs/graphics/button.h"
 
@@ -46,23 +47,24 @@ int main(void){
   // Init UART
   UartInit(UART_0,4,NORM);
   
-  Window * button = initWindow(100, 100, 150, 150, &buttonPic);
-  setClickable(button, 1);
-  draw(button);
+  PictureWindow * button = initPictureWindow(100, 100, 150, 150, &buttonPic);
+  button->clickable = 1;
+  //drawPictureWindow(button);
   
-  Window * button2 = initWindow(200, 100, 250, 150, &buttonPic);
-  setClickable(button2, 1);
-  draw(button2);
+  RectangleWindow * button2 = initRectangleWindow(50, 50, 100, 100, 0xFFFFFF, 0x0000FF);
+  button2->clickable = 1;
+  //drawRectangleWindow(button2);
   
-  Rectangle rect = {200, 200, 0, 0, 0xFFFFFF, 0xAAAAAA};
-  drawRectangle(&rect);
+  addWindow(button);
+  addWindow(button2);
+  drawWindows();
   
   
   GLCD_SetWindow(0,0,310,33);
   while(1){
 	if(TouchGet(&XY_Touch))
     {
-      if (Touch == FALSE && onClick(button, XY_Touch.X, XY_Touch.Y)){
+      if (Touch == FALSE && dispatchTouch(XY_Touch.X, XY_Touch.Y)){
         Touch = TRUE;
         USB_H_LINK_LED_FCLR = USB_H_LINK_LED_MASK;
       }

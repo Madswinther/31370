@@ -21,7 +21,7 @@ void parse(char * Buffer, Measurement * measurement){
   temp[8] = '\0';
   
   double current = strtol(temp, NULL, 16);
-  measurement->current = ((double)current*pow(2, -22))*CURRENT_GAIN+CURRENT_OFFSET;
+  measurement->current = ((double)current*pow(2, -22))*CURRENT_GAIN;
   
   // Get Power
   for (int j=0; j<9; j++){

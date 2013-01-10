@@ -1,20 +1,20 @@
 /*************************************************************************
- *
+*
 *    Used with ICCARM and AARM.
- *
- *    (c) Copyright IAR Systems 2008
- *
- *    File name   : drv_glcd.c
- *    Description : Graphical LCD driver
- *
- *    History :
- *    1. Date        : 6, March 2008
- *       Author      : Stanimir Bonev
- *       Description : Create
- *
- *
- *    $Revision: 47021 $
- **************************************************************************/
+*
+*    (c) Copyright IAR Systems 2008
+*
+*    File name   : drv_glcd.c
+*    Description : Graphical LCD driver
+*
+*    History :
+*    1. Date        : 6, March 2008
+*       Author      : Stanimir Bonev
+*       Description : Create
+*
+*
+*    $Revision: 47021 $
+**************************************************************************/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -53,27 +53,27 @@ static pInt32U pWind;
 static pInt32U pPix;
 
 /*************************************************************************
- * Function Name: GLCD_Cursor_Cnfg
- * Parameters:
- *
- * Return: none
- *
- * Description: Configure the cursor
- *
- *************************************************************************/
+* Function Name: GLCD_Cursor_Cnfg
+* Parameters:
+*
+* Return: none
+*
+* Description: Configure the cursor
+*
+*************************************************************************/
 void GLCD_Cursor_Cfg(int Cfg)
 {
   CRSR_CFG = Cfg;
 }
 /*************************************************************************
- * Function Name: GLCD_Cursor_En
- * Parameters: cursor - Cursor Number
- *
- * Return: none
- *
- * Description: Enable Cursor
- *
- *************************************************************************/
+* Function Name: GLCD_Cursor_En
+* Parameters: cursor - Cursor Number
+*
+* Return: none
+*
+* Description: Enable Cursor
+*
+*************************************************************************/
 void GLCD_Cursor_En(int cursor)
 {
   CRSR_CTRL_bit.CrsrNum = cursor;
@@ -81,29 +81,29 @@ void GLCD_Cursor_En(int cursor)
 }
 
 /*************************************************************************
- * Function Name: GLCD_Cursor_Dis
- * Parameters: None
- *
- * Return: none
- *
- * Description: Disable Cursor
- *
- *************************************************************************/
+* Function Name: GLCD_Cursor_Dis
+* Parameters: None
+*
+* Return: none
+*
+* Description: Disable Cursor
+*
+*************************************************************************/
 void GLCD_Cursor_Dis(int cursor)
 {
   CRSR_CTRL_bit.CrsrOn = 0;
 }
 
 /*************************************************************************
- * Function Name: GLCD_Move_Cursor
- * Parameters: x - cursor x position
- *             y - cursor y position
- *
- * Return: none
- *
- * Description: Moves cursor on position (x,y). Negativ values are posible.
- *
- *************************************************************************/
+* Function Name: GLCD_Move_Cursor
+* Parameters: x - cursor x position
+*             y - cursor y position
+*
+* Return: none
+*
+* Description: Moves cursor on position (x,y). Negativ values are posible.
+*
+*************************************************************************/
 void GLCD_Move_Cursor(int x, int y)
 {
   if(0 <= x)
@@ -116,7 +116,7 @@ void GLCD_Move_Cursor(int x, int y)
     CRSR_CLIP_bit.CrsrClipX = -x;
     CRSR_XY_bit.CrsrX = 0;
   }
-
+  
   if(0 <= y)
   {//no clipping
     CRSR_CLIP_bit.CrsrClipY = 0;
@@ -130,35 +130,35 @@ void GLCD_Move_Cursor(int x, int y)
 }
 
 /*************************************************************************
- * Function Name: GLCD_Copy_Cursor
- * Parameters: pCursor - pointer to cursor conts image
- *             cursor - cursor Number (0,1,2 or 3)
- *                      for 64x64(size 256) pix cursor always use 0
- *             size - cursor size in words
- * Return: none
- *
- * Description: Copy Cursor from const image to LCD RAM image
- *
- *************************************************************************/
+* Function Name: GLCD_Copy_Cursor
+* Parameters: pCursor - pointer to cursor conts image
+*             cursor - cursor Number (0,1,2 or 3)
+*                      for 64x64(size 256) pix cursor always use 0
+*             size - cursor size in words
+* Return: none
+*
+* Description: Copy Cursor from const image to LCD RAM image
+*
+*************************************************************************/
 void GLCD_Copy_Cursor (const Int32U *pCursor, int cursor, int size)
 {
-   Int32U * pDst = (Int32U *)LCD_CURSOR_BASE_ADDR;
-   pDst += cursor*64;
-
-   for(int i = 0; i < size ; i++) *pDst++ = *pCursor++;
+  Int32U * pDst = (Int32U *)LCD_CURSOR_BASE_ADDR;
+  pDst += cursor*64;
+  
+  for(int i = 0; i < size ; i++) *pDst++ = *pCursor++;
 }
 /*************************************************************************
- * Function Name: GLCD_Init
- * Parameters: const Int32U *pPain, const Int32U * pPallete
- *
- * Return: none
- *
- * Description: GLCD controller init
- *
- *************************************************************************/
+* Function Name: GLCD_Init
+* Parameters: const Int32U *pPain, const Int32U * pPallete
+*
+* Return: none
+*
+* Description: GLCD controller init
+*
+*************************************************************************/
 void GLCD_Init (const Int32U *pPain, const Int32U * pPallete)
 {
-pInt32U pDst = (pInt32U) LCD_VRAM_BASE_ADDR;
+  pInt32U pDst = (pInt32U) LCD_VRAM_BASE_ADDR;
   // Assign pin
   PINSEL0 &= BIN32(11111111,11110000,00000000,11111111);
   PINSEL0 |= BIN32(00000000,00000101,01010101,00000000);
@@ -212,12 +212,12 @@ pInt32U pDst = (pInt32U) LCD_VRAM_BASE_ADDR;
   LCD_UPBASE         =  LCD_VRAM_BASE_ADDR & ~7UL ;
   LCD_LPBASE         =  LCD_VRAM_BASE_ADDR & ~7UL ;
   // init colour pallet
-
+  
   if(NULL != pPallete)
   {
     GLCD_SetPallet(pPallete);
   }
-
+  
   if (NULL == pPain)
   {
     // clear display memory
@@ -234,22 +234,22 @@ pInt32U pDst = (pInt32U) LCD_VRAM_BASE_ADDR;
       *pDst++ = *pPain++;
     }
   }
-
+  
   for(volatile Int32U i = C_GLCD_ENA_DIS_DLY; i; i--);
 }
 
 /*************************************************************************
- * Function Name: GLCD_SetPallet
- * Parameters: const Int32U * pPallete
- *
- * Return: none
- *
- * Description: GLCD init colour pallete
- *
- *************************************************************************/
+* Function Name: GLCD_SetPallet
+* Parameters: const Int32U * pPallete
+*
+* Return: none
+*
+* Description: GLCD init colour pallete
+*
+*************************************************************************/
 void GLCD_SetPallet (const Int32U * pPallete)
 {
-pInt32U pDst = (pInt32U)LCD_PAL_BASE;
+  pInt32U pDst = (pInt32U)LCD_PAL_BASE;
   assert(pPallete);
   for (Int32U i = 0; i < 128; i++)
   {
@@ -258,14 +258,14 @@ pInt32U pDst = (pInt32U)LCD_PAL_BASE;
 }
 
 /*************************************************************************
- * Function Name: GLCD_Ctrl
- * Parameters: Boolean bEna
- *
- * Return: none
- *
- * Description: GLCD enable disabe sequence
- *
- *************************************************************************/
+* Function Name: GLCD_Ctrl
+* Parameters: Boolean bEna
+*
+* Return: none
+*
+* Description: GLCD enable disabe sequence
+*
+*************************************************************************/
 void GLCD_Ctrl (Boolean bEna)
 {
   if (bEna)
@@ -283,15 +283,15 @@ void GLCD_Ctrl (Boolean bEna)
 }
 
 /*************************************************************************
- * Function Name: GLCD_SetFont
- * Parameters: pFontType_t pFont, LdcPixel_t Color
- *              LdcPixel_t BackgndColor
- *
- * Return: none
- *
- * Description: Set current font, font color and background color
- *
- *************************************************************************/
+* Function Name: GLCD_SetFont
+* Parameters: pFontType_t pFont, LdcPixel_t Color
+*              LdcPixel_t BackgndColor
+*
+* Return: none
+*
+* Description: Set current font, font color and background color
+*
+*************************************************************************/
 void GLCD_SetFont(pFontType_t pFont, LdcPixel_t Color, LdcPixel_t BackgndColor)
 {
   pCurrFont = pFont;
@@ -300,15 +300,15 @@ void GLCD_SetFont(pFontType_t pFont, LdcPixel_t Color, LdcPixel_t BackgndColor)
 }
 
 /*************************************************************************
- * Function Name: GLCD_SetWindow
- * Parameters: Int32U X_Left, Int32U Y_Up,
- *             Int32U X_Right, Int32U Y_Down
- *
- * Return: none
- *
- * Description: Set draw window XY coordinate in pixels
- *
- *************************************************************************/
+* Function Name: GLCD_SetWindow
+* Parameters: Int32U X_Left, Int32U Y_Up,
+*             Int32U X_Right, Int32U Y_Down
+*
+* Return: none
+*
+* Description: Set draw window XY coordinate in pixels
+*
+*************************************************************************/
 void GLCD_SetWindow(Int32U X_Left, Int32U Y_Up,
                     Int32U X_Right, Int32U Y_Down)
 {
@@ -323,15 +323,15 @@ void GLCD_SetWindow(Int32U X_Left, Int32U Y_Up,
 }
 
 /*************************************************************************
- * Function Name: GLCD_TextSetPos
- * Parameters: Int32U X_UpLeft, Int32U Y_UpLeft,
- *             Int32U X_DownLeft, Int32U Y_DownLeft
- *
- * Return: none
- *
- * Description: Set text X,Y coordinate in characters
- *
- *************************************************************************/
+* Function Name: GLCD_TextSetPos
+* Parameters: Int32U X_UpLeft, Int32U Y_UpLeft,
+*             Int32U X_DownLeft, Int32U Y_DownLeft
+*
+* Return: none
+*
+* Description: Set text X,Y coordinate in characters
+*
+*************************************************************************/
 void GLCD_TextSetPos(Int32U X, Int32U Y)
 {
   TextX_Pos = X;
@@ -339,14 +339,14 @@ void GLCD_TextSetPos(Int32U X, Int32U Y)
 }
 
 /*************************************************************************
- * Function Name: GLCD_TextSetTabSize
- * Parameters: Int32U Size
- *
- * Return: none
- *
- * Description: Set text tab size in characters
- *
- *************************************************************************/
+* Function Name: GLCD_TextSetTabSize
+* Parameters: Int32U Size
+*
+* Return: none
+*
+* Description: Set text tab size in characters
+*
+*************************************************************************/
 void GLCD_TextSetTabSize(Int32U Size)
 {
   TabSize = Size;
@@ -355,19 +355,22 @@ void GLCD_TextSetTabSize(Int32U Size)
 
 // DRAW A PIXEL - user made
 void DRAW_PIXEL(Int32U X, Int32U Y, Int32U Pixel){
+  // Check dimensions
+  if (X <= C_GLCD_H_SIZE && Y <= C_GLCD_V_SIZE){
 	pPix = ((pInt32U)LCD_VRAM_BASE_ADDR) + X + (Y*C_GLCD_H_SIZE);  
   	*pPix = Pixel;
+  }
 }
 
 /*************************************************************************
- * Function Name: LCD_SET_WINDOW
- * Parameters: int c
- *
- * Return: none
- *
- * Description: Put char function
- *
- *************************************************************************/
+* Function Name: LCD_SET_WINDOW
+* Parameters: int c
+*
+* Return: none
+*
+* Description: Put char function
+*
+*************************************************************************/
 void LCD_SET_WINDOW (Int32U X_Left, Int32U X_Right,
                      Int32U Y_Up, Int32U Y_Down)
 {
@@ -378,14 +381,14 @@ void LCD_SET_WINDOW (Int32U X_Left, Int32U X_Right,
 }
 
 /*************************************************************************
- * Function Name: LCD_SET_WINDOW
- * Parameters: int c
- *
- * Return: none
- *
- * Description: Put char function
- *
- *************************************************************************/
+* Function Name: LCD_SET_WINDOW
+* Parameters: int c
+*
+* Return: none
+*
+* Description: Put char function
+*
+*************************************************************************/
 void LCD_WRITE_PIXEL (Int32U Pixel)
 {
   *pPix++ = Pixel;
@@ -401,18 +404,18 @@ void LCD_WRITE_PIXEL (Int32U Pixel)
 }
 
 /*************************************************************************
- * Function Name: GLCD_TextCalcWindow
- * Parameters: pInt32U pXL, pInt32U pXR,
- *             pInt32U pYU, pInt32U pYD,
- *             pInt32U pH_Size, pInt32U pV_Size
- *
- * Return: Boolean
- *          FALSE - out of window coordinate aren't valid
- *          TRUE  - the returned coordinate are valid
- *
- * Description: Calculate character window
- *
- *************************************************************************/
+* Function Name: GLCD_TextCalcWindow
+* Parameters: pInt32U pXL, pInt32U pXR,
+*             pInt32U pYU, pInt32U pYD,
+*             pInt32U pH_Size, pInt32U pV_Size
+*
+* Return: Boolean
+*          FALSE - out of window coordinate aren't valid
+*          TRUE  - the returned coordinate are valid
+*
+* Description: Calculate character window
+*
+*************************************************************************/
 static
 Boolean GLCD_TextCalcWindow (pInt32U pXL, pInt32U pXR,
                              pInt32U pYU, pInt32U pYD,
@@ -430,39 +433,39 @@ Boolean GLCD_TextCalcWindow (pInt32U pXL, pInt32U pXR,
   {
     return(FALSE);
   }
-
+  
   *pXR   = XL_Win + ((TextX_Pos+1)*pCurrFont->H_Size) - 1;
   if(*pXR > XR_Win)
   {
   	*pH_Size -= *pXR - XR_Win;
     *pXR = XR_Win;
   }
-
+  
   *pYD = YU_Win + ((TextY_Pos+1)*pCurrFont->V_Size) - 1;
   if(*pYD > YD_Win)
   {
     *pV_Size -= *pYD - YD_Win;
     *pYD = YD_Win;
   }
-
+  
   return(TRUE);
 }
 
 /*************************************************************************
- * Function Name: putchar
- * Parameters: int c
- *
- * Return: none
- *
- * Description: Put char function
- *
- *************************************************************************/
+* Function Name: putchar
+* Parameters: int c
+*
+* Return: none
+*
+* Description: Put char function
+*
+*************************************************************************/
 int GLCD_putchar (int c)
 {
-pInt8U pSrc;
-Int32U H_Line;
-Int32U xl,xr,yu,yd,Temp,V_Size, H_Size, SrcInc = 1;
-Int32U WhiteSpaceNumb;
+  pInt8U pSrc;
+  Int32U H_Line;
+  Int32U xl,xr,yu,yd,Temp,V_Size, H_Size, SrcInc = 1;
+  Int32U WhiteSpaceNumb;
   if(pCurrFont == NULL)
   {
     return(EOF);
@@ -478,14 +481,14 @@ Int32U WhiteSpaceNumb;
   	while(GLCD_TextCalcWindow(&xl,&xr,&yu,&yd,&H_Size,&V_Size))
   	{
       LCD_SET_WINDOW(xl,xr,yu,yd);
-	    for(Int32U i = 0; i < V_Size; ++i)
-	    {
-	      for(Int32U j = 0; j < H_Size; ++j)
-	      {
-	        LCD_WRITE_PIXEL(TextBackgndColour);
-	      }
-	    }
-  		++TextX_Pos;
+	  for(Int32U i = 0; i < V_Size; ++i)
+	  {
+		for(Int32U j = 0; j < H_Size; ++j)
+		{
+		  LCD_WRITE_PIXEL(TextBackgndColour);
+		}
+	  }
+	  ++TextX_Pos;
   	}
     TextX_Pos = 0;
     break;
@@ -494,17 +497,17 @@ Int32U WhiteSpaceNumb;
     {
       --TextX_Pos;
       // del current position
-	  	if(GLCD_TextCalcWindow(&xl,&xr,&yu,&yd,&H_Size,&V_Size))
-	  	{
+	  if(GLCD_TextCalcWindow(&xl,&xr,&yu,&yd,&H_Size,&V_Size))
+	  {
         LCD_SET_WINDOW(xl,xr,yu,yd);
-		    for(Int32U i = 0; i < V_Size; ++i)
-		    {
-		      for(Int32U j = 0; j < H_Size; ++j)
-		      {
-		        LCD_WRITE_PIXEL(TextBackgndColour);
-		      }
-		    }
-	  	}
+		for(Int32U i = 0; i < V_Size; ++i)
+		{
+		  for(Int32U j = 0; j < H_Size; ++j)
+		  {
+			LCD_WRITE_PIXEL(TextBackgndColour);
+		  }
+		}
+	  }
     }
     break;
   case '\t':  // go to next Horizontal Tab stop
@@ -512,21 +515,21 @@ Int32U WhiteSpaceNumb;
   	for(Int32U k = 0; k < WhiteSpaceNumb; ++k)
   	{
       LCD_SET_WINDOW(xl,xr,yu,yd);
-	  	if(GLCD_TextCalcWindow(&xl,&xr,&yu,&yd,&H_Size,&V_Size))
-	  	{
-		    for(Int32U i = 0; i < V_Size; ++i)
-		    {
-		      for(Int32U j = 0; j < H_Size; ++j)
-		      {
-		        LCD_WRITE_PIXEL(TextBackgndColour);
-		      }
-		    }
-		    ++TextX_Pos;
-	  	}
-	  	else
-	  	{
-	  		break;
-	  	}
+	  if(GLCD_TextCalcWindow(&xl,&xr,&yu,&yd,&H_Size,&V_Size))
+	  {
+		for(Int32U i = 0; i < V_Size; ++i)
+		{
+		  for(Int32U j = 0; j < H_Size; ++j)
+		  {
+			LCD_WRITE_PIXEL(TextBackgndColour);
+		  }
+		}
+		++TextX_Pos;
+	  }
+	  else
+	  {
+		break;
+	  }
   	}
     break;
   case '\f':  // go to top of page (Form Feed)
@@ -553,37 +556,37 @@ Int32U WhiteSpaceNumb;
     // Calculate the current character base address from stream
     // and the character position
     if((c <  pCurrFont->CharacterOffset) &&
-    	 (c >= pCurrFont->CharactersNuber))
+	   (c >= pCurrFont->CharactersNuber))
    	{
-   		c = 0;
+	  c = 0;
     }
     else
     {
-    	c -= pCurrFont->CharacterOffset;
+	  c -= pCurrFont->CharacterOffset;
     }
     pSrc = pCurrFont->pFontStream + (H_Line * pCurrFont->V_Size * c);
     // Calculate character window and fit it in the text window
     if(GLCD_TextCalcWindow(&xl,&xr,&yu,&yd,&H_Size,&V_Size))
     {
-	    // set character window X left, Y right
-	    LCD_SET_WINDOW(xl,xr,yu,yd);
-	    // Send char data
-	    for(Int32U i = 0; i < V_Size; ++i)
-	    {
+	  // set character window X left, Y right
+	  LCD_SET_WINDOW(xl,xr,yu,yd);
+	  // Send char data
+	  for(Int32U i = 0; i < V_Size; ++i)
+	  {
         SrcInc = H_Line;
         for(Int32U j = 0; j < H_Size; ++j)
-	      {
-	        Temp = (*pSrc & (1UL << (j&0x7)))?TextColour:TextBackgndColour;
-	        LCD_WRITE_PIXEL(Temp);
-	        if((j&0x7) == 7)
-	        {
-	          ++pSrc;
+		{
+		  Temp = (*pSrc & (1UL << (j&0x7)))?TextColour:TextBackgndColour;
+		  LCD_WRITE_PIXEL(Temp);
+		  if((j&0x7) == 7)
+		  {
+			++pSrc;
             --SrcInc;
-	        }
-	      }
+		  }
+		}
         // next line of character
-	      pSrc += SrcInc;
-	    }
+		pSrc += SrcInc;
+	  }
     }
     ++TextX_Pos;
   }
@@ -591,19 +594,19 @@ Int32U WhiteSpaceNumb;
 }
 
 /*************************************************************************
- * Function Name: GLCD_print
- * Parameters: char *s, const char *fmt, ...
- *
- * Return: none
- *
- * Description: Print formated string on the LCD
- *
- *************************************************************************/
+* Function Name: GLCD_print
+* Parameters: char *s, const char *fmt, ...
+*
+* Return: none
+*
+* Description: Print formated string on the LCD
+*
+*************************************************************************/
 void GLCD_print (const char *fmt, ...)
 {
-va_list ap;
-char s[MAX_GLCD_STR_SIZE];
-char *p_char = s;
+  va_list ap;
+  char s[MAX_GLCD_STR_SIZE];
+  char *p_char = s;
   va_start(ap, fmt);
   vsprintf(s, fmt,ap);
   va_end(ap);
@@ -617,19 +620,19 @@ char *p_char = s;
 }
 
 /*************************************************************************
- * Function Name: GLCD_LoadPic
- * Parameters: Int32U X_Left, Int32U Y_Up, Bmp_t * pBmp
- *
- * Return: none
- *
- * Description: Load picture in VRAM memory area
- *
- *************************************************************************/
+* Function Name: GLCD_LoadPic
+* Parameters: Int32U X_Left, Int32U Y_Up, Bmp_t * pBmp
+*
+* Return: none
+*
+* Description: Load picture in VRAM memory area
+*
+*************************************************************************/
 void GLCD_LoadPic (Int32U X_Left, Int32U Y_Up, Bmp_t * pBmp, Int32U Mask)
 {
-pInt32U pData = ((pInt32U) LCD_VRAM_BASE_ADDR) + X_Left + (Y_Up * C_GLCD_H_SIZE);
-pInt32U pSrc = pBmp->pPicStream;
-Int32U X_LeftHold;
+  pInt32U pData = ((pInt32U) LCD_VRAM_BASE_ADDR) + X_Left + (Y_Up * C_GLCD_H_SIZE);
+  pInt32U pSrc = pBmp->pPicStream;
+  Int32U X_LeftHold;
   for(Int32U i = 0; i < pBmp->V_Size; i++)
   {
     if(Y_Up++ >= C_GLCD_V_SIZE)
@@ -651,19 +654,19 @@ Int32U X_LeftHold;
 }
 
 /*************************************************************************
- * Function Name: GLCD_LoadPicTransparent
- * Parameters: Int32U X_Left, Int32U Y_Up, Bmp_t * pBmp
- *
- * Return: none
- *
- * Description: Load picture in VRAM memory area
- *
- *************************************************************************/
+* Function Name: GLCD_LoadPicTransparent
+* Parameters: Int32U X_Left, Int32U Y_Up, Bmp_t * pBmp
+*
+* Return: none
+*
+* Description: Load picture in VRAM memory area
+*
+*************************************************************************/
 void GLCD_LoadPicTransparent (Int32U X_Left, Int32U Y_Up, Bmp_t * pBmp, Int32U Transp)
 {
-pInt32U pData = ((pInt32U) LCD_VRAM_BASE_ADDR) + X_Left + (Y_Up * C_GLCD_H_SIZE);
-pInt32U pSrc = pBmp->pPicStream;
-Int32U X_LeftHold;
+  pInt32U pData = ((pInt32U) LCD_VRAM_BASE_ADDR) + X_Left + (Y_Up * C_GLCD_H_SIZE);
+  pInt32U pSrc = pBmp->pPicStream;
+  Int32U X_LeftHold;
   for(Int32U i = 0; i < pBmp->V_Size; i++)
   {
     if(Y_Up++ >= C_GLCD_V_SIZE)
