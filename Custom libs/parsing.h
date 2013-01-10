@@ -8,6 +8,10 @@
 #define POWER_GAIN 0.0012
 #define POWER_OFFSET 10404
 
+#define VOLTAGE_PARSE_OFFSET 1
+#define CURRENT_PARSE_OFFSET 9
+#define POWER_PARSE_OFFSET 18
+
 typedef struct{
   double voltage;
   double current;

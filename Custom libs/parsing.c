@@ -3,15 +3,11 @@
 #include <math.h>
 
 void parse(char * Buffer, Measurement * measurement){
-  // Iterator
-  int i = 0;
   
   // Get voltage
-  while(Buffer[i++] != 'x');
-  
   char temp[9];
   for (int j=0; j<9; j++){
-	temp[j] = Buffer[j+i+1];
+	temp[j] = Buffer[j+VOLTAGE_PARSE_OFFSET];
   }
   temp[8] = '\0';
   
@@ -19,11 +15,8 @@ void parse(char * Buffer, Measurement * measurement){
   measurement->voltage = (double)voltage*pow(2, -22)*VOLTAGE_GAIN;
   
   // Get current
-  i += 8;
-  while(Buffer[i++] != 'x');
-  
   for (int j=0; j<9; j++){
-	temp[j] = Buffer[j+i+1];
+	temp[j] = Buffer[j+CURRENT_PARSE_OFFSET];
   }
   temp[8] = '\0';
   
@@ -31,11 +24,8 @@ void parse(char * Buffer, Measurement * measurement){
   measurement->current = ((double)current*pow(2, -22))*CURRENT_GAIN+CURRENT_OFFSET;
   
   // Get Power
-  i += 8;
-  while(Buffer[i++] != 'x');
-  
   for (int j=0; j<9; j++){
-	temp[j] = Buffer[j+i+1];
+	temp[j] = Buffer[j+POWER_PARSE_OFFSET];
   }
   temp[8] = '\0';
   

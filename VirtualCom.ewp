@@ -1850,10 +1850,10 @@
       <name>$PROJ_DIR$\Custom libs\parsing.h</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\app\uart.c</name>
+      <name>$PROJ_DIR$\Custom libs\uart.c</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\app\uart.h</name>
+      <name>$PROJ_DIR$\Custom libs\uart.h</name>
     </file>
   </group>
   <group>
@@ -1897,42 +1897,6 @@
     <file>
       <name>$PROJ_DIR$\board\sys.c</name>
     </file>
-  </group>
-  <group>
-    <name>USB</name>
-    <group>
-      <name>Class</name>
-      <file>
-        <name>$PROJ_DIR$\app\cd_class.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\app\usb_dev_desc.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\app\usb_hooks.c</name>
-      </file>
-    </group>
-    <group>
-      <name>Config</name>
-      <file>
-        <name>$PROJ_DIR$\app\usb_cnfg.h</name>
-      </file>
-    </group>
-    <group>
-      <name>Core</name>
-      <file>
-        <name>$PROJ_DIR$\modules\usb_buffer.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\modules\usb_t9.c</name>
-      </file>
-    </group>
-    <group>
-      <name>HW</name>
-      <file>
-        <name>$PROJ_DIR$\modules\usb_hw.c</name>
-      </file>
-    </group>
   </group>
   <file>
     <name>$PROJ_DIR$\app\main.c</name>

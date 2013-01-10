@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include "../Custom libs/parsing.h"
+#include "../Custom libs/uart.h"
 
 #define NONPROT 0xFFFFFFFF
 
@@ -22,9 +23,9 @@ void init();
 
 int main(void)
 {
-  char Buffer[50];
+  char Buffer[BUFFER_SIZE];
   // Init buffer
-  for (int i=0; i<50; i++){
+  for (int i=0; i<BUFFER_SIZE; i++){
 	Buffer[i] = 0;
   }
   
