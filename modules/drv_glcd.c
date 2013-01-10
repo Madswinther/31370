@@ -352,6 +352,13 @@ void GLCD_TextSetTabSize(Int32U Size)
   TabSize = Size;
 }
 
+
+// DRAW A PIXEL - user made
+void DRAW_PIXEL(Int32U X, Int32U Y, Int32U Pixel){
+	pPix = ((pInt32U)LCD_VRAM_BASE_ADDR) + X + (Y*C_GLCD_H_SIZE);  
+  	*pPix = Pixel;
+}
+
 /*************************************************************************
  * Function Name: LCD_SET_WINDOW
  * Parameters: int c

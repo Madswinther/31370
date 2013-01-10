@@ -32,12 +32,12 @@ int main(void){
 	Buffer[i] = 0;
   }
   
+  init();
+  
   // Touch init
   ToushRes_t XY_Touch;
   Boolean Touch = FALSE;
   TouchScrInit();
-  
-  init();
   
   // Init font
   GLCD_SetFont(&Terminal_9_12_6,0xFFFFFF,0x333333);
@@ -46,22 +46,23 @@ int main(void){
   // Init UART
   UartInit(UART_0,4,NORM);
   
-  Window * button = initWindow(100, 100, 320, 240, &buttonPic);
+  Window * button = initWindow(100, 100, 150, 150, &buttonPic);
+  setClickable(button, 1);
   draw(button);
   
-  Window * button2 = initWindow(200, 100, 320, 240, &buttonPic);
+  Window * button2 = initWindow(200, 100, 250, 150, &buttonPic);
+  setClickable(button2, 1);
   draw(button2);
   
   Rectangle rect = {200, 200, 0, 0, 0xFFFFFF, 0xAAAAAA};
   drawRectangle(&rect);
   
- 
   
   GLCD_SetWindow(0,0,310,33);
   while(1){
 	if(TouchGet(&XY_Touch))
     {
-      if (onClick(button, XY_Touch.X, XY_Touch.Y)){
+      if (Touch == FALSE && onClick(button, XY_Touch.X, XY_Touch.Y)){
         Touch = TRUE;
         USB_H_LINK_LED_FCLR = USB_H_LINK_LED_MASK;
       }

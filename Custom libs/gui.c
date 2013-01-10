@@ -2,7 +2,8 @@
 #include "includes.h"
 
 Window * initWindow(int left, int top, int right, int bottom, Bmp_t * pic){
-	Window * temp = (Window*)malloc(sizeof(temp));
+	Window * temp;
+	temp = (Window*)malloc(sizeof(*temp));
 	temp->left = left;
 	temp->right = right;
 	temp->top = top;
@@ -14,16 +15,19 @@ Window * initWindow(int left, int top, int right, int bottom, Bmp_t * pic){
 }
 
 void draw(Window * window){
-	//GLCD_SetWindow(window->left,window->top,window->right,window->bottom);
 	GLCD_LoadPic(window->left,window->top, window->picture, 0);
-	//GLCD_LoadPic(
+}
+
+void setClickable(Window * window, char value){
+	window->clickable = value; 
 }
 
 char onClick(Window * window, int x, int y){
 	if (!window->clickable) return 0;
 	
 	// Handle click
-	if (window->left <= x && x <= window->right && window->top <= y && y <= window->bottom){
+	if (window->left <= x && x <= window->right && 
+		window->top <= y && y <= window->bottom){
 		return 1; 
 	}
 	

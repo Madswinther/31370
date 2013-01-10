@@ -92,4 +92,7 @@ void GLCD_LoadPic (Int32U X_Left, Int32U Y_Up, Bmp_t * pBmp, Int32U Mask);
 void GLCD_LoadPicTransparent (Int32U X_Left, Int32U Y_Up, Bmp_t * pBmp, Int32U Transp);
 void GLCD_print (const char *fmt, ...);
 
+// User functions
+void DRAW_PIXEL(Int32U X, Int32U Y, Int32U Pixel);
+
 #endif // __GLCD_DRV_H

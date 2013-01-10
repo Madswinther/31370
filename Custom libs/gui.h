@@ -11,6 +11,7 @@ typedef struct{
 
 Window * initWindow(int left, int top, int right, int bottom, Bmp_t * pic);
 void draw(Window * window);
+void setClickable(Window * window, char value);
 char onClick(Window * window, int x, int y);
 
 #endif // __GUI_H
