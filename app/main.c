@@ -41,7 +41,7 @@ int main(void)
   
   GLCD_SetWindow(0,0,310,33);
   while(1){
-    // Data from UART1
+    // Data from UART0
 	
 	UartCheck(Buffer);
 	

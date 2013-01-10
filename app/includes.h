@@ -27,20 +27,7 @@
 #include "arm_comm.h"
 #include "board.h"
 
-#include "usb_cnfg.h"
-#include "usb_desc.h"
-#include "usb_hw.h"
-#include "usb_t9.h"
-#include "usb_hooks.h"
-#include "usb_dev_desc.h"
-#include "usb_hooks.h"
-#include "usb_buffer.h"
 
-#include "cd_class.h"
-#include "cdc_desc.h"
-#include "cdc_cmd.h"
-
-#include "uart.h"
 
 #include "sys.h"
 #include "sdram_64M_32bit_drv.h"
