@@ -14,5 +14,6 @@ void drawRectangle(Rectangle * rectangle);
 void drawFilledRectangle(Rectangle * rectangle, char drawBorder);
 void drawVerticalLine(int x0, int y0, int length, int lineColor);
 void drawHorizontalLine(int x0, int y0, int length, int lineColor);
+void drawLine(int x0, int y0, int x1, int y1, int lineColor);
 
 #endif
