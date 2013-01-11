@@ -50,7 +50,7 @@ void drawFilledCircle(int x0, int y0, int r, int backgroundColor, int borderColo
 	for (int x = -r; x <= r; x++) {
 		int dy = (int)(sqrt(r*r - x*x));
 		for (int y = -dy; y <= dy; y++) {
-			DRAW_PIXEL(x0, y0, backgroundColor);
+			DRAW_PIXEL(x0+x, y0+y, backgroundColor);
 		}
 	}
 	
