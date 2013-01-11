@@ -363,7 +363,7 @@
         </option>
         <option>
           <name>IccAllowVLA</name>
-          <state>0</state>
+          <state>1</state>
         </option>
         <option>
           <name>IccCppDialect</name>
@@ -1871,6 +1871,12 @@
       <name>$PROJ_DIR$\Custom libs\gui.h</name>
     </file>
     <file>
+      <name>$PROJ_DIR$\Custom libs\layout.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Custom libs\layout.h</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\Custom libs\parsing.c</name>
     </file>
     <file>
@@ -1881,12 +1887,6 @@
     </file>
     <file>
       <name>$PROJ_DIR$\Custom libs\uart.h</name>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\Custom libs\vector.c</name>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\Custom libs\vector.h</name>
     </file>
   </group>
   <group>

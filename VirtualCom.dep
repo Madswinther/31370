@@ -2,7 +2,7 @@
 
 <project>
   <fileVersion>2</fileVersion>
-  <fileChecksum>486100813</fileChecksum>
+  <fileChecksum>3304074188</fileChecksum>
   <configuration>
     <name>Flash Debug</name>
     <outputs>
@@ -133,8 +133,12 @@
       <file>$PROJ_DIR$\Flash Debug\Obj\button.o</file>
       <file>$PROJ_DIR$\Flash Debug\Obj\Terminal_18_24x12.pbi</file>
       <file>$PROJ_DIR$\Flash Debug\Obj\gui.o</file>
+      <file>$PROJ_DIR$\Custom libs\layout.c</file>
+      <file>$PROJ_DIR$\Custom libs\layout.h</file>
       <file>$TOOLKIT_DIR$\inc\c\inttypes.h</file>
       <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\layout.o</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\layout.pbi</file>
     </outputs>
     <file>
       <name>[ROOT_NODE]</name>
@@ -183,7 +187,11 @@
       <inputs>
         <tool>
           <name>ICCARM</name>
-          <file> 9 60 21 89 39 37 90 25 82 42 72 103 107 104 96 38 18 86 12 73 32 97 33 65 62 24 108 92 106 110 118 111 57 117 27 29</file>
+          <file> 9 60 21 89 39 37 90 25 82 42 72 103 107 104 96 38 18 86 12 73 32 97 33 65 62 24 108 92 106 110 118 111 57 117 27 29 76 69 67</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 9 60 21 89 39 37 90 25 82 42 72 103 107 104 96 38 18 86 12 73 32 97 33 65 62 24 108 92 106 110 118 111 57 117 27 29 76 69 67</file>
         </tool>
       </inputs>
     </file>
@@ -248,11 +256,11 @@
       <inputs>
         <tool>
           <name>ICCARM</name>
-          <file> 11 127 39 128 25 82 42 72 103 107 97 104 76 69 67</file>
+          <file> 11 129 39 130 25 82 42 72 103 107 97 104 76 69 67</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 11 127 39 128 25 82 42 72 103 107 97 104 76 69 67</file>
+          <file> 11 129 39 130 25 82 42 72 103 107 97 104 76 69 67</file>
         </tool>
       </inputs>
     </file>
@@ -329,10 +337,6 @@
       <name>$PROJ_DIR$\Custom libs\vector.c</name>
       <outputs>
         <tool>
-          <name>ICCARM</name>
-          <file> 45</file>
-        </tool>
-        <tool>
           <name>BICOMP</name>
           <file> 46</file>
         </tool>
@@ -344,7 +348,7 @@
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 50 37 90 39 25 82 42 72 103 107 104 96 38 18 86 12 73 32 97 33 65 62 24 108 89 92 106 110 118 21 111 57 117 27 60 29 8 9</file>
+          <file> 8 37 90 39 25 82 42 72 103 107 104 96 38 18 86 12 73 32 97 33 65 62 24 108 89 92 106 110 118 21 111 57 117 27 60 29 9</file>
         </tool>
       </inputs>
     </file>
@@ -478,11 +482,11 @@
       <inputs>
         <tool>
           <name>ICCARM</name>
-          <file> 37 90 39 25 82 42 72 103 107 104 96 38 18 86 12 73 32 97 33 65 62 24 108 89 92 106 110 118 21 111 57 117 27 60 29 76 69 67 11 127 128 6 8 9 50 4 2</file>
+          <file> 37 90 39 25 82 42 72 103 107 104 96 38 18 86 12 73 32 97 33 65 62 24 108 89 92 106 110 118 21 111 57 117 27 60 29 76 69 67 11 129 130 6 8 9 128 4 2</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 37 90 39 25 82 42 72 103 107 104 96 38 18 86 12 73 32 97 33 65 62 24 108 89 92 106 110 118 21 111 57 117 27 60 29 76 69 67 11 127 128 6 8 9 50 4 2</file>
+          <file> 37 90 39 25 82 42 72 103 107 104 96 38 18 86 12 73 32 97 33 65 62 24 108 89 92 106 110 118 21 111 57 117 27 60 29 76 69 67 11 129 130 6 8 9 128 4 2</file>
         </tool>
       </inputs>
     </file>
@@ -520,7 +524,7 @@
       <inputs>
         <tool>
           <name>ILINK</name>
-          <file> 113 68 98 16 124 109 94 120 126 105 14 78 77 44 45 17 36 84 34 59</file>
+          <file> 113 68 98 16 124 109 94 120 126 131 105 14 78 77 44 17 36 84 34 59</file>
         </tool>
       </inputs>
     </file>
@@ -658,6 +662,29 @@
         <tool>
           <name>BICOMP</name>
           <file> 61 37 90 39 25 82 42 72 103 107 104 96 38 18 86 12 73 32 97 33 65 62 24 108 89 92 106 110 118 21 111 101 80 75 19 85 93 63 71 22 79 117 27 60 29</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Custom libs\layout.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 131</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 132</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 128 37 90 39 25 82 42 72 103 107 104 96 38 18 86 12 73 32 97 33 65 62 24 108 89 92 106 110 118 21 111 57 117 27 60 29 8 9</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 128 37 90 39 25 82 42 72 103 107 104 96 38 18 86 12 73 32 97 33 65 62 24 108 89 92 106 110 118 21 111 57 117 27 60 29 8 9</file>
         </tool>
       </inputs>
     </file>

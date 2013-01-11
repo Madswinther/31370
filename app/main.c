@@ -5,7 +5,7 @@
 #include "../Custom libs/uart.h"
 #include "../Custom libs/gui.h"
 #include "../Custom libs/draw.h"
-#include "../Custom libs/vector.h"
+#include "../Custom libs/layout.h"
 #include "../Custom libs/graphics/winning.h"
 #include "../Custom libs/graphics/button.h"
 
@@ -47,6 +47,8 @@ int main(void){
   // Init UART
   UartInit(UART_0,4,NORM);
   
+  Layout * main = initLayout();
+  
   PictureWindow * button = initPictureWindow(100, 100, 150, 150, &buttonPic);
   button->clickable = 1;
   //drawPictureWindow(button);
@@ -55,18 +57,22 @@ int main(void){
   button2->clickable = 1;
   //drawRectangleWindow(button2);
   
-  addWindow(button);
-  addWindow(button2);
-  drawWindows();
+  RectangleWindow * button3 = initRectangleWindow(70, 50, 100, 100, 0xFFFFFF, 0x0000FF);
+  RectangleWindow * button4 = initRectangleWindow(90, 50, 100, 100, 0xFFFFFF, 0x0000FF);
   
   drawLine(0,0, 320, 240, 0xFFFFFF);
+  drawCircle(160, 120, 90, 0xFF00FF);
+  
+  addWindow(main, button);
+  addWindow(main, button2);
+  drawWindows(main);
   
   
   GLCD_SetWindow(0,0,310,33);
   while(1){
 	if(TouchGet(&XY_Touch))
     {
-	  dispatchTouch(XY_Touch.X, XY_Touch.Y);
+	  dispatchTouch(main, XY_Touch.X, XY_Touch.Y);
       if (Touch == FALSE){
         Touch = TRUE;
       }
