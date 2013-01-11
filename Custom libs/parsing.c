@@ -11,8 +11,8 @@ void parse(char * Buffer, Measurement * measurement){
   }
   temp[8] = '\0';
   
-  double voltage = strtol(temp, NULL, 16);
-  measurement->voltage = (double)voltage*pow(2, -22)*VOLTAGE_GAIN;
+  int voltage = strtol(temp, NULL, 16);
+  measurement->voltage = convertVoltage(voltage);
   
   // Get current
   for (int j=0; j<9; j++){
@@ -20,8 +20,8 @@ void parse(char * Buffer, Measurement * measurement){
   }
   temp[8] = '\0';
   
-  double current = strtol(temp, NULL, 16);
-  measurement->current = ((double)current*pow(2, -22))*CURRENT_GAIN;
+  int current = strtol(temp, NULL, 16);
+  measurement->current = convertCurrent(current);
   
   // Get Power
   for (int j=0; j<9; j++){
@@ -30,11 +30,25 @@ void parse(char * Buffer, Measurement * measurement){
   temp[8] = '\0';
   
   int power = strtol(temp, NULL, 16);
-  double pACT = (double)(power & ~(1<<23));
-  if (power & (1<<23)){
-	pACT *= -1;
-  }
-  pACT = pACT*POWER_GAIN+POWER_OFFSET;
+  double pACT = convertPower(power);
   
   measurement->P_power = pACT;
+}
+
+double convertVoltage(int Vrms){
+	return Vrms * VOLTAGE_GAIN * pow(2,-22);
+}
+ 
+double convertCurrent(int Irms) {
+	return Irms * CURRENT_GAIN * pow(2,-22);
+}
+
+double convertPower(int powerInt) {
+ 
+	if (powerInt >= 0x800000) {
+		powerInt ^= 0xFFFFFF;
+		powerInt += 1;
+	}
+ 
+	return powerInt * POWER_GAIN;
 }

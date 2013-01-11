@@ -32,32 +32,37 @@ RectangleWindow * initRectangleWindow(int left, int top, int right, int bottom, 
   return temp;
 }
 
-void drawPictureWindow(PictureWindow * window){
-  GLCD_LoadPic(window->left,window->top, window->picture, 0);
+void setOnClick(void * window, void (*function)()){
+  ((Window*)window)->onClick = function;
 }
 
-void drawRectangleWindow(RectangleWindow * window){
-  drawFilledRectangle(&window->rectangle, 1);  
+void drawWindow(void * window){
+  Window * temp = (Window*)window;
+  
+  switch (temp->type){
+  case 0:
+	// PictureWindow
+	GLCD_LoadPic(temp->left,temp->top, ((PictureWindow*)temp)->picture, 0);
+	break;
+  case 1:
+	// RectangleWindow
+	drawFilledRectangle(&((RectangleWindow*)temp)->rectangle, 1);  
+	break;
+  }
 }
 
-char onPictureTouch(PictureWindow * window, int x, int y){
-  if (!window->clickable) return 0;
+char onTouch(void * window, int x, int y){
+  Window * temp = (Window*)window;
+  
+  if (!temp->clickable) return 0;
   
   // Handle click
-  if (window->left <= x && x <= window->right && 
-	  window->top <= y && y <= window->bottom){
-		return 1; 
-	  }
-  
-  return 0;
-}
-
-char onRectangleTouch(RectangleWindow * window, int x, int y){
-  if (!window->clickable) return 0;
-  
-  // Handle click
-  if (window->left <= x && x <= window->right && 
-	  window->top <= y && y <= window->bottom){
+  if (temp->left <= x && x <= temp->right && 
+	  temp->top <= y && y <= temp->bottom){
+		// Call listener
+		if (temp->onClick != NULL){
+			temp->onClick();  
+		}
 		return 1; 
 	  }
   

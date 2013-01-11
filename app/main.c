@@ -64,9 +64,9 @@ int main(void){
   while(1){
 	if(TouchGet(&XY_Touch))
     {
-      if (Touch == FALSE && dispatchTouch(XY_Touch.X, XY_Touch.Y)){
+	  dispatchTouch(XY_Touch.X, XY_Touch.Y);
+      if (Touch == FALSE){
         Touch = TRUE;
-        USB_H_LINK_LED_FCLR = USB_H_LINK_LED_MASK;
       }
     }
 	else if(Touch)

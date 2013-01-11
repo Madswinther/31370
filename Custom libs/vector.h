@@ -7,5 +7,6 @@
 void addWindow(void * window);
 void drawWindows();
 char dispatchTouch(int x, int y);
+void ged();
 
 #endif // __VECTOR_H
