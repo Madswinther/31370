@@ -15,6 +15,7 @@ void drawVerticalLine(int x0, int y0, int length, int lineColor){
 	}
 }
 
+
 // Implemented with Bresenham's algorithm (taken from the site
 // http://rosettacode.org/wiki/Bitmap/Bresenham's_line_algorithm
 void drawLine(int x0, int y0, int x1, int y1, int lineColor) {
@@ -32,6 +33,46 @@ void drawLine(int x0, int y0, int x1, int y1, int lineColor) {
 }
 
 
+
+
+
+// Draw circle using Bresenham's midpoint circle algorithm
+// From http://en.wikipedia.org/wiki/Midpoint_circle_algorithm
+void drawCircle(int x0, int y0, int radius, int borderColor) {
+	int error = -radius;
+	int x = radius;
+	int y = 0;
+	
+	while (x >= y) {
+		plot8points(x0, y0, x, y, borderColor);
+		error += y;
+		++y;
+		error += y;
+		if (error >= 0) {
+			error -= x;
+			--x;
+			error -= x;
+		}	
+	}
+}
+
+void plot8points(int x0, int y0, int x, int y, int borderColor) {
+  plot4points(x0, x0, x, y, borderColor);
+  if (x != y) plot4points(x0, y0, y, x, borderColor);
+}
+
+void plot4points(int x0, int y0, int x, int y, int borderColor) {
+	PRINT_PIXEL(x0 + x, y0 + y, borderColor);
+	if (x != 0) PRINT_PIXEL(x0 - x, y0 + y, borderColor);
+	if (y != 0) PRINT_PIXEL(x0 + x, y0 - y, borderColor);
+	if (x != 0 && y != 0) PRINT_PIXEL(x0 - x, y0 - y, borderColor);
+}
+
+
+
+/*
+
+
 // Circle rasterization algorithm (modified from version from the following site)
 // http://groups.csail.mit.edu/graphics/classes/6.837/F98/Lecture6/circle.html
 void drawCircle(int x0, int y0, int radius, int borderColor){
@@ -44,6 +85,8 @@ void drawCircle(int x0, int y0, int radius, int borderColor){
 		DRAW_PIXEL(x0 + x, y0 - y, borderColor);
 	}
 }
+
+*/
 
 void drawFilledCircle(int x0, int y0, int r, int backgroundColor, int borderColor, int drawBorder) {
 	

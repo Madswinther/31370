@@ -19,6 +19,10 @@ void drawCircle(int x0, int y0, int radius, int borderColor);
 void drawFilledCircle(int x0, int y0, int radius,int backgroundColor, 
 						int borderColor, int drawBorder);
 
+void plot8points(int x0, int y0, int x, int y, int borderColor);
+void plot4points(int x0, int y0, int x, int y, int borderColor);
+						
+						
 void drawRectangle(int x0, int y0, int width, int height, int borderColor);
 void drawFilledRectangle(int x0, int y0, int width, int height, 
 						int backgroundColor, int borderColor, int drawBorder);
