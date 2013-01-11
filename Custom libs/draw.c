@@ -33,9 +33,6 @@ void drawLine(int x0, int y0, int x1, int y1, int lineColor) {
 }
 
 
-
-
-
 // Draw circle using Bresenham's midpoint circle algorithm
 // From http://en.wikipedia.org/wiki/Midpoint_circle_algorithm
 void drawCircle(int x0, int y0, int radius, int borderColor) {
@@ -57,7 +54,7 @@ void drawCircle(int x0, int y0, int radius, int borderColor) {
 }
 
 void plot8points(int x0, int y0, int x, int y, int borderColor) {
-  plot4points(x0, x0, x, y, borderColor);
+  plot4points(x0, y0, x, y, borderColor);
   if (x != y) plot4points(x0, y0, y, x, borderColor);
 }
 
