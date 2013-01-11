@@ -21,7 +21,6 @@ void drawLine(int x0, int y0, int x1, int y1, int lineColor) {
  
 	for(;;){
 		DRAW_PIXEL(x0, y0, lineColor);
-		setPixel(x0,y0);
 		if (x0==x1 && y0==y1) break;
 		e2 = err;
 		if (e2 >-dx) { err -= dy; x0 += sx; }

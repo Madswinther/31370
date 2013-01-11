@@ -59,6 +59,8 @@ int main(void){
   addWindow(button2);
   drawWindows();
   
+  drawLine(0,0, 320, 240, 0xFFFFFF);
+  
   
   GLCD_SetWindow(0,0,310,33);
   while(1){
