@@ -16,7 +16,7 @@ PictureWindow * initPictureWindow(int left, int top, int right, int bottom, Bmp_
   return temp;
 }
 
-RectangleWindow * initRectangleWindow(int left, int top, int right, int bottom, int color, int borderColor){
+RectangleWindow * initRectangleWindow(int left, int top, int right, int bottom, int backgroundColor, int borderColor){
   RectangleWindow * temp;
   temp = (RectangleWindow*)malloc(sizeof(*temp));
   temp->left = left;
@@ -25,9 +25,9 @@ RectangleWindow * initRectangleWindow(int left, int top, int right, int bottom, 
   temp->bottom = bottom;
   temp->type = 1;
   
-  Rectangle rectangle = {right-left, bottom-top, left, top, color, borderColor};
-  temp->rectangle = rectangle;
-  
+  temp->backgroundColor = backgroundColor;
+  temp->borderColor = borderColor;
+    
   temp->clickable = 0;
   return temp;
 }
@@ -46,7 +46,9 @@ void drawWindow(void * window){
 	break;
   case 1:
 	// RectangleWindow
-	drawFilledRectangle(&((RectangleWindow*)temp)->rectangle, 1);  
+	RectangleWindow * tempRect = (RectangleWindow*)temp;
+	drawFilledRectangle(tempRect->left, tempRect->top, tempRect->right - tempRect->left,
+						tempRect->bottom - tempRect->top, tempRect->backgroundColor, tempRect->borderColor, 1);
 	break;
   }
 }

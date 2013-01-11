@@ -40,15 +40,15 @@ void drawCircle(int x0, int y0, int radius, int borderColor){
 	r2 = radius * radius;
 	for (x = -radius; x <= radius; x++) {
 		y = (int) (sqrt(r2 - x*x) + 0.5);
-		DRAW_PIXEL(x0 + x, y0 + y, lineColor);
-		DRAW_PIXEL(x0 + x, y0 - y, lineColor);
+		DRAW_PIXEL(x0 + x, y0 + y, borderColor);
+		DRAW_PIXEL(x0 + x, y0 - y, borderColor);
 	}
 }
 
 void drawFilledCircle(int x0, int y0, int r, int backgroundColor, int borderColor, int drawBorder) {
 	
 	for (int x = -r; x <= r; x++) {
-		dy = (int)(sqrt(r*r - x*x));
+		int dy = (int)(sqrt(r*r - x*x));
 		for (int y = -dy; y <= dy; y++) {
 			DRAW_PIXEL(x0, y0, backgroundColor);
 		}
@@ -70,7 +70,7 @@ void drawFilledRectangle(int x0, int y0, int width, int height,
 	
 	// Draw background
 	for (int x = 0; x < width; x++) {
-		for (int y = 0; y < height, y++) {
+		for (int y = 0; y < height; y++) {
 			DRAW_PIXEL(x0 + x, y0 + y, backgroundColor);
 		}
 	}

@@ -24,7 +24,7 @@ typedef struct{
   int left, right, top, bottom;
   char clickable;
   void (*onClick)();
-  Rectangle rectangle;
+  int backgroundColor, borderColor;
 } RectangleWindow;
 
 PictureWindow * initPictureWindow(int left, int top, int right, int bottom, Bmp_t * pic);

@@ -61,7 +61,7 @@ int main(void){
   RectangleWindow * button4 = initRectangleWindow(90, 50, 100, 100, 0xFFFFFF, 0x0000FF);
   
   drawLine(0,0, 320, 240, 0xFFFFFF);
-  drawCircle(160, 120, 90, 0xFF00FF);
+  drawFilledCircle(160, 120, 100, 0xFF0000, 0x00FF00, 1);
   
   addWindow(main, button);
   addWindow(main, button2);
