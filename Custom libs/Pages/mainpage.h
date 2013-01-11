@@ -8,6 +8,8 @@ typedef struct{
   char drawn;
 } Page;
 
+extern void swapToPage(int page);
+
 Page * initMainPage();
 void lightLed();
 void swapToLearning();

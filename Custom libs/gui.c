@@ -1,8 +1,5 @@
 #include "gui.h"
-#include "../Custom libs/draw.h"
 #include "includes.h"
-#include <string.h>
-#include "drv_glcd.h"
 
 PictureWindow * initPictureWindow(int left, int top, int right, int bottom, Bmp_t * pic){
   PictureWindow * temp;
@@ -26,12 +23,17 @@ RectangleWindow * initRectangleWindow(int left, int top, int right, int bottom, 
   temp->top = top;
   temp->bottom = bottom;
   temp->type = 1;
+  temp->text = "\0";
   
   temp->backgroundColor = backgroundColor;
   temp->borderColor = borderColor;
-    
+  
   temp->clickable = 0;
   return temp;
+}
+
+void setText(void * window, char * text){
+  ((RectangleWindow*)window)->text = text;
 }
 
 void setOnClick(void * window, void (*function)()){
@@ -45,20 +47,25 @@ void drawWindow(void * window){
   Window * temp = (Window*)window;
   
   switch (temp->type){
-  case 0:
-	// PictureWindow
+  case PICTUREWINDOW:
 	GLCD_LoadPic(temp->left,temp->top, ((PictureWindow*)temp)->picture, 0);
 	break;
-  case 1:
-	// RectangleWindow
-	RectangleWindow * tempRect = (RectangleWindow*)temp;
+  case RECTANGLEWINDOW:
+	RectangleWindow * tempRect = (RectangleWindow*)window;
 	drawFilledRectangle(tempRect->left, tempRect->top, tempRect->right - tempRect->left,
 						tempRect->bottom - tempRect->top, tempRect->backgroundColor, tempRect->borderColor, 1);
-	GLCD_TextSetPos(0, 100);
-	//GLCD_SetWindow(tempRect->left, tempRect->top, tempRect->right, tempRect->bottom);
-	GLCD_print("gedhajsdjhasdjhasjhd");
-	GLCD_TextSetPos(0,0);
-	//GLCD_SetWindow(0, 0, 340, 280);
+	if (tempRect->text != "\0"){
+	  int xpos = (tempRect->right-tempRect->left-Terminal_9_12_6.H_Size*sizeof(tempRect->text))/2;
+	  int ypos = (tempRect->bottom-tempRect->top)/2-(Terminal_9_12_6.V_Size)/2;
+	  GLCD_SetWindow(5+tempRect->left, 5+tempRect->top, tempRect->right-5, tempRect->bottom-5);
+	  GLCD_TextSetPos(0, 0);
+	  printf("%d, %d", xpos, ypos);
+	  GLCD_SetFont(&Terminal_9_12_6, 0xFFFFFF, tempRect->backgroundColor);
+	  GLCD_print(tempRect->text);
+	}
+	break;
+  case PROGRESSBAR:
+	ProgressBarDrawFull((ProgressBar*)window);
 	break;
   }
 }
@@ -73,7 +80,7 @@ char onTouch(void * window, int x, int y){
 	  temp->top <= y && y <= temp->bottom){
 		// Call listener
 		if (temp->onClick != NULL){
-			temp->onClick();  
+		  temp->onClick();  
 		}
 		return 1; 
 	  }

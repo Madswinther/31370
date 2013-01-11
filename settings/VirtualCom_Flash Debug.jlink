@@ -12,7 +12,7 @@ ScriptFile=""
 [FLASH]
 MinNumBytesFlashDL = 0
 SkipProgOnCRCMatch = 1
-VerifyDownload = 1
+VerifyDownload = 0
 AllowCaching = 1
 EnableFlashDL = 2
 Override = 0

@@ -33,5 +33,16 @@
 #include "sdram_64M_32bit_drv.h"
 #include "drv_glcd.h"
 #include "iar_logo.h"
+   
+// User defines
+#include "../Custom libs/parsing.h"
+#include "../Custom libs/uart.h"
+#include "../Custom libs/gui.h"
+#include "../Custom libs/draw.h"
+#include "../Custom libs/layout.h"
+#include "../Custom libs/Pages/mainpage.h"
+#include "../Custom libs/Pages/learningpage.h"
+#include "../Custom libs/graphics/button.h"
+#include "../Custom libs/graphics/ProgressBar.h"
 
 #endif  // __INCLUDES_H

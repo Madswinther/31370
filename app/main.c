@@ -1,14 +1,7 @@
 #include "includes.h"
 #include <stdlib.h>
 #include <math.h>
-#include "../Custom libs/parsing.h"
-#include "../Custom libs/uart.h"
-#include "../Custom libs/gui.h"
-#include "../Custom libs/draw.h"
-#include "../Custom libs/layout.h"
-#include "../Custom libs/Pages/mainpage.h"
-#include "../Custom libs/Pages/learningpage.h"
-#include "../Custom libs/graphics/button.h"
+
 
 #define NONPROT 0xFFFFFFFF
 
@@ -47,7 +40,7 @@ int main(void){
   TouchScrInit();
   
   // Init font
-  GLCD_SetFont(&Terminal_9_12_6,0xFFFFFF,0x333333);
+  GLCD_SetFont(&Terminal_9_12_6,0xFFFFFF,0x000000);
   
   // Init UART
   UartInit(UART_0,4,NORM);
@@ -57,13 +50,6 @@ int main(void){
   
   swapToPage(0);
   
-  GLCD_SetWindow(0,0,20,200);
-  GLCD_TextSetPos(0, 50);
-  GLCD_print("ged");
-  GLCD_TextSetPos(0, 100);
-  GLCD_print("ged");
-  GLCD_TextSetPos(0, 150);
-  GLCD_print("ged");
   while(1){
 	if(TouchGet(&XY_Touch))
     {
@@ -91,22 +77,26 @@ int main(void){
 	  double iRMS = measurement.current;
 	  double pACT = measurement.P_power;
 	  
-	  GLCD_TextSetPos(0,0);
-	  GLCD_print(" Voltage: %f\r\n Current: %f\r\n Power: \t%f", vRMS, iRMS, pACT);
+	  if (currentPage == mainPage){
+		GLCD_SetWindow(0, 0, 150, 50);  
+		GLCD_TextSetPos(0,0);
+		GLCD_SetFont(&Terminal_9_12_6,0xFFFFFF,0x000000);
+		GLCD_print(" Voltage: %f\r\n Current: %f\r\n Power: \t%f", vRMS, iRMS, pACT);
+	  }
 	}
   }
 }
 
-void swapToPage (int page){
+void swapToPage(int page){
   switch (page){
   case 0:
-		//mainpage
-		if (currentPage == mainPage) return;
-		currentPage = mainPage;	
+	//mainpage
+	if (currentPage == mainPage) return;
+	currentPage = mainPage;	
 	break;
   case 1:
-		if (currentPage == learningPage) return;
-		currentPage = learningPage;
+	if (currentPage == learningPage) return;
+	currentPage = learningPage;
 	break;
   }
   // Clear all graphics before changing page

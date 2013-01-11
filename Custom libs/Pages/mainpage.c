@@ -1,5 +1,6 @@
 #include "mainpage.h"
-#include "../layout.h"
+#include "includes.h"
+
 
 Page * initMainPage(){
 	// Alloc space
@@ -9,16 +10,25 @@ Page * initMainPage(){
 	// Create layout
 	temp->layout = initLayout();
 	temp->drawn = 0;
-	RectangleWindow * button = initRectangleWindow(0, 190, 100, 240, 0xFF00FF, 0x0000FF);
-	RectangleWindow * button2 = initRectangleWindow(100, 190, 200, 240, 0xFFFF00, 0x0000FF);
 	
+	int backgroundColor = rgbToHex(100, 100, 100);
+	
+	RectangleWindow * homebutton = initRectangleWindow(0, 190, 80, 240, backgroundColor, 0x0000FF);
+	RectangleWindow * learnbutton = initRectangleWindow(80, 190, 160, 240, backgroundColor, 0x0000FF);
+	RectangleWindow * button2 = initRectangleWindow(160, 190, 240, 240, backgroundColor, 0x0000FF);
+	RectangleWindow * button3 = initRectangleWindow(240, 190, 320, 240, backgroundColor, 0x0000FF);
+	
+	setText(homebutton, "Home");
+  
 	// Add windows
-	addWindow(temp->layout, button);
+	addWindow(temp->layout, homebutton);
+	addWindow(temp->layout, learnbutton);
 	addWindow(temp->layout, button2);
+	addWindow(temp->layout, button3);
 	
 	// Set onClick listeners
-	setOnClick(button, lightLed);
-	setOnClick(button2, swapToLearning);
+	setOnClick(homebutton, lightLed);
+	setOnClick(learnbutton, swapToLearning);
 	
 	return temp;
 }

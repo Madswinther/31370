@@ -4,6 +4,7 @@
 #define MAX_PROGRESS 1000
 
 typedef struct {
+  	char type;
 	int progress, oldProgress;
 	int x0, y0;
 	int width, height;
@@ -14,7 +15,7 @@ typedef struct {
 
 ProgressBar * ProgressBarInit(int x0, int y0, int width, int height, int foreGroundColor, int backgroundColor);
 
-int getProgressPixelWidth(int progress, int width);
+int getPixelWidth(int progress, int width);
 void ProgressBarDrawFull(ProgressBar * pbar);
 void ProgressBarUpdate(ProgressBar * pbar, int newProgress);
 

@@ -1,22 +1,14 @@
-#include "draw.h"
-#include "includes.h"
-#include "drv_glcd.h"
+#include "../draw.h"
+#include "../../app/includes.h"
 #include <math.h>
-
-#define MAX_PROGRESS 1000
-
-typedef struct {
-	int progress, oldProgress;
-	int x0, y0;
-	int width, height;
-	int backgroundColor;
-	int foregroundColor;
-} ProgressBar;
+#include "ProgressBar.h"
 
 ProgressBar * ProgressBarInit(int x0, int y0, int width, int height, 
-							int foreGroundColor, int backgroundColor) {
+							int foregroundColor, int backgroundColor) {
 
-	ProgressBar * pbar = (ProgressBar *)malloc(sizeof(ProgressBar));
+	ProgressBar * pbar;
+	pbar = (ProgressBar *)malloc(sizeof(*pbar));
+	pbar->type = 2;
 	pbar->x0 = x0;
 	pbar->y0 = y0;
 	pbar->width = width;
@@ -25,12 +17,11 @@ ProgressBar * ProgressBarInit(int x0, int y0, int width, int height,
 	pbar->backgroundColor = backgroundColor;
 	pbar->progress = 0;
 	pbar->oldProgress = 0;
-	ProgressBarDraw(pbar);
 	return pbar;
 }
 
 
-int getProgressPixelWidth(int progress, int width) {
+int getPixelWidth(int progress, int width) {
 	return (progress * width) / MAX_PROGRESS;
 }
 
@@ -57,12 +48,12 @@ void ProgressBarUpdate(ProgressBar * pbar, int newProgress) {
 	pbar->progress = newProgress;
 	
 	// Check for invalid progress input
-	if (pbar->progress > 100 || pbar->progress < 0) return;
+	if (pbar->progress > MAX_PROGRESS || pbar->progress < 0) return;
 	
 	// Get change in progress
 	int dp = pbar->progress - pbar->oldProgress;
-	int oldPixWidth = getProgressPixelWidth(pbar->oldProgress);
-	int newPixWidth = getProgressPixelWidth(pbar->progress);
+	int oldPixWidth = getPixelWidth(pbar->oldProgress, pbar->width);
+	int newPixWidth = getPixelWidth(pbar->progress, pbar->width);
 	
 	if (dp > 0) {
 		// Progress should increase
@@ -81,10 +72,7 @@ void ProgressBarUpdate(ProgressBar * pbar, int newProgress) {
 		
 		// Draw background
 		drawFilledRectangle(xpos, ypos, width, pbar->height, pbar->backgroundColor, 0, 0);
-	}
-	
-	// Update progressbar progress
-	pbar->progress = newProgress;	
+	}	
 }
 
 
