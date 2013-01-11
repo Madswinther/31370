@@ -31,9 +31,10 @@ void drawLine(int x0, int y0, int x1, int y1, int lineColor) {
 	}
 }
 
+
 // Circle rasterization algorithm (modified from version from the following site)
 // http://groups.csail.mit.edu/graphics/classes/6.837/F98/Lecture6/circle.html
-void drawCircle(int x0, int y0, int radius, int lineColor){
+void drawCircle(int x0, int y0, int radius, int borderColor){
 	int x, y, r2;
         
 	r2 = radius * radius;
@@ -44,36 +45,37 @@ void drawCircle(int x0, int y0, int radius, int lineColor){
 	}
 }
 
-void drawRectangle(Rectangle * rectangle) {
-
-	drawHorizontalLine(rectangle->xpos, rectangle->ypos, 
-						rectangle->width, rectangle->borderColor);
+void drawFilledCircle(int x0, int y0, int r, int backgroundColor, int borderColor, int drawBorder) {
 	
-	drawHorizontalLine(rectangle->xpos, rectangle->ypos + rectangle->height,
-						rectangle->width, rectangle->borderColor);
-
-	drawVerticalLine(rectangle->xpos, rectangle->ypos, 
-						rectangle->height, rectangle->borderColor);
+	for (int x = -r; x <= r; x++) {
+		dy = (int)(sqrt(r*r - x*x));
+		for (int y = -dy; y <= dy; y++) {
+			DRAW_PIXEL(x0, y0, backgroundColor);
+		}
+	}
 	
-	drawVerticalLine(rectangle->xpos + rectangle->width, rectangle->ypos,
-						rectangle->height, rectangle->borderColor);
+	if (drawBorder) drawCircle(x0,y0,r,borderColor);
 }
 
 
-void drawFilledRectangle(Rectangle * rectangle, char drawBorder) {
+void drawRectangle(int x0, int y0, int width, int height, int borderColor) {
+	drawHorizontalLine(x0, y0, width, borderColor);
+	drawHorizontalLine(x0, y0 + height, width, borderColor);
+	drawVerticalLine(x0, y0, height, borderColor);
+	drawVerticalLine(x0 + width, y0, height, borderColor);
+}
+
+void drawFilledRectangle(int x0, int y0, int width, int height, 
+						int backgroundColor, int borderColor, int drawBorder) {
+	
 	// Draw background
-	for (int i = 0; i < rectangle->width; i++) {
-		for (int j = 0; j < rectangle->height; j++) {
-			DRAW_PIXEL(rectangle->xpos+i,rectangle->ypos+j,rectangle->backgroundColor);
+	for (int x = 0; x < width; x++) {
+		for (int y = 0; y < height, y++) {
+			DRAW_PIXEL(x0 + x, y0 + y, backgroundColor);
 		}
 	}
 	
 	// Draw border
-	if (drawBorder) {
-		drawRectangle(rectangle);
-	}
+	if (drawBorder) drawRectangle(x0, y0, width, height, borderColor);	
 }
-
-
-
 
