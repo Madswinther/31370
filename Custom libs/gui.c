@@ -1,6 +1,8 @@
 #include "gui.h"
 #include "../Custom libs/draw.h"
 #include "includes.h"
+#include <string.h>
+#include "drv_glcd.h"
 
 PictureWindow * initPictureWindow(int left, int top, int right, int bottom, Bmp_t * pic){
   PictureWindow * temp;
@@ -34,6 +36,9 @@ RectangleWindow * initRectangleWindow(int left, int top, int right, int bottom, 
 
 void setOnClick(void * window, void (*function)()){
   ((Window*)window)->onClick = function;
+  
+  // Setting an Onclick will make the Window clickable
+  ((Window*)window)->clickable = 1;
 }
 
 void drawWindow(void * window){
@@ -49,6 +54,11 @@ void drawWindow(void * window){
 	RectangleWindow * tempRect = (RectangleWindow*)temp;
 	drawFilledRectangle(tempRect->left, tempRect->top, tempRect->right - tempRect->left,
 						tempRect->bottom - tempRect->top, tempRect->backgroundColor, tempRect->borderColor, 1);
+	GLCD_TextSetPos(0, 100);
+	//GLCD_SetWindow(tempRect->left, tempRect->top, tempRect->right, tempRect->bottom);
+	GLCD_print("gedhajsdjhasdjhasjhd");
+	GLCD_TextSetPos(0,0);
+	//GLCD_SetWindow(0, 0, 340, 280);
 	break;
   }
 }

@@ -362,6 +362,17 @@ void DRAW_PIXEL(Int32U X, Int32U Y, Int32U Pixel){
   }
 }
 
+// CLEAR SCREEN - user made
+void CLEAR_SCREEN(){
+  for(Int32U i = 0; i <= C_GLCD_H_SIZE; ++i)
+    {
+      for(Int32U j = 0; j <= C_GLCD_V_SIZE; ++j)
+      {
+        DRAW_PIXEL(i, j, 0x000000);
+      }
+    }
+}
+
 /*************************************************************************
 * Function Name: LCD_SET_WINDOW
 * Parameters: int c

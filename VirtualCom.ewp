@@ -1857,11 +1857,20 @@
       <file>
         <name>$PROJ_DIR$\Custom libs\draw.h</name>
       </file>
+    </group>
+    <group>
+      <name>Pages</name>
       <file>
-        <name>$PROJ_DIR$\Custom libs\graphics\winning.c</name>
+        <name>$PROJ_DIR$\Custom libs\Pages\learningpage.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\graphics\winning.h</name>
+        <name>$PROJ_DIR$\Custom libs\Pages\learningpage.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\Pages\mainpage.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\Pages\mainpage.h</name>
       </file>
     </group>
     <file>

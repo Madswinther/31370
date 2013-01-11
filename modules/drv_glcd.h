@@ -94,5 +94,6 @@ void GLCD_print (const char *fmt, ...);
 
 // User functions
 void DRAW_PIXEL(Int32U X, Int32U Y, Int32U Pixel);
+void CLEAR_SCREEN();
 
 #endif // __GLCD_DRV_H

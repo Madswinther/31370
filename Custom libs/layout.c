@@ -11,7 +11,6 @@ Layout * initLayout(){
 
 void addWindow(Layout * layout, void * window){
   layout->windows[layout->size] = (Window*)window;
-  setOnClick(window, ged);
   layout->size++;
 }
 
@@ -28,8 +27,4 @@ char dispatchTouch(Layout * layout, int x, int y){
 	}
   }
   return 0;
-}
-
-void ged(){
-	USB_H_LINK_LED_FCLR = USB_H_LINK_LED_MASK;  
 }

@@ -2,7 +2,7 @@
 
 <project>
   <fileVersion>2</fileVersion>
-  <fileChecksum>3304074188</fileChecksum>
+  <fileChecksum>3435291609</fileChecksum>
   <configuration>
     <name>Flash Debug</name>
     <outputs>
@@ -135,10 +135,18 @@
       <file>$PROJ_DIR$\Flash Debug\Obj\gui.o</file>
       <file>$PROJ_DIR$\Custom libs\layout.c</file>
       <file>$PROJ_DIR$\Custom libs\layout.h</file>
+      <file>$PROJ_DIR$\Custom libs\Pages\mainpage.c</file>
+      <file>$PROJ_DIR$\Custom libs\Pages\mainpage.h</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\mainpage.pbi</file>
       <file>$TOOLKIT_DIR$\inc\c\inttypes.h</file>
       <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\learningpage.pbi</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\learningpage.o</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\mainpage.o</file>
       <file>$PROJ_DIR$\Flash Debug\Obj\layout.o</file>
       <file>$PROJ_DIR$\Flash Debug\Obj\layout.pbi</file>
+      <file>$PROJ_DIR$\Custom libs\Pages\learningpage.h</file>
+      <file>$PROJ_DIR$\Custom libs\Pages\learningpage.c</file>
     </outputs>
     <file>
       <name>[ROOT_NODE]</name>
@@ -256,11 +264,11 @@
       <inputs>
         <tool>
           <name>ICCARM</name>
-          <file> 11 129 39 130 25 82 42 72 103 107 97 104 76 69 67</file>
+          <file> 11 132 39 133 25 82 42 72 103 107 97 104 76 69 67</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 11 129 39 130 25 82 42 72 103 107 97 104 76 69 67</file>
+          <file> 11 132 39 133 25 82 42 72 103 107 97 104 76 69 67</file>
         </tool>
       </inputs>
     </file>
@@ -482,7 +490,11 @@
       <inputs>
         <tool>
           <name>ICCARM</name>
-          <file> 37 90 39 25 82 42 72 103 107 104 96 38 18 86 12 73 32 97 33 65 62 24 108 89 92 106 110 118 21 111 57 117 27 60 29 76 69 67 11 129 130 6 8 9 128 4 2</file>
+          <file> 37 90 39 25 82 42 72 103 107 104 96 38 18 86 12 73 32 97 33 65 62 24 108 89 92 106 110 118 21 111 57 117 27 60 29 76 69 67 11 132 133 6 8 9 128 130 139 2</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 37 90 39 25 82 42 72 103 107 104 96 38 18 86 12 73 32 97 33 65 62 24 108 89 92 106 110 118 21 111 57 117 27 60 29 76 69 67 11 132 133 6 8 9 128 130 139 2</file>
         </tool>
       </inputs>
     </file>
@@ -520,7 +532,7 @@
       <inputs>
         <tool>
           <name>ILINK</name>
-          <file> 113 68 98 16 124 109 94 120 126 131 105 14 78 77 44 17 36 84 34 59</file>
+          <file> 113 68 98 16 124 109 94 120 126 137 135 105 136 14 78 77 44 36 84 34 59</file>
         </tool>
       </inputs>
     </file>
@@ -666,11 +678,11 @@
       <outputs>
         <tool>
           <name>ICCARM</name>
-          <file> 131</file>
+          <file> 137</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 132</file>
+          <file> 138</file>
         </tool>
       </outputs>
       <inputs>
@@ -681,6 +693,52 @@
         <tool>
           <name>BICOMP</name>
           <file> 128 37 90 39 25 82 42 72 103 107 104 96 38 18 86 12 73 32 97 33 65 62 24 108 89 92 106 110 118 21 111 57 117 27 60 29 8 9</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Custom libs\Pages\mainpage.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 136</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 131</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 130 128 37 90 39 25 82 42 72 103 107 104 96 38 18 86 12 73 32 97 33 65 62 24 108 89 92 106 110 118 21 111 57 117 27 60 29 8 9</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 130 128 37 90 39 25 82 42 72 103 107 104 96 38 18 86 12 73 32 97 33 65 62 24 108 89 92 106 110 118 21 111 57 117 27 60 29 8 9</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Custom libs\Pages\learningpage.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 135</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 134</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 139 128 37 90 39 25 82 42 72 103 107 104 96 38 18 86 12 73 32 97 33 65 62 24 108 89 92 106 110 118 21 111 57 117 27 60 29 8 9 130</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 139 128 37 90 39 25 82 42 72 103 107 104 96 38 18 86 12 73 32 97 33 65 62 24 108 89 92 106 110 118 21 111 57 117 27 60 29 8 9 130</file>
         </tool>
       </inputs>
     </file>

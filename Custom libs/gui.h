@@ -1,5 +1,6 @@
 #include "includes.h"
 #include "../Custom libs/draw.h"
+#include <string.h>
 
 #ifndef __GUI_H
 #define __GUI_H

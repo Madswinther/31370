@@ -6,7 +6,8 @@
 #include "../Custom libs/gui.h"
 #include "../Custom libs/draw.h"
 #include "../Custom libs/layout.h"
-#include "../Custom libs/graphics/winning.h"
+#include "../Custom libs/Pages/mainpage.h"
+#include "../Custom libs/Pages/learningpage.h"
 #include "../Custom libs/graphics/button.h"
 
 #define NONPROT 0xFFFFFFFF
@@ -25,6 +26,11 @@ extern FontType_t Terminal_9_12_6;
 extern FontType_t Terminal_18_24_12;
 
 void init();
+void swapToPage (int page);
+
+Page * currentPage;
+Page * mainPage;
+Page * learningPage;
 
 int main(void){
   char Buffer[BUFFER_SIZE];
@@ -42,37 +48,26 @@ int main(void){
   
   // Init font
   GLCD_SetFont(&Terminal_9_12_6,0xFFFFFF,0x333333);
- 
   
   // Init UART
   UartInit(UART_0,4,NORM);
   
-  Layout * main = initLayout();
+  mainPage = initMainPage();
+  learningPage = initLearningPage();
   
-  PictureWindow * button = initPictureWindow(100, 100, 150, 150, &buttonPic);
-  button->clickable = 1;
-  //drawPictureWindow(button);
+  swapToPage(0);
   
-  RectangleWindow * button2 = initRectangleWindow(50, 50, 100, 100, 0xFFFFFF, 0x0000FF);
-  button2->clickable = 1;
-  //drawRectangleWindow(button2);
-  
-  RectangleWindow * button3 = initRectangleWindow(70, 50, 100, 100, 0xFFFFFF, 0x0000FF);
-  RectangleWindow * button4 = initRectangleWindow(90, 50, 100, 100, 0xFFFFFF, 0x0000FF);
-  
-  drawLine(0,0, 320, 240, 0xFFFFFF);
-  drawFilledCircle(160, 120, 100, 0xFF0000, 0x00FF00, 1);
-  
-  addWindow(main, button);
-  addWindow(main, button2);
-  drawWindows(main);
-  
-  
-  GLCD_SetWindow(0,0,310,33);
+  GLCD_SetWindow(0,0,20,200);
+  GLCD_TextSetPos(0, 50);
+  GLCD_print("ged");
+  GLCD_TextSetPos(0, 100);
+  GLCD_print("ged");
+  GLCD_TextSetPos(0, 150);
+  GLCD_print("ged");
   while(1){
 	if(TouchGet(&XY_Touch))
     {
-	  dispatchTouch(main, XY_Touch.X, XY_Touch.Y);
+	  dispatchTouch(currentPage->layout, XY_Touch.X, XY_Touch.Y);
       if (Touch == FALSE){
         Touch = TRUE;
       }
@@ -100,6 +95,24 @@ int main(void){
 	  GLCD_print(" Voltage: %f\r\n Current: %f\r\n Power: \t%f", vRMS, iRMS, pACT);
 	}
   }
+}
+
+void swapToPage (int page){
+  switch (page){
+  case 0:
+		//mainpage
+		if (currentPage == mainPage) return;
+		currentPage = mainPage;	
+	break;
+  case 1:
+		if (currentPage == learningPage) return;
+		currentPage = learningPage;
+	break;
+  }
+  // Clear all graphics before changing page
+  CLEAR_SCREEN();
+  drawWindows(currentPage->layout);
+  currentPage->drawn = 1;
 }
 
 void init(){
