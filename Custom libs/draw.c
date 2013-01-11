@@ -59,10 +59,10 @@ void plot8points(int x0, int y0, int x, int y, int borderColor) {
 }
 
 void plot4points(int x0, int y0, int x, int y, int borderColor) {
-	PRINT_PIXEL(x0 + x, y0 + y, borderColor);
-	if (x != 0) PRINT_PIXEL(x0 - x, y0 + y, borderColor);
-	if (y != 0) PRINT_PIXEL(x0 + x, y0 - y, borderColor);
-	if (x != 0 && y != 0) PRINT_PIXEL(x0 - x, y0 - y, borderColor);
+	DRAW_PIXEL(x0 + x, y0 + y, borderColor);
+	if (x != 0) DRAW_PIXEL(x0 - x, y0 + y, borderColor);
+	if (y != 0) DRAW_PIXEL(x0 + x, y0 - y, borderColor);
+	if (x != 0 && y != 0) DRAW_PIXEL(x0 - x, y0 - y, borderColor);
 }
 
 

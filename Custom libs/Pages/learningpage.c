@@ -10,7 +10,7 @@ Page * initLearningPage(){
 	temp->layout = initLayout();
 	temp->drawn = 0;
 	
-	int backgroundColor = rgbToHex(100, 100, 100);
+	int backgroundColor = 0xFFFFFF;
 	
 	RectangleWindow * homebutton = initRectangleWindow(0, 190, 80, 240, backgroundColor, 0x0000FF);
 	RectangleWindow * learnbutton = initRectangleWindow(80, 190, 160, 240, backgroundColor, 0x0000FF);

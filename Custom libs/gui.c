@@ -57,7 +57,7 @@ void drawWindow(void * window){
 	if (tempRect->text != "\0"){
 	  int xpos = (tempRect->right-tempRect->left-Terminal_9_12_6.H_Size*sizeof(tempRect->text))/2;
 	  int ypos = (tempRect->bottom-tempRect->top)/2-(Terminal_9_12_6.V_Size)/2;
-	  GLCD_SetWindow(5+tempRect->left, 5+tempRect->top, tempRect->right-5, tempRect->bottom-5);
+	  GLCD_SetWindow(tempRect->left+xpos, 5+tempRect->top+ypos, tempRect->right-5, tempRect->bottom-5);
 	  GLCD_TextSetPos(0, 0);
 	  printf("%d, %d", xpos, ypos);
 	  GLCD_SetFont(&Terminal_9_12_6, 0xFFFFFF, tempRect->backgroundColor);
