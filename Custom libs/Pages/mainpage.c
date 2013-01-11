@@ -13,12 +13,15 @@ Page * initMainPage(){
 	
 	int backgroundColor = 0x000000;
 	
-	RectangleWindow * homebutton = initRectangleWindow(0, 190, 80, 240, backgroundColor, 0x0000FF);
-	RectangleWindow * learnbutton = initRectangleWindow(80, 190, 160, 240, backgroundColor, 0x0000FF);
-	RectangleWindow * button2 = initRectangleWindow(160, 190, 240, 240, backgroundColor, 0x0000FF);
-	RectangleWindow * button3 = initRectangleWindow(240, 190, 320, 240, backgroundColor, 0x0000FF);
+	RectangleWindow * homebutton = initRectangleWindow(0, 190, 80, 239, backgroundColor, 0x0000FF);
+	RectangleWindow * learnbutton = initRectangleWindow(80, 190, 160, 239, backgroundColor, 0x0000FF);
+	RectangleWindow * button2 = initRectangleWindow(160, 190, 240, 239, backgroundColor, 0x0000FF);
+	RectangleWindow * button3 = initRectangleWindow(240, 190, 319, 239, backgroundColor, 0x0000FF);
 	
 	setText(homebutton, "Home");
+	setText(learnbutton, "Learn");
+	setText(button2, "Sorry");
+	setText(button3, "Winning");
   
 	// Add windows
 	addWindow(temp->layout, homebutton);

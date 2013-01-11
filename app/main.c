@@ -50,7 +50,7 @@ int main(void){
   
   swapToPage(0);
   
-  drawCircle(100, 50, 80, 0xFF0000);
+  drawFilledCircle(100, 50, 80, 0xFF0000, 0x00FF00, 16);
   
   while(1){
 	if(TouchGet(&XY_Touch))
