@@ -14,6 +14,11 @@ void addWindow(Layout * layout, void * window){
   layout->size++;
 }
 
+void removeWindow(Layout * layout){
+  layout->windows[layout->size] = NULL;
+  layout->size--;
+}
+
 void * getWindow(Layout * layout, char pos){
 	return layout->windows[pos];
 }

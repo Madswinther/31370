@@ -10,6 +10,10 @@ extern void swapToLearning();
 extern void lightLed();
 
 Page * initGraphPage();
-void updateGraphPage(Measurement * measurement);
-
+void updateGraphPage(Measurement * measurement, char draw);
+void addPoint();
+void changeToVoltage();
+void changeToCurrent();
+void changeToPower();
+void refreshGraph();
 #endif

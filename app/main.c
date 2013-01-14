@@ -79,7 +79,7 @@ int main(void){
 	  parse(Buffer, &measurement);
 	  
 	  // Notify the graph
-	  updateGraphPage(&measurement);
+	  updateGraphPage(&measurement, currentPage == graphPage);
 	  
 	  double vRMS = measurement.voltage;
 	  double iRMS = measurement.current;

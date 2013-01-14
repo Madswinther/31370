@@ -15,7 +15,7 @@
 #define X_AXIS				0
 #define Y_AXIS				1
 
-#define GRAPH_DATA_POINTS	5
+#define GRAPH_DATA_POINTS	12
 
 
 
@@ -37,18 +37,20 @@ typedef struct {
 } Graph;
 
 
-Graph * Graph_init(int x0, int y0, int width, int height);
+Graph * Graph_init(int x0, int y0, int width, int height, double y_min, double y_max);
 
 void Graph_xlim(Graph * graph, double x_min, double x_max);
-void Graph_ylim(Graph * graph, double y_min, double y_max);
 void Graph_title(Graph * graph, char * str);
 void Graph_xlabel(Graph * graph, char * str);
 void Graph_ylabel(Graph * graph, char * str);
-
+int Graph_getPixelXCoord(Graph * graph, double xval);
+int Graph_getPixelYCoord(Graph * graph, double yval);
+void Graph_clear(Graph * graph);
 
 void Graph_drawAxisNumber(Graph * graph, char axis, double pos);
 void Graph_draw(Graph * graph);
-void Graph_plotPoiints(Graph * graph, double xpoints, double ypoints);
+void Graph_addPoint(Graph * graph, Graph * activeGraph, double y);
+void Graph_plotPoints(Graph * graph);
 
 
 
