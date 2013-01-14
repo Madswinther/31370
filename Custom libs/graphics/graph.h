@@ -15,6 +15,9 @@
 #define X_AXIS				0
 #define Y_AXIS				1
 
+#define GRAPH_DATA_POINTS	5
+
+
 
 extern FontType_t Terminal_9_12_6;
 
@@ -24,11 +27,13 @@ typedef struct {
 	int width, height;
 	double x_min, x_max;
 	double y_min, y_max;
+	int axis_x0, axis_y0;
+	int axis_width, axis_height;
 	char * title;
 	char * xlabel;
 	char * ylabel;
-	int axis_x0, axis_y0;
-	int axis_width, axis_height;
+	int xpoints[GRAPH_DATA_POINTS];
+	int ypoints[GRAPH_DATA_POINTS];
 } Graph;
 
 
@@ -43,5 +48,8 @@ void Graph_ylabel(Graph * graph, char * str);
 
 void Graph_drawAxisNumber(Graph * graph, char axis, double pos);
 void Graph_draw(Graph * graph);
+void Graph_plotPoiints(Graph * graph, double xpoints, double ypoints);
+
+
 
 #endif

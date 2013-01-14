@@ -104,6 +104,56 @@ void Graph_draw(Graph * graph) {
   
 }
 
+int Graph_getPixelXCoord(Graph * graph, double xval) {
+	
+	// Check for invalid coordinates
+	if (xval > graph->x_max || xval < graph->x_min) return -1;
+	
+	// Convert coordinate
+	double realWidth = graph->x_max - graph->x_min;				// Width of graph in real values
+	int pixelWidth = graph->axis_width;							// Width of graph in pixels
+	double xval_rel = xval - graph->x_min;						// distance from y-axis in real values
+	int xpos_rel = (int)(xval_rel * (pixelWidth / realWidth));	// distance from y-axis in pixels
+	
+	return xpos_rel + graph->axis_x0;							// Return absolute position
+}
+
+
+int Graph_getPixelYCoord(Graph * graph, double yval) {
+	
+	// Check for invalid coordinates
+	if (yval > graph->y_max || yval < graph->y_min) return -1;
+
+	// Convert coordinate
+	double realWidth = graph->y_max - graph->y_min;				// Width of graph in real values
+	int pixelWidth = graph->axis_height;						// Width of graph in pixels
+	double yval_rel = yval - graph->y_min;						// distance from y-axis in real values
+	int ypos_rel = (int)(yval_rel * (pixelWidth / realWidth));	// distance from y-axis in pixels
+	
+	return graph->axis_y0 + graph->axis - ypos_rel;
+}
+
+
+void Graph_plotPoints(Graph * graph, double * xpoints, double * ypoints) {
+	graph->xpoints = xpoints;
+	graph->ypoints = ypoints;
+
+	// Convert points to pixel coordinates and store
+	for (int i = 0; i < GRAPH_DATA_POINTS; i++) {
+		graph->xpoints[i] = getPixelXCoord(xpoints[i]);
+		graph->ypoints[i] = getPixelYCoord(ypoints[i]);
+	}
+	
+	// Draw plot
+	for (int i = 0; i < GRAPH_DATA_POINTS - 1; i++) {
+		drawLine(graph->xpoints[i], graph->ypoints[i], 
+				 graph->xpoints[i+1], graph->ypoints[i+1], 
+				 GRAPH_LINE_COLOR);
+				 
+		drawFilledCircle(graph->xpoints[i], graph->ypoints[i], 4, GRAPH_LINE_COLOR, 0, 0); 
+	}
+}
+
 
 
 
