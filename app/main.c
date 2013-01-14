@@ -57,7 +57,7 @@ int main(void){
   
 	Graph_xlim(graph, 0, 100);
 	Graph_ylim(graph, 210, 240);
-	Graph_draw(graph);
+	//Graph_draw(graph);
   
   while(1){
 	if(TouchGet(&XY_Touch))
