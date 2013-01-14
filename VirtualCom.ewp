@@ -1858,6 +1858,12 @@
         <name>$PROJ_DIR$\Custom libs\draw.h</name>
       </file>
       <file>
+        <name>$PROJ_DIR$\Custom libs\graphics\graph.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\graphics\graph.h</name>
+      </file>
+      <file>
         <name>$PROJ_DIR$\Custom libs\graphics\ProgressBar.c</name>
       </file>
       <file>

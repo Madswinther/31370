@@ -53,7 +53,10 @@ int main(void){
   
   swapToPage(0);
   
-  drawFilledCircle(100, 50, 80, 0xFF0000, 0x00FF00, 16);
+  Graph * graph = Graph_init(0,0,320, 180);
+	Graph_setXscale(graph, 0, 100);
+	Graph_setYscale(graph, 210, 240);
+	Graph_draw(graph);
   
   while(1){
 	if(TouchGet(&XY_Touch))
@@ -82,7 +85,7 @@ int main(void){
 	  double iRMS = measurement.current;
 	  double pACT = measurement.P_power;
 	  
-	  if (currentPage == mainPage){
+	  if (currentPage == mainPage && 0){
 		GLCD_SetWindow(0, 0, 150, 50);  
 		GLCD_TextSetPos(0,0);
 		GLCD_SetFont(&Terminal_9_12_6,0xFFFFFF,0x000000);
