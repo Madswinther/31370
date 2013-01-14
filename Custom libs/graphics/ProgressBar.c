@@ -42,15 +42,16 @@ void ProgressBarDrawFull(ProgressBar * pbar) {
 }
 
 char ProgressBarUpdate(void * object, int newProgress) {
-  printf("p:%d",newProgress);
 	ProgressBar * pbar = (ProgressBar*)object;
   
+	if (newProgress > MAX_PROGRESS) newProgress = MAX_PROGRESS;
+	
 	// Update current progress of the bar
 	pbar->oldProgress = pbar->progress;
-	pbar->progress += newProgress;
+	pbar->progress = newProgress;
 	
 	// Check for invalid progress input
-	if (pbar->progress > MAX_PROGRESS || pbar->progress < 0) return 1;
+	if (pbar->progress >= MAX_PROGRESS || pbar->progress < 0) return 1;
 	
 	// Get change in progress
 	int dp = pbar->progress - pbar->oldProgress;

@@ -1,7 +1,8 @@
 #include "includes.h"
+#include "graphics/ProgressBar.h"
 
-static Animation * animationHolder[5];
-static char animationHolderSize;
+Animation * animationHolder;
+int increment;
 
 // All animations run on a 5ms interrupt-based routine
 void initAnimations(){
@@ -14,29 +15,39 @@ void initAnimations(){
   
   T2PR = 0x0;	// No more prescaling
   
-  T2MR0 = 0x15F90;
+  T2MR0 = 0x895440;
   
   // Init timer 0 interrupt
   T2IR_bit.MR0INT = 1;  // clear pending interrupt
-  VIC_SetVectoredIRQ(Timer2IntrHandler,5,VIC_TIMER2);
+  VIC_SetVectoredIRQ(Timer2IntrHandler,0,VIC_TIMER2);
   VICINTENABLE |= 1UL << VIC_TIMER2;
   T2TCR_bit.CE = 1;     // counting Enable
   
-  animationHolderSize = 0;
+  animationHolder = NULL;  
 }
 
-void postAnimation(Animation * animation){
-  animationHolder[animationHolderSize++] = animation;
+void postAnimation(ProgressBar * object, int increment, char (*animatecall)(void *, int)){
+  if (animationHolder == NULL){
+    animationHolder = (Animation*)malloc(sizeof(*animationHolder));
+	Animation ged = {increment, object, animatecall};
+	animationHolder = &ged;
+  }
 }
 
 void Timer2IntrHandler(void){
   // iterate through posted animations and update/finish them
-  for (int i=0; i<animationHolderSize; i++){
-	if (animationHolder[i]->animate(animationHolder[i]->object, animationHolder[i]->increment)){
-	  animationHolder[i] = NULL;
-	  animationHolderSize--;
+  //for (int i=0; i<animationHolderSize; i++){
+  if (animationHolder != NULL){
+	if (animationHolder->animate(animationHolder->pb, animationHolder->increment)){
+	  //animationHolder = NULL;
+	}
+	animationHolder->increment += 10;
+	if (animationHolder->increment >= 1000){
+		free(animationHolder);
+		animationHolder = NULL;
 	}
   }
+  // }
   
   // clear interrupt
   T2IR_bit.MR0INT = 1;

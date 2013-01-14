@@ -44,9 +44,7 @@ Page * initLearningPage(){
 }
 
 void doLearn(){
-  Animation progressBarAnim = {100, pb, ProgressBarUpdate};
-  Animation * ged = &progressBarAnim;
-  postAnimation(ged);
+  postAnimation(pb, 10, ProgressBarUpdate);
 }
 
 void swapToMain(){
