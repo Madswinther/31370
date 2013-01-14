@@ -54,8 +54,9 @@ int main(void){
   swapToPage(0);
   
   Graph * graph = Graph_init(0,0,320, 180);
-	Graph_setXscale(graph, 0, 100);
-	Graph_setYscale(graph, 210, 240);
+  
+	Graph_xlim(graph, 0, 100);
+	Graph_ylim(graph, 210, 240);
 	Graph_draw(graph);
   
   while(1){

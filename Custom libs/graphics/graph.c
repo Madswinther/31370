@@ -30,15 +30,15 @@ void Graph_ylim(Graph * graph, double y_min, double y_max) {
   graph->y_max = y_max;
 }
 
-void Graph_title(char * str) {
+void Graph_title(Graph * graph, char * str) {
 	graph->title = str;
 }
 
-void Graph_xlabel(char * str) {
+void Graph_xlabel(Graph * graph, char * str) {
 	graph->xlabel = str;
 }
 
-void Graph_ylabel(char * str){
+void Graph_ylabel(Graph * graph, char * str){
 	graph->ylabel = str;
 }
 
@@ -50,12 +50,12 @@ void Graph_drawAxisNumber(Graph * graph, char axis, double pos) {
 	if (pos > 100) pos = 100;
 	if (pos < 0) pos = 0;
 	
-	
+	double number;
 	// Check for axis: 0 = X, 1 = Y
 	if (axis == X_AXIS) {
 		
 		// Calculate number corresponding to relative position
-		double number = (pos / 100.0) * (graph->x_max - graph->x_min) + graph->x_min;
+		number = (pos / 100.0) * (graph->x_max - graph->x_min) + graph->x_min;
 		
 		// Calculate text position and window dimensions
 		x0 = graph->axis_x0 + (pos/100.0) * graph->axis_width - 3*Terminal_9_12_6.H_Size;
@@ -65,7 +65,7 @@ void Graph_drawAxisNumber(Graph * graph, char axis, double pos) {
 			
 	} else {
 		// Calculate number corresponding to relative position
-		double number = (pos / 100.0) * (graph->y_max - graph->y_min) + graph->y_min;
+		number = (pos / 100.0) * (graph->y_max - graph->y_min) + graph->y_min;
 	
 		// Calculate text position and window dimensions
 		x0 = graph->x0 + 2;

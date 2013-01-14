@@ -12,8 +12,8 @@
 #define MARGIN_LEFT			40
 #define MARGIN_RIGHT		0
 
-#define XAXIS				0
-#define YAXIS				1
+#define X_AXIS				0
+#define Y_AXIS				1
 
 
 extern FontType_t Terminal_9_12_6;
@@ -35,9 +35,9 @@ Graph * Graph_init(int x0, int y0, int width, int height);
 
 void Graph_xlim(Graph * graph, double x_min, double x_max);
 void Graph_ylim(Graph * graph, double y_min, double y_max);
-void Graph_title(char * str);
-void Graph_xlabel(char * str);
-void Graph_ylabel(char * str);
+void Graph_title(Graph * graph, char * str);
+void Graph_xlabel(Graph * graph, char * str);
+void Graph_ylabel(Graph * graph, char * str);
 
 
 void Graph_drawAxisNumber(Graph * graph, char axis, double pos);
