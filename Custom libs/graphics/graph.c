@@ -91,7 +91,7 @@ void Graph_draw(Graph * graph) {
 						GRAPH_BACK_COLOR, GRAPH_STROKE_COLOR, 1);
   
   // Draw x-axis numbers
-  for (char i = 0; i < 6; i++) {
+  for (char i = 1; i < 5; i++) {
 	Graph_drawAxisNumber(graph, X_AXIS, i * 20.0);
   }
   
