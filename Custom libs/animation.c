@@ -2,7 +2,7 @@
 #include "graphics/ProgressBar.h"
 
 Animation * animationHolder;
-int increment;
+char mAnimating;
 
 // All animations run on a 5ms interrupt-based routine
 void initAnimations(){
@@ -25,27 +25,35 @@ void initAnimations(){
   
   animationHolder = (Animation*)malloc(sizeof(*animationHolder));
   animationHolder->pb = NULL;
+  
+  mAnimating = 0;
 }
 
-void postAnimation(ProgressBar * object, int increment, char (*animatecall)(void *, int)){
+void postAnimation(void * object, int increment, int value, char (*animatecall)(void *, int)){
   if (animationHolder->pb == NULL){
 	animationHolder->animate = animatecall;
 	animationHolder->increment = increment;
+	animationHolder->value = value;
 	animationHolder->pb = object;
+	mAnimating = 1;
   }
 }
 
 void Timer2IntrHandler(void){
   // iterate through posted animations and update/finish them
-  //for (int i=0; i<animationHolderSize; i++){
   if (animationHolder->pb != NULL){
-	if (animationHolder->animate(animationHolder->pb, animationHolder->increment++)){
+	animationHolder->value += animationHolder->increment;
+	if (animationHolder->animate(animationHolder->pb, animationHolder->value)){
 	  animationHolder->pb = NULL;
+	  mAnimating = 0;
 	}
   }
-  // }
   
   // clear interrupt
   T2IR_bit.MR0INT = 1;
   VICADDRESS = 0;
+}
+
+char isAnimating(){
+	return mAnimating;
 }

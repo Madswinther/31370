@@ -10,5 +10,6 @@ extern void swapToLearning();
 extern void lightLed();
 
 Page * initGraphPage();
+void updateGraphPage(Measurement * measurement);
 
 #endif

@@ -8,13 +8,15 @@
 
 typedef struct{
   	int increment;
-	ProgressBar * pb;
+	int value;
+	void * pb;
 	char (*animate)(void *, int);
 } Animation;
 
 
 void initAnimations();
-void postAnimation(ProgressBar * object, int increment, char (*animate)(void *, int));
+void postAnimation(void * object, int increment, int value, char (*animate)(void *, int));
 void Timer2IntrHandler(void);
+char isAnimating();
 
 #endif

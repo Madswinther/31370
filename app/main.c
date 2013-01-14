@@ -21,6 +21,7 @@ extern FontType_t Terminal_18_24_12;
 void init();
 void swapToPage (int page);
 
+Measurement measurement;
 Page * currentPage;
 Page * mainPage;
 Page * learningPage;
@@ -75,8 +76,10 @@ int main(void){
 	
 	if (Buffer[0] != 'E'){
 	  
-	  Measurement measurement;
 	  parse(Buffer, &measurement);
+	  
+	  // Notify the graph
+	  updateGraphPage(&measurement);
 	  
 	  double vRMS = measurement.voltage;
 	  double iRMS = measurement.current;
@@ -93,6 +96,8 @@ int main(void){
 }
 
 void swapToPage(int page){
+  if (isAnimating()) return;
+  
   switch (page){
   case 0:
 	//mainpage
@@ -112,6 +117,10 @@ void swapToPage(int page){
   CLEAR_SCREEN();
   drawWindows(currentPage->layout);
   currentPage->drawn = 1;
+}
+
+Measurement * getMeasurement(){
+  return &measurement;
 }
 
 void init(){

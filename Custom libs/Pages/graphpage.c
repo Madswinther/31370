@@ -1,6 +1,8 @@
 #include "learningpage.h"
 #include "mainpage.h"
 
+Graph * graph;
+
 Page * initGraphPage(){
 	// Alloc space
 	Page * temp;
@@ -29,7 +31,7 @@ Page * initGraphPage(){
 	setText(reactivebutton, "Q");
 	
 	// Setup Graph
-	Graph * graph = Graph_init(0,0,280, 180);
+	graph = Graph_init(0,0,280, 180);
 	Graph_xlim(graph, 0, 5);
 	Graph_ylim(graph, 220, 240);
 	
@@ -55,4 +57,8 @@ Page * initGraphPage(){
 	setOnClick(graphbutton, lightLed);
 	
 	return temp;
+}
+
+void updateGraphPage(Measurement * measurement){
+	// Update the graphs from here
 }
