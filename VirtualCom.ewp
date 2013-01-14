@@ -1880,6 +1880,12 @@
       </file>
     </group>
     <file>
+      <name>$PROJ_DIR$\Custom libs\animation.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Custom libs\animation.h</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\Custom libs\gui.c</name>
     </file>
     <file>

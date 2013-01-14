@@ -35,6 +35,7 @@
 #include "iar_logo.h"
    
 // User defines
+#include "../Custom libs/animation.h"
 #include "../Custom libs/parsing.h"
 #include "../Custom libs/uart.h"
 #include "../Custom libs/gui.h"

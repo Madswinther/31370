@@ -7,6 +7,7 @@
 extern void swapToPage (int page);
 
 Page * initLearningPage();
+void doLearn();
 void swapToMain();
 void lightLedd();
 

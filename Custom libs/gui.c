@@ -55,10 +55,10 @@ void drawWindow(void * window){
 	drawFilledRectangle(tempRect->left, tempRect->top, tempRect->right - tempRect->left,
 						tempRect->bottom - tempRect->top, tempRect->backgroundColor, tempRect->borderColor, 1);
 	if (tempRect->text != "\0"){
-	  int xpos = (tempRect->right-tempRect->left-Terminal_9_12_6.H_Size*sizeof(tempRect->text))/2;
+	  int xpos = (tempRect->right-tempRect->left-Terminal_9_12_6.H_Size*strlen(tempRect->text))/2;
 	  int ypos = (tempRect->bottom-tempRect->top-Terminal_9_12_6.V_Size)/2;
 	  GLCD_SetWindow(tempRect->left+xpos, tempRect->top+ypos, 
-					 tempRect->left+xpos*2+Terminal_9_12_6.H_Size*sizeof(tempRect->text), 
+					 tempRect->left+xpos*2+Terminal_9_12_6.H_Size*strlen(tempRect->text), 
 					 tempRect->top+ypos*2+Terminal_9_12_6.V_Size);
 	  GLCD_TextSetPos(0, 0);
 	  GLCD_SetFont(&Terminal_9_12_6, 0xFFFFFF, tempRect->backgroundColor);

@@ -11,6 +11,7 @@ typedef struct{
 
 Layout * initLayout();
 void addWindow(Layout * layout, void * window);
+void * getWindow(Layout * layout, char pos);
 void drawWindows(Layout * layout);
 char dispatchTouch(Layout * layout, int x, int y);
 void ged();

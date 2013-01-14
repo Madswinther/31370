@@ -41,14 +41,16 @@ void ProgressBarDrawFull(ProgressBar * pbar) {
 	drawFilledRectangle(x0, y0, pWidth, height, foregroundColor, blank, 0);
 }
 
-void ProgressBarUpdate(ProgressBar * pbar, int newProgress) {
-	
+char ProgressBarUpdate(void * object, int newProgress) {
+  printf("p:%d",newProgress);
+	ProgressBar * pbar = (ProgressBar*)object;
+  
 	// Update current progress of the bar
 	pbar->oldProgress = pbar->progress;
-	pbar->progress = newProgress;
+	pbar->progress += newProgress;
 	
 	// Check for invalid progress input
-	if (pbar->progress > MAX_PROGRESS || pbar->progress < 0) return;
+	if (pbar->progress > MAX_PROGRESS || pbar->progress < 0) return 1;
 	
 	// Get change in progress
 	int dp = pbar->progress - pbar->oldProgress;
@@ -73,6 +75,7 @@ void ProgressBarUpdate(ProgressBar * pbar, int newProgress) {
 		// Draw background
 		drawFilledRectangle(xpos, ypos, width, pbar->height, pbar->backgroundColor, 0, 0);
 	}	
+	return 0;
 }
 
 

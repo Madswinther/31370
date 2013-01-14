@@ -17,6 +17,6 @@ ProgressBar * ProgressBarInit(int x0, int y0, int width, int height, int foreGro
 
 int getPixelWidth(int progress, int width);
 void ProgressBarDrawFull(ProgressBar * pbar);
-void ProgressBarUpdate(ProgressBar * pbar, int newProgress);
+char ProgressBarUpdate(void * object, int newProgress);
 
 #endif

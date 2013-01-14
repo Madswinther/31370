@@ -45,6 +45,9 @@ int main(void){
   // Init UART
   UartInit(UART_0,4,NORM);
   
+  // Init animations
+  initAnimations();
+  
   mainPage = initMainPage();
   learningPage = initLearningPage();
   

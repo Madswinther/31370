@@ -100,9 +100,9 @@ void drawFilledCircle(int x0, int y0, int r, int backgroundColor, int borderColo
 
 void drawRectangle(int x0, int y0, int width, int height, int borderColor) {
 	drawHorizontalLine(x0, y0, width, borderColor);
-	drawHorizontalLine(x0, y0 + height, width, borderColor);
+	drawHorizontalLine(x0, y0 + height - 1, width, borderColor);
 	drawVerticalLine(x0, y0, height, borderColor);
-	drawVerticalLine(x0 + width, y0, height, borderColor);
+	drawVerticalLine(x0 + width - 1, y0, height, borderColor);
 }
 
 void drawFilledRectangle(int x0, int y0, int width, int height, 

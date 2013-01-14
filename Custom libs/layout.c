@@ -14,6 +14,10 @@ void addWindow(Layout * layout, void * window){
   layout->size++;
 }
 
+void * getWindow(Layout * layout, char pos){
+	return layout->windows[pos];
+}
+
 void drawWindows(Layout * layout){
   for(int i=0; i<layout->size; i++){
 	drawWindow(layout->windows[i]);
