@@ -11,7 +11,9 @@ typedef struct{
 extern void swapToPage(int page);
 
 Page * initMainPage();
-void lightLed();
+void swapToMain();
 void swapToLearning();
+void swapToGraph();
+void lightLed();
 
 #endif

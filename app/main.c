@@ -24,6 +24,7 @@ void swapToPage (int page);
 Page * currentPage;
 Page * mainPage;
 Page * learningPage;
+Page * graphPage;
 
 int main(void){
   char Buffer[BUFFER_SIZE];
@@ -50,14 +51,9 @@ int main(void){
   
   mainPage = initMainPage();
   learningPage = initLearningPage();
+  graphPage = initGraphPage();
   
   swapToPage(0);
-  
-  Graph * graph = Graph_init(0,0,320, 180);
-  
-	Graph_xlim(graph, 0, 100);
-	Graph_ylim(graph, 210, 240);
-	//Graph_draw(graph);
   
   while(1){
 	if(TouchGet(&XY_Touch))
@@ -86,7 +82,7 @@ int main(void){
 	  double iRMS = measurement.current;
 	  double pACT = measurement.P_power;
 	  
-	  if (currentPage == mainPage && 0){
+	  if (currentPage == mainPage){
 		GLCD_SetWindow(0, 0, 150, 50);  
 		GLCD_TextSetPos(0,0);
 		GLCD_SetFont(&Terminal_9_12_6,0xFFFFFF,0x000000);
@@ -106,6 +102,10 @@ void swapToPage(int page){
   case 1:
 	if (currentPage == learningPage) return;
 	currentPage = learningPage;
+	break;
+  case 2:
+	if (currentPage == graphPage) return;
+	currentPage = graphPage;
 	break;
   }
   // Clear all graphics before changing page

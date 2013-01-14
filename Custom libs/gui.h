@@ -5,6 +5,7 @@
 #define PICTUREWINDOW 0
 #define RECTANGLEWINDOW 1
 #define PROGRESSBAR 2
+#define GRAPH 3
 
 #ifndef __GUI_H
 #define __GUI_H

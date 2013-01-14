@@ -6,6 +6,7 @@ Graph * Graph_init(int x0, int y0, int width, int height) {
   
   Graph * graph = (Graph *)malloc(sizeof(Graph));
   
+  graph->type = GRAPH;
   graph->x0 = x0;
   graph->y0 = y0;
   graph->width = width;

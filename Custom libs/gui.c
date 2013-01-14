@@ -68,6 +68,9 @@ void drawWindow(void * window){
   case PROGRESSBAR:
 	ProgressBarDrawFull((ProgressBar*)window);
 	break;
+  case GRAPH:
+	Graph_draw((Graph*)window);
+	break;
   }
 }
 

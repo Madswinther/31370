@@ -19,6 +19,7 @@
 extern FontType_t Terminal_9_12_6;
 
 typedef struct {
+  	char type;
 	int x0, y0;
 	int width, height;
 	double x_min, x_max;

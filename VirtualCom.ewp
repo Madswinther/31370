@@ -1873,6 +1873,12 @@
     <group>
       <name>Pages</name>
       <file>
+        <name>$PROJ_DIR$\Custom libs\Pages\graphpage.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\Pages\graphpage.h</name>
+      </file>
+      <file>
         <name>$PROJ_DIR$\Custom libs\Pages\learningpage.c</name>
       </file>
       <file>
