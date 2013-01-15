@@ -1867,6 +1867,12 @@
     <group>
       <name>Pages</name>
       <file>
+        <name>$PROJ_DIR$\Custom libs\Pages\devicespage.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\Pages\devicespage.h</name>
+      </file>
+      <file>
         <name>$PROJ_DIR$\Custom libs\Pages\graphpage.c</name>
       </file>
       <file>

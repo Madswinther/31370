@@ -26,6 +26,7 @@ Page * currentPage;
 Page * mainPage;
 Page * learningPage;
 Page * graphPage;
+Page * devicesPage;
 
 char Buffer[BUFFER_SIZE];
 
@@ -54,6 +55,7 @@ int main(void){
   mainPage = initMainPage();
   learningPage = initLearningPage();
   graphPage = initGraphPage();
+  devicesPage = initDevicesPage();
   
   swapToPage(0);
   while(1){
@@ -113,6 +115,10 @@ void swapToPage(int page){
   case 2:
 	if (currentPage == graphPage) return;
 	currentPage = graphPage;
+	break;
+  case 3:
+	if (currentPage == devicesPage) return;
+	currentPage = devicesPage;
 	break;
   }
   // Clear all graphics before changing page

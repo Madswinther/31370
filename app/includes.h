@@ -44,6 +44,7 @@
 #include "../Custom libs/Pages/mainpage.h"
 #include "../Custom libs/Pages/learningpage.h"
 #include "../Custom libs/Pages/graphpage.h"
+#include "../Custom libs/Pages/devicespage.h"
 #include "../Custom libs/graphics/graph.h"
 #include "../Custom libs/graphics/ProgressBar.h"
 

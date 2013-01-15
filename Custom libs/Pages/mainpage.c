@@ -16,23 +16,24 @@ Page * initMainPage(){
 	RectangleWindow * homebutton = initRectangleWindow(0, 190, 80, 239, BUTTON_SELECTED, BUTTON_BORDER);
 	RectangleWindow * learnbutton = initRectangleWindow(80, 190, 160, 239, BUTTON_BACKGROUND, BUTTON_BORDER);
 	RectangleWindow * graphbutton = initRectangleWindow(160, 190, 240, 239, BUTTON_BACKGROUND, BUTTON_BORDER);
-	RectangleWindow * button3 = initRectangleWindow(240, 190, 319, 239, BUTTON_BACKGROUND, BUTTON_BORDER);
+	RectangleWindow * devicesbutton = initRectangleWindow(240, 190, 319, 239, BUTTON_BACKGROUND, BUTTON_BORDER);
 	
 	setText(homebutton, "Home");
 	setText(learnbutton, "Learn");
 	setText(graphbutton, "Graph");
-	setText(button3, "About");
+	setText(devicesbutton, "Devices");
   
 	// Add windows
 	addWindow(temp->layout, homebutton);
 	addWindow(temp->layout, learnbutton);
 	addWindow(temp->layout, graphbutton);
-	addWindow(temp->layout, button3);
+	addWindow(temp->layout, devicesbutton);
 	
 	// Set onClick listeners
 	setOnClick(homebutton, lightLed);
 	setOnClick(learnbutton, swapToLearning);
 	setOnClick(graphbutton, swapToGraph);
+	setOnClick(devicesbutton, swapToDevices);
 	
 	return temp;
 }
@@ -48,6 +49,10 @@ void swapToMain(){
 
 void swapToGraph(){
 	swapToPage(2);
+}
+
+void swapToDevices(){
+  	swapToPage(3);
 }
 
 void lightLed(){

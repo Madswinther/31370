@@ -4,10 +4,9 @@
 Graph * voltageGraph;
 Graph * currentGraph;
 Graph * powerGraph;
-Graph * reactiveGraph;
 Graph * activeGraph;
 
-Page * thisPage;
+static Page * thisPage;
 
 Page * initGraphPage(){
   // Alloc space
@@ -21,17 +20,15 @@ Page * initGraphPage(){
   RectangleWindow * homebutton = initRectangleWindow(0, 190, 80, 239, BUTTON_BACKGROUND, BUTTON_BORDER);
   RectangleWindow * learnbutton = initRectangleWindow(80, 190, 160, 239, BUTTON_BACKGROUND, BUTTON_BORDER);
   RectangleWindow * graphbutton = initRectangleWindow(160, 190, 240, 239, BUTTON_SELECTED, BUTTON_BORDER);
-  RectangleWindow * button3 = initRectangleWindow(240, 190, 319, 239, BUTTON_BACKGROUND, BUTTON_BORDER);
+  RectangleWindow * devicesbutton = initRectangleWindow(240, 190, 319, 239, BUTTON_BACKGROUND, BUTTON_BORDER);
   
   // Buttons for changing graph window
   RectangleWindow * voltagebutton = initRectangleWindow(285, 10, 320, 45, BUTTON_SELECTED, BUTTON_BORDER);
-  RectangleWindow * currentbutton = initRectangleWindow(285, 50, 320, 85, BUTTON_BACKGROUND, BUTTON_BORDER);
-  RectangleWindow * powerbutton = initRectangleWindow(285, 90, 320, 125, BUTTON_BACKGROUND, BUTTON_BORDER);
-  RectangleWindow * reactivebutton = initRectangleWindow(285, 130, 320, 165, BUTTON_BACKGROUND, BUTTON_BORDER);
+  RectangleWindow * currentbutton = initRectangleWindow(285, 60, 320, 95, BUTTON_BACKGROUND, BUTTON_BORDER);
+  RectangleWindow * powerbutton = initRectangleWindow(285, 110, 320, 145, BUTTON_BACKGROUND, BUTTON_BORDER);
   setText(voltagebutton, "V");
   setText(currentbutton, "I");
   setText(powerbutton, "P");
-  setText(reactivebutton, "Q");
   
   // Setup Graph
   voltageGraph = Graph_init(0, 0, 280, 180, 230, 240);
@@ -42,23 +39,23 @@ Page * initGraphPage(){
   setText(homebutton, "Home");
   setText(learnbutton, "Learn");
   setText(graphbutton, "Graph");
-  setText(button3, "About");
+  setText(devicesbutton, "Devices");
   
   // Add windows
   addWindow(thisPage->layout, homebutton);
   addWindow(thisPage->layout, learnbutton);
   addWindow(thisPage->layout, graphbutton);
-  addWindow(thisPage->layout, button3);
+  addWindow(thisPage->layout, devicesbutton);
   addWindow(thisPage->layout, voltagebutton);
   addWindow(thisPage->layout, currentbutton);
   addWindow(thisPage->layout, powerbutton);
-  addWindow(thisPage->layout, reactivebutton);
   addWindow(thisPage->layout, voltageGraph);
   
   // Set onClick listeners
   setOnClick(homebutton, swapToMain);
   setOnClick(learnbutton, swapToLearning);
   setOnClick(graphbutton, lightLed);
+  setOnClick(devicesbutton, swapToDevices);
   setOnClick(voltagebutton, changeToVoltage);
   setOnClick(currentbutton, changeToCurrent);
   setOnClick(powerbutton, changeToPower);
@@ -117,7 +114,7 @@ void changeToPower(){
 
 static void setSelected(int button){
   // Reset backgroundcolor for all graph-buttons
-  for (int i=4; i<8; i++){
+  for (int i=4; i<7; i++){
 	if (i == button){
 	  // Set a specific graph button to display the selected state
 	  ((RectangleWindow*)thisPage->layout->windows[button])->backgroundColor = BUTTON_SELECTED;
