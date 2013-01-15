@@ -23,15 +23,12 @@ extern FontType_t Terminal_9_12_6;
 
 typedef struct {
   	char type;
-	int x0, y0;
-	int width, height;
+	short x0, y0;
+	short width, height;
 	double x_min, x_max;
 	double y_min, y_max;
-	int axis_x0, axis_y0;
-	int axis_width, axis_height;
-	char * title;
-	char * xlabel;
-	char * ylabel;
+	short axis_x0, axis_y0;
+	short axis_width, axis_height;
 	int xpoints[GRAPH_DATA_POINTS];
 	int ypoints[GRAPH_DATA_POINTS];
 } Graph;
@@ -40,9 +37,6 @@ typedef struct {
 Graph * Graph_init(int x0, int y0, int width, int height, double y_min, double y_max);
 
 void Graph_xlim(Graph * graph, double x_min, double x_max);
-void Graph_title(Graph * graph, char * str);
-void Graph_xlabel(Graph * graph, char * str);
-void Graph_ylabel(Graph * graph, char * str);
 int Graph_getPixelXCoord(Graph * graph, double xval);
 int Graph_getPixelYCoord(Graph * graph, double yval);
 void Graph_clear(Graph * graph);

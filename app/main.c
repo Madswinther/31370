@@ -27,8 +27,9 @@ Page * mainPage;
 Page * learningPage;
 Page * graphPage;
 
+char Buffer[BUFFER_SIZE];
+
 int main(void){
-  char Buffer[BUFFER_SIZE];
   // Init buffer
   for (int i=0; i<BUFFER_SIZE; i++){
 	Buffer[i] = 0;
@@ -55,7 +56,6 @@ int main(void){
   graphPage = initGraphPage();
   
   swapToPage(0);
-  
   while(1){
 	if(TouchGet(&XY_Touch))
     {
@@ -84,12 +84,14 @@ int main(void){
 	  double vRMS = measurement.voltage;
 	  double iRMS = measurement.current;
 	  double pACT = measurement.P_power;
+	  double pREAC = measurement.Q_power;
+	  double pHAR = measurement.H_power;
 	  
 	  if (currentPage == mainPage){
-		GLCD_SetWindow(0, 0, 150, 50);  
+		GLCD_SetWindow(0, 0, 150, 70);  
 		GLCD_TextSetPos(0,0);
 		GLCD_SetFont(&Terminal_9_12_6,0xFFFFFF,0x000000);
-		GLCD_print(" Voltage: %f\r\n Current: %f\r\n Power: \t%f", vRMS, iRMS, pACT);
+		GLCD_print(" Voltage: %f\r\n Current: %f\r\n Power: \t%f\r\n Reac: \t%f\r\n Har: \t%f", vRMS, iRMS, pACT, pREAC, pHAR);
 	  }
 	}
   }

@@ -3,14 +3,6 @@
 
 #include "drv_glcd.h"
 
-typedef struct {
-	int width, height;
-	int xpos, ypos;
-	int backgroundColor;
-	int borderColor;
-} Rectangle;
-
-
 void drawVerticalLine(int x0, int y0, int length, int lineColor);
 void drawHorizontalLine(int x0, int y0, int length, int lineColor);
 void drawLine(int x0, int y0, int x1, int y1, int lineColor);

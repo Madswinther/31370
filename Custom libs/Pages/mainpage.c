@@ -13,10 +13,10 @@ Page * initMainPage(){
 	
 	int backgroundColor = 0x000000;
 	
-	RectangleWindow * homebutton = initRectangleWindow(0, 190, 80, 239, backgroundColor, 0x0000FF);
-	RectangleWindow * learnbutton = initRectangleWindow(80, 190, 160, 239, backgroundColor, 0x0000FF);
-	RectangleWindow * graphbutton = initRectangleWindow(160, 190, 240, 239, backgroundColor, 0x0000FF);
-	RectangleWindow * button3 = initRectangleWindow(240, 190, 319, 239, backgroundColor, 0x0000FF);
+	RectangleWindow * homebutton = initRectangleWindow(0, 190, 80, 239, BUTTON_SELECTED, BUTTON_BORDER);
+	RectangleWindow * learnbutton = initRectangleWindow(80, 190, 160, 239, BUTTON_BACKGROUND, BUTTON_BORDER);
+	RectangleWindow * graphbutton = initRectangleWindow(160, 190, 240, 239, BUTTON_BACKGROUND, BUTTON_BORDER);
+	RectangleWindow * button3 = initRectangleWindow(240, 190, 319, 239, BUTTON_BACKGROUND, BUTTON_BORDER);
 	
 	setText(homebutton, "Home");
 	setText(learnbutton, "Learn");

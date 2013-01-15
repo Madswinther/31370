@@ -1846,12 +1846,6 @@
     <group>
       <name>graphics</name>
       <file>
-        <name>$PROJ_DIR$\Custom libs\graphics\button.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\Custom libs\graphics\button.h</name>
-      </file>
-      <file>
         <name>$PROJ_DIR$\Custom libs\draw.c</name>
       </file>
       <file>

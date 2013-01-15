@@ -5,7 +5,7 @@
 #define __LAYOUT_H
 
 typedef struct{
-	int size;
+	char size;
 	Window * windows[10];
 } Layout;
 

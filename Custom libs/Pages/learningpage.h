@@ -10,6 +10,8 @@ extern void swapToGraph();
 extern void lightLed();
 extern Measurement * getMeasurement();
 
+extern char Buffer[BUFFER_SIZE];
+
 Page * initLearningPage();
 void doLearn();
 

@@ -5,9 +5,9 @@
 
 typedef struct {
   	char type;
-	int progress, oldProgress;
-	int x0, y0;
-	int width, height;
+	short progress, oldProgress;
+	short x0, y0;
+	short width, height;
 	int backgroundColor;
 	int foregroundColor;
 } ProgressBar;

@@ -1,22 +1,22 @@
 #define UART_GLOBAL
 #include "uart.h"
 
-static char Buffer[BUFFER_SIZE];
+static char UART_Buffer[BUFFER_SIZE];
 static int iterator = 0;
 char RxFlag = 0;
 
-void UartCheck(char * externBuffer){
+void UartCheck(char * externUART_Buffer){
   if (RxFlag){	
 	for (int i=0; i<BUFFER_SIZE; i++){
-		externBuffer[i] = Buffer[i];
-		
-		// Clear the internal UART buffer
-		Buffer[i] = 0;
+	  externUART_Buffer[i] = UART_Buffer[i];
+	  
+	  // Clear the internal UART buffer
+	  UART_Buffer[i] = 0;
 	}
 	RxFlag = 0;
   }
   else{
-	externBuffer[0] = 'E';
+	externUART_Buffer[0] = 'E';
   }
 }
 
@@ -28,21 +28,23 @@ static void Uart0Isr(void){
   if (!RxFlag){
 	if (iterator == 0){
 	  if (U0RBR == 'Z'){
-		Buffer[iterator] = 'Z';
+		UART_Buffer[iterator] = 'Z';
 		iterator = 1;
 	  }
 	}
 	else{
 	  // Transmission has been started by a valid character, just continue streaming
-	  Buffer[iterator] = U0RBR;
+	  UART_Buffer[iterator] = U0RBR;
 	  iterator++;
-	  if (iterator >= BUFFER_SIZE || Buffer[iterator-1] == '\r'){
+	  if (iterator >= BUFFER_SIZE || UART_Buffer[iterator-1] == '\r'){
 		iterator = 0;
 		RxFlag = 1;
 	  }
 	}
   }
-  
+  else{
+	if (U0RBR == 0);
+  }
   VICADDRESS = 0;  // Clear interrupt in VIC.
 }
 
@@ -51,7 +53,7 @@ Boolean UartInit(UartNum_t Uart,Int32U IrqSlot, UartMode_t UartMode){
   volatile Int8U Tmp;
   // Init buffer
   for (int i=0; i<BUFFER_SIZE; i++){
-	Buffer[i] = 0;
+	UART_Buffer[i] = 0;
   }
   RxFlag = 0;
   
@@ -117,12 +119,12 @@ void UartSetLineCoding(UartNum_t Uart,UartLineCoding_t UartCoding)
 }
 
 static void UartCalcDivider(Int32U Freq, Int32U Baud,
-                     pInt32U pDiv, pInt32U pAddDiv, pInt32U pMul)
+							pInt32U pDiv, pInt32U pAddDiv, pInt32U pMul)
 {
-Int32U Temp, Error = (Int32U)-1;
-Int32U K1, K2, K3, Baudrate;
-Int32U DivTemp, MulTemp, AddDivTemp;
-
+  Int32U Temp, Error = (Int32U)-1;
+  Int32U K1, K2, K3, Baudrate;
+  Int32U DivTemp, MulTemp, AddDivTemp;
+  
   //
   for(MulTemp = 1; MulTemp < 16; ++MulTemp)
   {
@@ -141,19 +143,19 @@ Int32U DivTemp, MulTemp, AddDivTemp;
       Baudrate = DivTemp * K3;
       Baudrate = K1/Baudrate;
       Temp = (Baudrate > Baud)? \
-                 (Baudrate - Baud): \
-                 (Baud - Baudrate);
-      if (Temp < Error)
-      {
-        Error = Temp;
-        *pDiv = DivTemp;
-        *pMul = MulTemp;
-        *pAddDiv = AddDivTemp;
-        if(Error == 0)
-        {
-          return;
-        }
-      }
+		(Baudrate - Baud): \
+		  (Baud - Baudrate);
+		  if (Temp < Error)
+		  {
+			Error = Temp;
+			*pDiv = DivTemp;
+			*pMul = MulTemp;
+			*pAddDiv = AddDivTemp;
+			if(Error == 0)
+			{
+			  return;
+			}
+		  }
     }
   }
 }

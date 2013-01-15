@@ -4,7 +4,7 @@
 #define __UART_H
 
 #define UART_MAX_BAUD_RATE    256000
-#define BUFFER_SIZE 27
+#define BUFFER_SIZE 42
 
 // Define UARTs
 typedef enum _UartNum_t
@@ -45,7 +45,7 @@ typedef struct _UartLineCoding_t
 
 extern Int32U SYS_GetFpclk(Int32U Periphery);
 
-void UartCheck(char * externBuffer);
+void UartCheck(char * externUART_Buffer);
 void Uart0Isr(void);
 Boolean UartInit(UartNum_t Uart,Int32U IrqSlot, UartMode_t UartMode);
 void UartSetLineCoding(UartNum_t Uart,UartLineCoding_t UartCoding);

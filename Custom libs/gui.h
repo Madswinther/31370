@@ -14,14 +14,14 @@ extern FontType_t Terminal_9_12_6;
 
 typedef struct{
   char type;
-  int left, right, top, bottom;
+  short left, right, top, bottom;
   char clickable;
   void (*onClick)();
 } Window;
 
 typedef struct{
   char type;
-  int left, right, top, bottom;
+  short left, right, top, bottom;
   char clickable;
   void (*onClick)();
   Bmp_t * picture;
@@ -29,7 +29,7 @@ typedef struct{
 
 typedef struct{
   char type;
-  int left, right, top, bottom;
+  short left, right, top, bottom;
   char clickable;
   void (*onClick)();
   int backgroundColor, borderColor;

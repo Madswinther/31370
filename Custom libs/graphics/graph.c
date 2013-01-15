@@ -39,18 +39,6 @@ void Graph_xlim(Graph * graph, double x_min, double x_max) {
   graph->x_max = x_max;
 }
 
-void Graph_title(Graph * graph, char * str) {
-  graph->title = str;
-}
-
-void Graph_xlabel(Graph * graph, char * str) {
-  graph->xlabel = str;
-}
-
-void Graph_ylabel(Graph * graph, char * str){
-  graph->ylabel = str;
-}
-
 void Graph_drawAxisNumber(Graph * graph, char axis, double pos) {
   
   int x0, y0, x1, y1;
@@ -67,7 +55,7 @@ void Graph_drawAxisNumber(Graph * graph, char axis, double pos) {
 	number = (pos / 100.0) * (graph->x_max - graph->x_min) + graph->x_min;
 	
 	// Calculate text position and window dimensions
-	x0 = graph->axis_x0 + (pos/100.0) * graph->axis_width - 3*Terminal_9_12_6.H_Size;
+	x0 = (int)graph->axis_x0 + (pos/100.0) * graph->axis_width - 3*Terminal_9_12_6.H_Size;
 	y0 = graph->axis_y0 + graph->axis_height;
 	x1 = x0 + Terminal_9_12_6.H_Size * 6;
 	y1 = y0 + Terminal_9_12_6.V_Size;

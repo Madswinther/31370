@@ -7,8 +7,8 @@
 
 
 typedef struct{
-  	int increment;
-	int value;
+  	short increment;
+	short value;
 	void * pb;
 	char (*animate)(void *, int);
 } Animation;

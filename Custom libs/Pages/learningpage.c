@@ -1,5 +1,6 @@
 #include "learningpage.h"
 #include "mainpage.h"
+#include "includes.h"
 
 ProgressBar * pb;
 
@@ -12,14 +13,12 @@ Page * initLearningPage(){
   temp->layout = initLayout();
   temp->drawn = 0;
   
-  int backgroundColor = 0x000000;
-  
-  RectangleWindow * homebutton = initRectangleWindow(0, 190, 80, 239, backgroundColor, 0x0000FF);
-  RectangleWindow * learnbutton = initRectangleWindow(80, 190, 160, 239, backgroundColor, 0x0000FF);
-  RectangleWindow * graphbutton = initRectangleWindow(160, 190, 240, 239, backgroundColor, 0x0000FF);
-  RectangleWindow * button3 = initRectangleWindow(240, 190, 319, 239, backgroundColor, 0x0000FF);
-  RectangleWindow * beginlearning = initRectangleWindow(90, 50, 230, 100, backgroundColor, 0x0000FF);
-  pb = ProgressBarInit(10, 105, 300, 55, 0xFF0000, 0xFF00FF);
+  RectangleWindow * homebutton = initRectangleWindow(0, 190, 80, 239, BUTTON_BACKGROUND, BUTTON_BORDER);
+  RectangleWindow * learnbutton = initRectangleWindow(80, 190, 160, 239, BUTTON_SELECTED, BUTTON_BORDER);
+  RectangleWindow * graphbutton = initRectangleWindow(160, 190, 240, 239, BUTTON_BACKGROUND, BUTTON_BORDER);
+  RectangleWindow * button3 = initRectangleWindow(240, 190, 319, 239, BUTTON_BACKGROUND, BUTTON_BORDER);
+  RectangleWindow * beginlearning = initRectangleWindow(90, 50, 230, 100, BUTTON_BACKGROUND, BUTTON_BORDER);
+  pb = ProgressBarInit(10, 105, 300, 55, 0xFF0000, 0x3F3F3F);
   
   setText(homebutton, "Home");
   setText(learnbutton, "Learn");
@@ -51,14 +50,30 @@ void doLearn(){
 	GLCD_TextSetPos(0,0);
 	GLCD_SetFont(&Terminal_9_12_6,0xFFFFFF,0x000000);
 	
-	for(int i = 0; i < 1000; i++){
-	  Measurement * measurement = getMeasurement();
-	  double vRMS = measurement->voltage;
-	  //GLCD_TextSetPos(0,0);
-	  //GLCD_print("Voltage: %f",vRMS);
+	Measurement measurement;
+	char position = 0;
+	double voltagesum = 0;
+	double powersum = 0;
+	
+	while(isAnimating()){
+	  // Data from UART0
+	  UartCheck(Buffer);
+	  
+	  if (Buffer[0] != 'E'){
+		parse(Buffer, &measurement);
+		position++;
+		powersum += measurement.P_power;
+		voltagesum += measurement.voltage;
+	  }
 	}
 	
-	printf("true");
+	// End of learning
+	//double stationary_act_power = sum/(double)position;
+	double avg_volt = voltagesum/(double)position;
+	double avg_power = powersum/(double)position;
+	
+	double impedance = (avg_volt*avg_volt)*(1/avg_power);
+	GLCD_print("z = %f", impedance);
   }
 }
 
