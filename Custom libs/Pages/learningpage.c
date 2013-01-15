@@ -4,6 +4,11 @@
 
 ProgressBar * pb;
 
+
+
+
+
+
 Page * initLearningPage(){
   // Alloc space
   Page * temp;
@@ -51,9 +56,11 @@ void doLearn(){
 	GLCD_SetFont(&Terminal_9_12_6,0xFFFFFF,0x000000);
 	
 	Measurement measurement;
-	char position = 0;
-	double voltagesum = 0;
-	double powersum = 0;
+	char N = 0;
+	double voltage = 0;
+	double activePower = 0;
+	double reactivePower = 0;
+	double harmonicPower = 0;
 	
 	while(isAnimating()){
 	  // Data from UART0
@@ -61,19 +68,28 @@ void doLearn(){
 	  
 	  if (Buffer[0] != 'E'){
 		parse(Buffer, &measurement);
-		position++;
-		powersum += measurement.P_power;
-		voltagesum += measurement.voltage;
+		N++;
+		
+		// Sum of all measurements
+		voltage += measurement.voltage;
+		activePower += measurement.P_power;
+		reactivePower += measurement.Q_power;
+		harmonicPower += measurement.H_power;
 	  }
 	}
 	
-	// End of learning
-	//double stationary_act_power = sum/(double)position;
-	double avg_volt = voltagesum/(double)position;
-	double avg_power = powersum/(double)position;
+	// Calculate average values
+	voltage = voltage / (double) N;
+	activePower = activePower / (double) N;
+	reactivePower = reactivePower / (double) N;
+	harmonicPower = harmonicPower / (double) N;
 	
-	double impedance = (avg_volt*avg_volt)*(1/avg_power);
-	GLCD_print("z = %f", impedance);
+	// Scale power with voltage
+	
+	
+	
+	
+	
   }
 }
 
