@@ -7,13 +7,20 @@
 #define DEVICE_OFF 0x0000FF
 #define DEVICE_ON 0x00FF00
 
+typedef struct {
+	double activePower, reactivePower, harmonicPower;
+	RectangleWindow * devicebutton;
+} Device;
+
 extern void swapToPage (int page);
 extern void swapToMain();
 extern void swapToLearning();
 extern void swapToGraph();
 extern void lightLed();
 
+Device * deviceInit(double activePower, double reactivePower, double harmonicPower, RectangleWindow * knap);
 Page * initDevicesPage();
-void addDevice();
+void addDevice(double activePower, double reactivePower, double harmonicPower);
+void checkDevices(Measurement * measurement, Page * currentPage);
 
 #endif

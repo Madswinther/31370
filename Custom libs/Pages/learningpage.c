@@ -1,6 +1,7 @@
 #include "learningpage.h"
 #include "mainpage.h"
 #include "includes.h"
+#include <math.h>
 
 ProgressBar * pb;
 
@@ -58,7 +59,6 @@ void doLearn(){
 	
 	Measurement measurement;
 	char N = 0;
-	double voltage = 0;
 	double activePower = 0;
 	double reactivePower = 0;
 	double harmonicPower = 0;
@@ -72,7 +72,6 @@ void doLearn(){
 		N++;
 		
 		// Sum of all measurements
-		voltage += measurement.voltage;
 		activePower += measurement.P_power;
 		reactivePower += measurement.Q_power;
 		harmonicPower += measurement.H_power;
@@ -80,17 +79,12 @@ void doLearn(){
 	}
 	
 	// Calculate average values
-	voltage = voltage / (double) N;
 	activePower = activePower / (double) N;
 	reactivePower = reactivePower / (double) N;
 	harmonicPower = harmonicPower / (double) N;
 	
-	// Scale power with voltage
-	
-	
-	
-	
-	
+	// Add device to devices screen
+	addDevice(activePower, reactivePower, harmonicPower);
   }
 }
 

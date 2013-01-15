@@ -14,6 +14,9 @@ void parse(char * Buffer, Measurement * measurement){
   int voltage = strtol(temp, NULL, 16);
   measurement->voltage = convertVoltage(voltage);
   
+  // Compute normalizing factor
+  double scale = pow(measurement->voltage / 235.0, 2);
+  
   // Get current
   for (int j=0; j<9; j++){
 	temp[j] = Buffer[j+CURRENT_PARSE_OFFSET];
@@ -32,7 +35,7 @@ void parse(char * Buffer, Measurement * measurement){
   int power = strtol(temp, NULL, 16);
   double pACT = convertP_power(power);
   
-  measurement->P_power = pACT;
+  measurement->P_power = scale * pACT;
   
   // Get Reactive Power
   for (int j=0; j<9; j++){
@@ -43,7 +46,7 @@ void parse(char * Buffer, Measurement * measurement){
   power = strtol(temp, NULL, 16);
   double pREAC = convertQ_power(power);
   
-  measurement->Q_power = pREAC;
+  measurement->Q_power = scale * pREAC;
   
   // Get Harmonic Power
   for (int j=0; j<9; j++){
@@ -54,7 +57,7 @@ void parse(char * Buffer, Measurement * measurement){
   power = strtol(temp, NULL, 16);
   double pHAR = convertH_power(power);
   
-  measurement->H_power = pHAR;
+  measurement->H_power = scale * pHAR;
 }
 
 static double convertVoltage(int Vrms){

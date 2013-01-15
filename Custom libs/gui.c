@@ -62,7 +62,7 @@ void drawWindow(void * window){
 					 tempRect->top+ypos*2+Terminal_9_12_6.V_Size);
 	  GLCD_TextSetPos(0, 0);
 	  GLCD_SetFont(&Terminal_9_12_6, 0xFFFFFF, tempRect->backgroundColor);
-	  GLCD_print(tempRect->text);
+	  GLCD_print("%s", tempRect->text);
 	}
 	break;
   case PROGRESSBAR:

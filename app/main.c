@@ -82,6 +82,7 @@ int main(void){
 	  
 	  // Notify the graph
 	  updateGraphPage(&measurement, currentPage == graphPage);
+	  checkDevices(&measurement, currentPage);
 	  
 	  double vRMS = measurement.voltage;
 	  double iRMS = measurement.current;
