@@ -32,8 +32,8 @@ Page * initGraphPage(){
   
   // Setup Graph
   voltageGraph = Graph_init(0, 0, 280, 180, 230, 240);
-  currentGraph = Graph_init(0, 0, 280, 180, 0, 0.3);
-  powerGraph = Graph_init(0, 0, 280, 180, 0, 50);
+  currentGraph = Graph_init(0, 0, 280, 180, 0, 1);
+  powerGraph = Graph_init(0, 0, 280, 180, 0, 100);
   activeGraph = voltageGraph;
   
   setText(homebutton, "Home");

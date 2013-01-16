@@ -21,6 +21,7 @@ extern void lightLed();
 Device * deviceInit(double activePower, double reactivePower, double harmonicPower, RectangleWindow * knap);
 Page * initDevicesPage();
 void addDevice(double activePower, double reactivePower, double harmonicPower);
+char edgeDetection(double compareVal, double newVal, double tol);
 void checkDevices(Measurement * measurement, Page * currentPage);
 
 #endif

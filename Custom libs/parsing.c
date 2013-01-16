@@ -73,6 +73,7 @@ static double convertP_power(int P_power){
 	P_power ^= 0xFFFFFF;
 	P_power += 1;
   }
+  if (P_power < 0) P_power = 0;
   
   return P_power * P_POWER_GAIN;
 }

@@ -14,13 +14,22 @@ static short mY = 20;
 // Holder for comparison of measurements
 static Measurement * lastReading;
 static Measurement * lastStationary;
-static char isStationary = 1;
+static char edgeDetected = 0;
+static char steadyDetected = 0;
 
 Page * initDevicesPage(){
   // Alloc space
   thisPage = (Page*)malloc(sizeof(*thisPage));
   lastReading = (Measurement*)malloc(sizeof(Measurement));
   lastStationary = (Measurement*)malloc(sizeof(Measurement));
+  
+  // Init to zero
+  lastReading->P_power = 0;
+  lastReading->Q_power = 0;
+  lastReading->H_power = 0;
+  lastStationary->P_power = 0;
+  lastStationary->Q_power = 0;
+  lastStationary->H_power = 0;
   
   // Create layout
   thisPage->layout = initLayout();
@@ -65,7 +74,7 @@ Device * deviceInit(double activePower, double reactivePower, double harmonicPow
 void addDevice(double activePower, double reactivePower, double harmonicPower){
   if (thisPage->layout->size >= 10) return;
   
-  RectangleWindow * devicebutton = initRectangleWindow(mX, mY, mX+100, mY+50, DEVICE_OFF, BUTTON_BORDER);
+  RectangleWindow * devicebutton = initRectangleWindow(mX, mY, mX+100, mY+50, DEVICE_ON, BUTTON_BORDER);
   
   devices[size] = deviceInit(activePower, reactivePower, harmonicPower, devicebutton);
   
@@ -81,62 +90,102 @@ void addDevice(double activePower, double reactivePower, double harmonicPower){
 }
 
 
-void edgeDetection(double * lastVal, double * lastStatVal, double newVal, double tol) {
 
+char edgeDetection(double compareVal, double newVal, double tol) {
   
+  // Calculate change
+  double delta = fabs(newVal - compareVal);
   
+  if (delta >= tol){
+	// Signal is no longer in steady state
+	return 1;
+  }
+  else{
+	// Signal is now in steady state
+	return 0;
+  }
   
-  
-  
-
 }
 
 
 void checkDevices(Measurement * measurement, Page * currentPage){
-  double tol = 5;
   
-  double deltaP = fabs(measurement->P_power - lastReading->P_power);
-  lastReading->P_power = measurement->P_power;
-  
-  if (deltaP >= tol){
-	// Signal is no longer in steady state
-	isStationary = 0;
+  // Detect errors
+  if (measurement->P_power > 1000 || measurement->Q_power > 1000 || measurement->H_power > 1000){
+	return;
   }
-  else if (!isStationary){
-	// Signal is now in steady state
-	isStationary = 1;
+  
+  if (!edgeDetected){
+	edgeDetected = edgeDetection(lastStationary->P_power, measurement->P_power, 5);
+	edgeDetected |= edgeDetection(lastStationary->Q_power, measurement->Q_power, 5);
+	edgeDetected |= edgeDetection(lastStationary->H_power, measurement->H_power, 5);
+	lastReading->P_power = measurement->P_power;
+	return;
+  }
+  // A step input has occured, wait for a steady state before checking again
+  
+  
+  steadyDetected = !edgeDetection(lastReading->P_power, measurement->P_power, 0.05);
+  steadyDetected &= !edgeDetection(lastReading->Q_power, measurement->Q_power, 0.2);
+  steadyDetected &= !edgeDetection(lastReading->H_power, measurement->H_power, 0.2);
+  if (steadyDetected){
+	// Stationary state entered, allow checking for edges once again
+	edgeDetected = 0;
+	steadyDetected = 0;
+	
 	double dPst = measurement->P_power - lastStationary->P_power;
+	double dQst = measurement->Q_power - lastStationary->Q_power;
+	double dHst = measurement->H_power - lastStationary->H_power;
 	char posChange = (dPst >= 0);
 	
 	dPst = fabs(dPst);
+	dQst = fabs(dQst);
+	dHst = fabs(dHst);
 	
-	char pTol = 3;
+	//printf("%0.2f\n", dHst);
+	
+	char checking = 1;
+	double pTol = 0.5;
 	char redraw = 0;
-	
-	// CHECK DEVICES
-	for (int i = 0; i < size; i++){
-	  if (devices[i]->activePower - pTol <= dPst  && dPst <= devices[i]->activePower + pTol){
-		// This is the right device
-		if (posChange){
-		  if (devices[i]->devicebutton->backgroundColor != DEVICE_ON){
-			devices[i]->devicebutton->backgroundColor = DEVICE_ON;
-			redraw = 1;
-		  }  
-		}
-		else{
-		  if (devices[i]->devicebutton->backgroundColor != DEVICE_OFF){
-			devices[i]->devicebutton->backgroundColor = DEVICE_OFF;
-			redraw = 1;
+	while (checking){ 
+	  // CHECK DEVICES
+	  for (int i = 0; i < size; i++){
+		redraw = 0;
+		if (devices[i]->activePower - pTol <= dPst  && dPst <= devices[i]->activePower + pTol){
+		  // P matches
+		  if (devices[i]->reactivePower - pTol <= dQst  && dQst <= devices[i]->reactivePower + pTol){
+			// Q matches
+			//if (devices[i]->harmonicPower - pTol*2 <= dHst  && dHst <= devices[i]->harmonicPower + pTol*2){
+			// H matches
+			if (posChange){
+			  if (devices[i]->devicebutton->backgroundColor != DEVICE_ON){
+				devices[i]->devicebutton->backgroundColor = DEVICE_ON;
+				redraw = 1;
+				checking = 0;
+			  }  
+			}
+			else{
+			  if (devices[i]->devicebutton->backgroundColor != DEVICE_OFF){
+				devices[i]->devicebutton->backgroundColor = DEVICE_OFF;
+				redraw = 1;
+				checking = 0;
+			  }
+			}
+			if (redraw && currentPage == thisPage)	drawWindow(devices[i]->devicebutton);
+		  //}
 		  }
 		}
-		if (redraw && currentPage == thisPage)	drawWindow(devices[i]->devicebutton);
 	  }
+	  pTol += 0.5;
+	  if (pTol >= 2.0) checking = 0;
 	}
-  }
-  else{
-	// Update steady state
 	lastStationary->P_power = measurement->P_power;
+	lastStationary->Q_power = measurement->Q_power;
+	lastStationary->H_power = measurement->H_power;
   }
+  lastReading->P_power = measurement->P_power;
+  lastReading->Q_power = measurement->Q_power;
+  lastReading->H_power = measurement->H_power;
 }
 
 
