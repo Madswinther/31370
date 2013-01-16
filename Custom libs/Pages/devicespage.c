@@ -14,7 +14,7 @@ static short mY = 20;
 // Holder for comparison of measurements
 static Measurement * lastReading;
 static Measurement * lastStationary;
-static char step = 0;
+static char isStationary = 1;
 
 Page * initDevicesPage(){
   // Alloc space
@@ -80,59 +80,62 @@ void addDevice(double activePower, double reactivePower, double harmonicPower){
   addWindow(thisPage->layout, devicebutton);
 }
 
+
+void edgeDetection(double * lastVal, double * lastStatVal, double newVal, double tol) {
+
+  
+  
+  
+  
+  
+
+}
+
+
 void checkDevices(Measurement * measurement, Page * currentPage){
-  double tol = 15;
+  double tol = 5;
   
-  if (step == 0){
-	if(measurement->P_power - lastStationary->P_power > 10){
-	  step = 1;
-	}
-	else{
-	  return;
-	}
+  double deltaP = fabs(measurement->P_power - lastReading->P_power);
+  lastReading->P_power = measurement->P_power;
+  
+  if (deltaP >= tol){
+	// Signal is no longer in steady state
+	isStationary = 0;
   }
-  
-  double signature = measurement->P_power+measurement->Q_power+measurement->H_power;
-  double lastReadingSignature = lastReading->P_power+lastReading->Q_power+lastReading->H_power;
-  if (!(lastReadingSignature - tol <= signature && signature <= lastReadingSignature + tol)){
-	// NOT STATIONARY YET
-	printf("n\n");
-	lastReading->P_power = measurement->P_power;
-	return;
-  }
-  printf("s\n");
-  
-  // Stationary - proceed accordingly  
-  double deltaP = measurement->P_power - lastStationary->P_power;
-  
-  step = 0;
-  
-  // Save last measurements
-  lastStationary = measurement;
-  lastReading = measurement;
-  
-  printf("%.2f\n", deltaP);
-  
-  
-  // Start off with a small margin of error
-  double pTol = 1;
-  char redraw = 0;
-  
-  for (int i = 0; i < size; i++){
-	if (devices[i]->activePower - pTol <= deltaP  && deltaP <= devices[i]->activePower + pTol){
-	  // This is the right device
-	  if (devices[i]->devicebutton->backgroundColor != DEVICE_ON){
-		devices[i]->devicebutton->backgroundColor = DEVICE_ON;
-		redraw = 1;
+  else if (!isStationary){
+	// Signal is now in steady state
+	isStationary = 1;
+	double dPst = measurement->P_power - lastStationary->P_power;
+	char posChange = (dPst >= 0);
+	
+	dPst = fabs(dPst);
+	
+	char pTol = 3;
+	char redraw = 0;
+	
+	// CHECK DEVICES
+	for (int i = 0; i < size; i++){
+	  if (devices[i]->activePower - pTol <= dPst  && dPst <= devices[i]->activePower + pTol){
+		// This is the right device
+		if (posChange){
+		  if (devices[i]->devicebutton->backgroundColor != DEVICE_ON){
+			devices[i]->devicebutton->backgroundColor = DEVICE_ON;
+			redraw = 1;
+		  }  
+		}
+		else{
+		  if (devices[i]->devicebutton->backgroundColor != DEVICE_OFF){
+			devices[i]->devicebutton->backgroundColor = DEVICE_OFF;
+			redraw = 1;
+		  }
+		}
+		if (redraw && currentPage == thisPage)	drawWindow(devices[i]->devicebutton);
 	  }
 	}
-	else{
-	  if (devices[i]->devicebutton->backgroundColor != DEVICE_OFF){
-		devices[i]->devicebutton->backgroundColor = DEVICE_OFF;
-		redraw = 1;
-	  }
-	}
-	if (redraw && currentPage == thisPage)	drawWindow(devices[i]->devicebutton);
+  }
+  else{
+	// Update steady state
+	lastStationary->P_power = measurement->P_power;
   }
 }
 

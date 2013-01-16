@@ -6,20 +6,58 @@
   <configuration>
     <name>Flash Debug</name>
     <outputs>
-      <file>$PROJ_DIR$\Custom libs\Pages\graphpage.c</file>
-      <file>$PROJ_DIR$\Custom libs\draw.c</file>
-      <file>$PROJ_DIR$\Custom libs\graphics\button.h</file>
-      <file>$PROJ_DIR$\Custom libs\graphics\graph.c</file>
       <file>$PROJ_DIR$\Custom libs\graphics\graph.h</file>
+      <file>$PROJ_DIR$\Custom libs\draw.c</file>
+      <file>$PROJ_DIR$\Custom libs\Pages\devicespage.c</file>
+      <file>$PROJ_DIR$\Custom libs\graphics\ProgressBar.c</file>
       <file>$PROJ_DIR$\Custom libs\graphics\ProgressBar.h</file>
+      <file>$PROJ_DIR$\Custom libs\Pages\graphpage.c</file>
       <file>$PROJ_DIR$\Custom libs\Pages\graphpage.h</file>
       <file>$PROJ_DIR$\Custom libs\Pages\learningpage.c</file>
       <file>$PROJ_DIR$\Custom libs\Pages\learningpage.h</file>
-      <file>$PROJ_DIR$\Custom libs\graphics\ProgressBar.c</file>
+      <file>$PROJ_DIR$\Custom libs\Pages\devicespage.h</file>
+      <file>$PROJ_DIR$\Custom libs\graphics\graph.c</file>
       <file>$PROJ_DIR$\Custom libs\draw.h</file>
-      <file>$PROJ_DIR$\Custom libs\graphics\button.c</file>
       <file>$PROJ_DIR$\Custom libs\Pages\mainpage.c</file>
       <file>$PROJ_DIR$\Custom libs\Pages\mainpage.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\math.h</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\uart.o</file>
+      <file>$PROJ_DIR$\modules\drv_glcd.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\DLib_Config_Normal.h</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\gui.pbi</file>
+      <file>$PROJ_DIR$\app\uart.c</file>
+      <file>$TOOLKIT_DIR$\inc\c\string.h</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\main.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\c\ycheck.h</file>
+      <file>$PROJ_DIR$\app\includes.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\stdbool.h</file>
+      <file>$TOOLKIT_DIR$\lib\shs_l.a</file>
+      <file>$PROJ_DIR$\app\cdc_cmd.h</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\cd_class.pbi</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\winning.o</file>
+      <file>$TOOLKIT_DIR$\inc\c\yvals.h</file>
+      <file>$TOOLKIT_DIR$\lib\dl4t_tln.a</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\ProgressBar.o</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\iar_logo.o</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\layout.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\NXP\iolpc2478.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\xmtx.h</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\sys.pbi</file>
+      <file>$TOOLKIT_DIR$\lib\m4t_tl.a</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\layout.o</file>
+      <file>$TOOLKIT_DIR$\inc\c\xlocaleuse.h</file>
+      <file>$PROJ_DIR$\Custom libs\graphics\winning.c</file>
+      <file>$TOOLKIT_DIR$\inc\c\DLib_Defaults.h</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\mainpage.o</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\animation.pbi</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\animation.o</file>
+      <file>$TOOLKIT_DIR$\inc\c\limits.h</file>
+      <file>$PROJ_DIR$\board\board.h</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\sys.o</file>
+      <file>$PROJ_DIR$\modules\usb_buffer.c</file>
+      <file>$TOOLKIT_DIR$\inc\NXP\iolpc2470.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\inttypes.h</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\drv_touch_scr.pbi</file>
       <file>$PROJ_DIR$\Custom libs\gui.c</file>
       <file>$PROJ_DIR$\Custom libs\gui.h</file>
       <file>$PROJ_DIR$\Custom libs\animation.c</file>
@@ -40,66 +78,30 @@
       <file>$PROJ_DIR$\modules\drv_touch_scr.c</file>
       <file>$PROJ_DIR$\modules\drv_touch_scr.h</file>
       <file>$PROJ_DIR$\readme.txt</file>
-      <file>$PROJ_DIR$\modules\usb_t9.h</file>
       <file>$PROJ_DIR$\app\uart.h</file>
-      <file>$PROJ_DIR$\modules\usb_desc.h</file>
-      <file>$PROJ_DIR$\Flash Debug\Obj\usb_hw.pbi</file>
-      <file>$PROJ_DIR$\Flash Debug\Obj\vector.pbi</file>
-      <file>$PROJ_DIR$\Flash Debug\Obj\Terminal_6_8x6.pbi</file>
+      <file>$PROJ_DIR$\Custom libs\graphics\button.h</file>
+      <file>$PROJ_DIR$\Custom libs\graphics\button.c</file>
       <file>$PROJ_DIR$\Flash Debug\Obj\sdram_64M_32bit_drv.o</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\usb_hw.pbi</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\Terminal_6_8x6.pbi</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\vector.pbi</file>
+      <file>$PROJ_DIR$\modules\usb_desc.h</file>
+      <file>$PROJ_DIR$\modules\usb_t9.h</file>
       <file>$PROJ_DIR$\app\iar_logo.c</file>
       <file>$PROJ_DIR$\modules\usb_hw.h</file>
-      <file>$PROJ_DIR$\Custom libs\graphics\winning.h</file>
       <file>$PROJ_DIR$\board\arm_comm.h</file>
-      <file>$PROJ_DIR$\Flash Debug\Obj\uart.o</file>
-      <file>$TOOLKIT_DIR$\inc\c\math.h</file>
-      <file>$PROJ_DIR$\Flash Debug\Obj\gui.pbi</file>
-      <file>$TOOLKIT_DIR$\inc\c\DLib_Config_Normal.h</file>
-      <file>$PROJ_DIR$\modules\drv_glcd.h</file>
-      <file>$PROJ_DIR$\Flash Debug\Obj\main.pbi</file>
-      <file>$TOOLKIT_DIR$\inc\c\string.h</file>
-      <file>$PROJ_DIR$\app\uart.c</file>
-      <file>$TOOLKIT_DIR$\inc\c\ycheck.h</file>
-      <file>$PROJ_DIR$\app\includes.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\stdbool.h</file>
-      <file>$TOOLKIT_DIR$\lib\shs_l.a</file>
-      <file>$PROJ_DIR$\Flash Debug\Obj\winning.o</file>
-      <file>$PROJ_DIR$\Flash Debug\Obj\cd_class.pbi</file>
-      <file>$PROJ_DIR$\app\cdc_cmd.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\yvals.h</file>
-      <file>$PROJ_DIR$\Flash Debug\Obj\iar_logo.o</file>
-      <file>$PROJ_DIR$\Flash Debug\Obj\layout.pbi</file>
-      <file>$TOOLKIT_DIR$\lib\dl4t_tln.a</file>
-      <file>$PROJ_DIR$\Flash Debug\Obj\ProgressBar.o</file>
-      <file>$PROJ_DIR$\Flash Debug\Obj\sys.pbi</file>
-      <file>$TOOLKIT_DIR$\inc\c\xmtx.h</file>
-      <file>$PROJ_DIR$\Flash Debug\Obj\layout.o</file>
-      <file>$TOOLKIT_DIR$\lib\m4t_tl.a</file>
-      <file>$TOOLKIT_DIR$\inc\NXP\iolpc2478.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\xlocaleuse.h</file>
-      <file>$PROJ_DIR$\Flash Debug\Obj\mainpage.o</file>
-      <file>$PROJ_DIR$\Custom libs\graphics\winning.c</file>
-      <file>$TOOLKIT_DIR$\inc\c\DLib_Defaults.h</file>
-      <file>$PROJ_DIR$\Flash Debug\Obj\animation.pbi</file>
-      <file>$PROJ_DIR$\Flash Debug\Obj\animation.o</file>
-      <file>$PROJ_DIR$\Flash Debug\Obj\sys.o</file>
-      <file>$PROJ_DIR$\board\board.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\limits.h</file>
-      <file>$PROJ_DIR$\modules\usb_buffer.c</file>
-      <file>$TOOLKIT_DIR$\inc\NXP\iolpc2470.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\inttypes.h</file>
-      <file>$PROJ_DIR$\Flash Debug\Obj\drv_touch_scr.pbi</file>
-      <file>$PROJ_DIR$\Flash Debug\Obj\main.o</file>
+      <file>$PROJ_DIR$\Custom libs\graphics\winning.h</file>
       <file>$PROJ_DIR$\modules\usb_t9.c</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\main.o</file>
       <file>$PROJ_DIR$\app\cd_class.h</file>
       <file>$PROJ_DIR$\Custom libs\vector.c</file>
       <file>$TOOLKIT_DIR$\inc\c\wchar.h</file>
-      <file>$PROJ_DIR$\Flash Debug\Obj\draw.o</file>
+      <file>$PROJ_DIR$\Flash Debug\Exe\virtual_com.out</file>
       <file>$PROJ_DIR$\app\usb_dev_desc.h</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\draw.o</file>
+      <file>$PROJ_DIR$\Custom libs\vector.h</file>
       <file>$PROJ_DIR$\Flash Debug\Obj\graph.o</file>
       <file>$PROJ_DIR$\Flash Debug\Obj\graph.pbi</file>
-      <file>$PROJ_DIR$\Flash Debug\Exe\virtual_com.out</file>
-      <file>$PROJ_DIR$\Custom libs\vector.h</file>
       <file>$TOOLKIT_DIR$\inc\c\xlocale_c.h</file>
       <file>$PROJ_DIR$\Flash Debug\Obj\usb_dev_desc.pbi</file>
       <file>$TOOLKIT_DIR$\inc\c\xtgmath.h</file>
@@ -115,28 +117,28 @@
       <file>$PROJ_DIR$\app\iar_logo.h</file>
       <file>$PROJ_DIR$\Flash Debug\Obj\usb_buffer.pbi</file>
       <file>$PROJ_DIR$\Flash Debug\Obj\Terminal_9_12x6.pbi</file>
-      <file>$PROJ_DIR$\Flash Debug\Obj\uart.pbi</file>
-      <file>$TOOLKIT_DIR$\inc\c\stdlib.h</file>
       <file>$PROJ_DIR$\app\usb_dev_desc.c</file>
-      <file>$PROJ_DIR$\Flash Debug\Obj\drv_glcd.o</file>
-      <file>$PROJ_DIR$\Flash Debug\Obj\Terminal_6_8x6.o</file>
+      <file>$TOOLKIT_DIR$\inc\c\stdlib.h</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\uart.pbi</file>
       <file>$PROJ_DIR$\Flash Debug\Obj\parsing.pbi</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\Terminal_6_8x6.o</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\drv_glcd.o</file>
       <file>$TOOLKIT_DIR$\inc\c\ysizet.h</file>
       <file>$TOOLKIT_DIR$\lib\rt4t_al.a</file>
       <file>$PROJ_DIR$\Flash Debug\Obj\learningpage.o</file>
       <file>$PROJ_DIR$\Flash Debug\Obj\learningpage.pbi</file>
       <file>$PROJ_DIR$\modules\sdram_64M_32bit_drv.h</file>
-      <file>$PROJ_DIR$\Flash Debug\Obj\gui.o</file>
-      <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
       <file>$PROJ_DIR$\Flash Debug\Obj\ProgressBar.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\gui.o</file>
       <file>$PROJ_DIR$\Flash Debug\Obj\mainpage.pbi</file>
       <file>$PROJ_DIR$\Flash Debug\Obj\button.o</file>
-      <file>$PROJ_DIR$\Flash Debug\Obj\button.pbi</file>
       <file>$PROJ_DIR$\app\usb_cnfg.h</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\button.pbi</file>
       <file>$TOOLKIT_DIR$\inc\c\stdarg.h</file>
-      <file>$PROJ_DIR$\Flash Debug\Obj\draw.pbi</file>
-      <file>$PROJ_DIR$\Flash Debug\Obj\winning.pbi</file>
       <file>$TOOLKIT_DIR$\inc\c\DLib_Threads.h</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\winning.pbi</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\draw.pbi</file>
       <file>$PROJ_DIR$\modules\usb_hw.c</file>
       <file>$TOOLKIT_DIR$\inc\c\xencoding_limits.h</file>
       <file>$PROJ_DIR$\Flash Debug\Obj\drv_touch_scr.o</file>
@@ -144,9 +146,9 @@
       <file>$TOOLKIT_DIR$\inc\c\io_macros.h</file>
       <file>$PROJ_DIR$\app\cd_class.c</file>
       <file>$PROJ_DIR$\Flash Debug\Obj\Terminal_18_24x12.pbi</file>
-      <file>$PROJ_DIR$\config\LPC2478_Flash.icf</file>
-      <file>$PROJ_DIR$\Flash Debug\Obj\drv_glcd.pbi</file>
       <file>$PROJ_DIR$\app\usb_hooks.h</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\drv_glcd.pbi</file>
+      <file>$PROJ_DIR$\config\LPC2478_Flash.icf</file>
       <file>$TOOLKIT_DIR$\inc\c\ctype.h</file>
       <file>$TOOLKIT_DIR$\inc\c\intrinsics.h</file>
       <file>$PROJ_DIR$\modules\usb_buffer.h</file>
@@ -154,16 +156,14 @@
       <file>$PROJ_DIR$\Flash Debug\Obj\usb_hooks.pbi</file>
       <file>$TOOLKIT_DIR$\inc\c\assert.h</file>
       <file>$PROJ_DIR$\Flash Debug\List\virtual_com.map</file>
-      <file>$PROJ_DIR$\Flash Debug\Obj\usb_t9.pbi</file>
-      <file>$TOOLKIT_DIR$\inc\c\stdio.h</file>
       <file>$PROJ_DIR$\Flash Debug\Obj\sdram_64M_32bit_drv.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\c\stdio.h</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\usb_t9.pbi</file>
       <file>$PROJ_DIR$\Flash Debug\Obj\Terminal_9_12x6.o</file>
-      <file>$PROJ_DIR$\Flash Debug\Obj\parsing.o</file>
-      <file>$TOOLKIT_DIR$\inc\c\xlocale.h</file>
       <file>$TOOLKIT_DIR$\inc\c\ystdio.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\xlocale.h</file>
+      <file>$PROJ_DIR$\Flash Debug\Obj\parsing.o</file>
       <file>$TOOLKIT_DIR$\inc\c\DLib_Product_string.h</file>
-      <file>$PROJ_DIR$\Custom libs\Pages\devicespage.h</file>
-      <file>$PROJ_DIR$\Custom libs\Pages\devicespage.c</file>
       <file>$PROJ_DIR$\Flash Debug\Obj\devicespage.o</file>
       <file>$PROJ_DIR$\Flash Debug\Obj\devicespage.pbi</file>
     </outputs>
@@ -172,99 +172,53 @@
       <outputs>
         <tool>
           <name>ILINK</name>
-          <file> 92 147</file>
+          <file> 90 149</file>
         </tool>
       </outputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\Custom libs\Pages\graphpage.c</name>
-      <outputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 103</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 104</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 8 21 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 32 105 119 49 106 17 81 121 5 23 19 15 10 13 6 156 4</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 8 21 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 32 105 119 49 106 17 81 121 5 23 19 15 10 13 6 156 4</file>
-        </tool>
-      </inputs>
     </file>
     <file>
       <name>$PROJ_DIR$\Custom libs\draw.c</name>
       <outputs>
         <tool>
-          <name>BICOMP</name>
-          <file> 128</file>
+          <name>ICCARM</name>
+          <file> 92</file>
         </tool>
         <tool>
-          <name>ICCARM</name>
-          <file> 88</file>
+          <name>BICOMP</name>
+          <file> 132</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
-          <name>BICOMP</name>
-          <file> 10 49 44 142 53 54 149 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 146 69 80 135 77 32 105 119 106 17 81 121 5 23 19 15 21 13 8 6 156 4 46 98 96</file>
+          <name>ICCARM</name>
+          <file> 11 16 83 144 22 23 151 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 148 34 49 137 46 70 107 121 108 55 50 123 4 61 57 53 59 13 8 6 9 0 14 100 98</file>
         </tool>
         <tool>
-          <name>ICCARM</name>
-          <file> 10 49 44 142 53 54 149 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 146 69 80 135 77 32 105 119 106 17 81 121 5 23 19 15 21 13 8 6 156 4 46 98 96</file>
+          <name>BICOMP</name>
+          <file> 11 16 83 144 22 23 151 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 148 34 49 137 46 70 107 121 108 55 50 123 4 61 57 53 59 13 8 6 9 0 14 100 98</file>
         </tool>
       </inputs>
     </file>
     <file>
-      <name>$PROJ_DIR$\Custom libs\graphics\graph.c</name>
+      <name>$PROJ_DIR$\Custom libs\Pages\devicespage.c</name>
       <outputs>
         <tool>
-          <name>BICOMP</name>
-          <file> 91</file>
+          <name>ICCARM</name>
+          <file> 158</file>
         </tool>
         <tool>
-          <name>ICCARM</name>
-          <file> 90</file>
+          <name>BICOMP</name>
+          <file> 159</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
-          <name>BICOMP</name>
-          <file> 4 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 32 105 119 49 106 17 81 121 5 23 19 15 10 21 13 8 6 156</file>
-        </tool>
-        <tool>
           <name>ICCARM</name>
-          <file> 4 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 32 105 119 49 106 17 81 121 5 23 19 15 10 21 13 8 6 156</file>
+          <file> 9 59 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 70 107 121 16 108 55 50 123 4 61 57 53 11 13 8 6 0 14 100 98</file>
         </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\Custom libs\Pages\learningpage.c</name>
-      <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 118</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 117</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 8 21 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 32 105 119 49 106 17 81 121 5 23 19 15 10 13 6 156 4 46 98 96</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 8 21 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 32 105 119 49 106 17 81 121 5 23 19 15 10 13 6 156 4 46 98 96</file>
+          <file> 9 59 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 70 107 121 16 108 55 50 123 4 61 57 53 11 13 8 6 0 14 100 98</file>
         </tool>
       </inputs>
     </file>
@@ -272,45 +226,91 @@
       <name>$PROJ_DIR$\Custom libs\graphics\ProgressBar.c</name>
       <outputs>
         <tool>
-          <name>BICOMP</name>
-          <file> 122</file>
+          <name>ICCARM</name>
+          <file> 31</file>
         </tool>
         <tool>
-          <name>ICCARM</name>
-          <file> 64</file>
+          <name>BICOMP</name>
+          <file> 122</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
-          <name>BICOMP</name>
-          <file> 10 49 44 142 53 54 149 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 146 69 80 135 77 32 105 119 106 17 81 121 5 23 19 15 21 13 8 6 156 4 46 98 96</file>
+          <name>ICCARM</name>
+          <file> 11 16 83 144 22 23 151 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 148 34 49 137 46 70 107 121 108 55 50 123 4 61 57 53 59 13 8 6 9 0 14 100 98</file>
         </tool>
         <tool>
-          <name>ICCARM</name>
-          <file> 10 49 44 142 53 54 149 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 146 69 80 135 77 32 105 119 106 17 81 121 5 23 19 15 21 13 8 6 156 4 46 98 96</file>
+          <name>BICOMP</name>
+          <file> 11 16 83 144 22 23 151 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 148 34 49 137 46 70 107 121 108 55 50 123 4 61 57 53 59 13 8 6 9 0 14 100 98</file>
         </tool>
       </inputs>
     </file>
     <file>
-      <name>$PROJ_DIR$\Custom libs\graphics\button.c</name>
+      <name>$PROJ_DIR$\Custom libs\Pages\graphpage.c</name>
       <outputs>
         <tool>
-          <name>BICOMP</name>
-          <file> 125</file>
+          <name>ICCARM</name>
+          <file> 106</file>
         </tool>
         <tool>
-          <name>ICCARM</name>
-          <file> 124</file>
+          <name>BICOMP</name>
+          <file> 105</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
-          <name>BICOMP</name>
-          <file> 2 49 44 142 53</file>
+          <name>ICCARM</name>
+          <file> 8 59 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 70 107 121 16 108 55 50 123 4 61 57 53 11 13 6 9 0</file>
         </tool>
         <tool>
+          <name>BICOMP</name>
+          <file> 8 59 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 70 107 121 16 108 55 50 123 4 61 57 53 11 13 6 9 0</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Custom libs\Pages\learningpage.c</name>
+      <outputs>
+        <tool>
           <name>ICCARM</name>
-          <file> 2 49 44 142 53</file>
+          <file> 119</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 120</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 8 59 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 70 107 121 16 108 55 50 123 4 61 57 53 11 13 6 9 0 14 100 98</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 8 59 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 70 107 121 16 108 55 50 123 4 61 57 53 11 13 6 9 0 14 100 98</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Custom libs\graphics\graph.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 94</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 95</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 0 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 70 107 121 16 108 55 50 123 4 61 57 53 11 59 13 8 6 9</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 0 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 70 107 121 16 108 55 50 123 4 61 57 53 11 59 13 8 6 9</file>
         </tool>
       </inputs>
     </file>
@@ -318,344 +318,22 @@
       <name>$PROJ_DIR$\Custom libs\Pages\mainpage.c</name>
       <outputs>
         <tool>
-          <name>BICOMP</name>
-          <file> 123</file>
+          <name>ICCARM</name>
+          <file> 42</file>
         </tool>
         <tool>
-          <name>ICCARM</name>
-          <file> 71</file>
+          <name>BICOMP</name>
+          <file> 125</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
-          <name>BICOMP</name>
-          <file> 13 21 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 32 105 119 49 106 17 81 121 5 23 19 15 10 8 6 156 4</file>
-        </tool>
-        <tool>
           <name>ICCARM</name>
-          <file> 13 21 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 32 105 119 49 106 17 81 121 5 23 19 15 10 8 6 156 4</file>
+          <file> 13 59 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 70 107 121 16 108 55 50 123 4 61 57 53 11 8 6 9 0</file>
         </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\Custom libs\gui.c</name>
-      <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 47</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 120</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 15 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 32 105 119 49 106 17 81 121 5 23 19 10 21 13 8 6 156 4</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 15 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 32 105 119 49 106 17 81 121 5 23 19 10 21 13 8 6 156 4</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\Custom libs\animation.c</name>
-      <outputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 74</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 75</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 32 105 119 49 106 17 81 121 5 23 19 15 10 21 13 8 6 156 4</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 32 105 119 49 106 17 81 121 5 23 19 15 10 21 13 8 6 156 4</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\Custom libs\uart.c</name>
-      <outputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 109</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 45</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 19 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 32 105 119 49 106 17 81 121 5 23 15 10 21 13 8 6 156 4</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 19 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 32 105 119 49 106 17 81 121 5 23 15 10 21 13 8 6 156 4</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\Custom libs\layout.c</name>
-      <outputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 62</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 67</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 21 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 32 105 119 49 106 17 81 121 5 23 19 15 10 13 8 6 156 4</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 21 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 32 105 119 49 106 17 81 121 5 23 19 15 10 13 8 6 156 4</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\Custom libs\parsing.c</name>
-      <outputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 114</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 152</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 23 81 53 121 60 73 48 101 132 130 110 115 46 98 96</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 23 81 53 121 60 73 48 101 132 130 110 115 46 98 96</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\modules\sdram_64M_32bit_drv.c</name>
-      <outputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 150</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 40</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 149 53 60 73 48 101 132 130 115 154 77 142 69 80 135 44 119</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 149 53 60 73 48 101 132 130 115 154 77 142 69 80 135 44 119</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\modules\drv_glcd.c</name>
-      <outputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 139</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 112</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 149 53 60 73 48 101 132 130 115 154 110 146 127 77 142 69 80 135 44 105 49</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 149 53 60 73 48 101 132 130 115 154 110 146 127 77 142 69 80 135 44 105 49</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\app\Terminal_18_24x12.c</name>
-      <outputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 137</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 97</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 49 44 142 53</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 49 44 142 53</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\app\Terminal_6_8x6.c</name>
-      <outputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 39</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 113</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 49 44 142 53</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 49 44 142 53</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\app\Terminal_9_12x6.c</name>
-      <outputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 108</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 151</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 49 44 142 53</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 49 44 142 53</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\board\sys.c</name>
-      <outputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 65</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 76</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 105 77 142 53 69 80 135 44</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 105 77 142 53 69 80 135 44</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\app\main.c</name>
-      <outputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 50</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 83</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 32 105 119 49 106 17 81 121 5 23 19 15 10 21 13 8 6 156 4 46 98 96</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 32 105 119 49 106 17 81 121 5 23 19 15 10 21 13 8 6 156 4 46 98 96</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\modules\drv_touch_scr.c</name>
-      <outputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 82</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 133</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 32 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 105 119 49 106 17 81 121 5 23 19 15 10 21 13 8 6 156 4</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 32 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 105 119 49 106 17 81 121 5 23 19 15 10 21 13 8 6 156 4</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\app\iar_logo.c</name>
-      <outputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 144</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 61</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 106 49 44 142 53</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 106 49 44 142 53</file>
+          <file> 13 59 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 70 107 121 16 108 55 50 123 4 61 57 53 11 8 6 9 0</file>
         </tool>
       </inputs>
     </file>
@@ -663,22 +341,22 @@
       <name>$PROJ_DIR$\app\uart.c</name>
       <outputs>
         <tool>
-          <name>BICOMP</name>
-          <file> 109</file>
+          <name>ICCARM</name>
+          <file> 15</file>
         </tool>
         <tool>
-          <name>ICCARM</name>
-          <file> 45</file>
+          <name>BICOMP</name>
+          <file> 113</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
-          <name>BICOMP</name>
-          <file> 35 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 126 36 42 34 140 89 143 85 100 59 105 119 49 106</file>
+          <name>ICCARM</name>
+          <file> 72 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 127 79 82 80 140 91 145 87 102 26 107 121 16 108</file>
         </tool>
         <tool>
-          <name>ICCARM</name>
-          <file> 35 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 126 36 42 34 140 89 143 85 100 59 105 119 49 106</file>
+          <name>BICOMP</name>
+          <file> 72 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 127 79 82 80 140 91 145 87 102 26 107 121 16 108</file>
         </tool>
       </inputs>
     </file>
@@ -686,22 +364,22 @@
       <name>$PROJ_DIR$\Custom libs\graphics\winning.c</name>
       <outputs>
         <tool>
-          <name>BICOMP</name>
-          <file> 129</file>
+          <name>ICCARM</name>
+          <file> 28</file>
         </tool>
         <tool>
-          <name>ICCARM</name>
-          <file> 57</file>
+          <name>BICOMP</name>
+          <file> 131</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
-          <name>BICOMP</name>
-          <file> 43 49 44 142 53</file>
+          <name>ICCARM</name>
+          <file> 84 16 83 144 22</file>
         </tool>
         <tool>
-          <name>ICCARM</name>
-          <file> 43 49 44 142 53</file>
+          <name>BICOMP</name>
+          <file> 84 16 83 144 22</file>
         </tool>
       </inputs>
     </file>
@@ -710,17 +388,362 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 107</file>
+          <file> 109</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
-          <name>BICOMP</name>
-          <file> 143 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 126 36 42 34 140 89 85 100 59 35 105 119 49 106</file>
+          <name>ICCARM</name>
+          <file> 145 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 127 79 82 80 140 91 87 102 26</file>
         </tool>
         <tool>
+          <name>BICOMP</name>
+          <file> 145 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 127 79 82 80 140 91 87 102 26 72 107 121 16 108</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Custom libs\gui.c</name>
+      <outputs>
+        <tool>
           <name>ICCARM</name>
-          <file> 143 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 126 36 42 34 140 89 85 100 59</file>
+          <file> 124</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 18</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 53 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 70 107 121 16 108 55 50 123 4 61 57 11 59 13 8 6 9 0</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 53 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 70 107 121 16 108 55 50 123 4 61 57 11 59 13 8 6 9 0</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Custom libs\animation.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 44</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 43</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 70 107 121 16 108 55 50 123 4 61 57 53 11 59 13 8 6 9 0</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 70 107 121 16 108 55 50 123 4 61 57 53 11 59 13 8 6 9 0</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Custom libs\uart.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 15</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 113</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 57 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 70 107 121 16 108 55 50 123 4 61 53 11 59 13 8 6 9 0</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 57 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 70 107 121 16 108 55 50 123 4 61 53 11 59 13 8 6 9 0</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Custom libs\layout.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 38</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 33</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 59 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 70 107 121 16 108 55 50 123 4 61 57 53 11 13 8 6 9 0</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 59 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 70 107 121 16 108 55 50 123 4 61 57 53 11 13 8 6 9 0</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Custom libs\parsing.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 156</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 114</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 61 50 22 123 29 41 17 103 134 130 112 117 14 100 98</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 61 50 22 123 29 41 17 103 134 130 112 117 14 100 98</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\modules\sdram_64M_32bit_drv.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 75</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 150</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 151 22 29 41 17 103 134 130 117 154 46 144 34 49 137 83 121</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 151 22 29 41 17 103 134 130 117 154 46 144 34 49 137 83 121</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\modules\drv_glcd.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 116</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 141</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 151 22 29 41 17 103 134 130 117 154 112 148 129 46 144 34 49 137 83 107 16</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 151 22 29 41 17 103 134 130 117 154 112 148 129 46 144 34 49 137 83 107 16</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\app\Terminal_18_24x12.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 99</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 139</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 16 83 144 22</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 16 83 144 22</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\app\Terminal_6_8x6.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 115</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 77</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 16 83 144 22</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 16 83 144 22</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\app\Terminal_9_12x6.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 153</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 110</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 16 83 144 22</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 16 83 144 22</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\board\sys.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 47</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 36</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 107 46 144 22 34 49 137 83</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 107 46 144 22 34 49 137 83</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\app\main.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 86</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 21</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 70 107 121 16 108 55 50 123 4 61 57 53 11 59 13 8 6 9 0 14 100 98</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 70 107 121 16 108 55 50 123 4 61 57 53 11 59 13 8 6 9 0 14 100 98</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\modules\drv_touch_scr.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 135</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 51</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 70 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 107 121 16 108 55 50 123 4 61 57 53 11 59 13 8 6 9 0</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 70 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 107 121 16 108 55 50 123 4 61 57 53 11 59 13 8 6 9 0</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Custom libs\graphics\button.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 126</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 128</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 73 16 83 144 22</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 73 16 83 144 22</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\app\iar_logo.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 32</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 146</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 108 16 83 144 22</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 108 16 83 144 22</file>
         </tool>
       </inputs>
     </file>
@@ -729,17 +752,17 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 148</file>
+          <file> 152</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
-          <name>BICOMP</name>
-          <file> 34 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 126 36 42 140 89 143 85 100 59 35 105 119 49 106</file>
+          <name>ICCARM</name>
+          <file> 80 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 127 79 82 140 91 145 87 102 26</file>
         </tool>
         <tool>
-          <name>ICCARM</name>
-          <file> 34 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 126 36 42 140 89 143 85 100 59</file>
+          <name>BICOMP</name>
+          <file> 80 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 127 79 82 140 91 145 87 102 26 72 107 121 16 108</file>
         </tool>
       </inputs>
     </file>
@@ -748,17 +771,17 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 38</file>
+          <file> 78</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
-          <name>BICOMP</name>
-          <file> 15 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 32 105 119 49 106 10</file>
+          <name>ICCARM</name>
+          <file> 93 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 70 107 121 16 108 53 11</file>
         </tool>
         <tool>
-          <name>ICCARM</name>
-          <file> 93 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 32 105 119 49 106 15 10</file>
+          <name>BICOMP</name>
+          <file> 53 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 70 107 121 16 108 11</file>
         </tool>
       </inputs>
     </file>
@@ -767,13 +790,13 @@
       <outputs>
         <tool>
           <name>ILINK</name>
-          <file> 147</file>
+          <file> 149</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>ILINK</name>
-          <file> 138 64 97 113 151 75 158 88 112 133 90 104 120 67 117 83 71 152 40 76 45 56 116 68 63</file>
+          <file> 142 31 99 115 153 44 158 92 116 135 94 106 124 38 119 86 42 156 75 47 15 25 118 37 30</file>
         </tool>
       </inputs>
     </file>
@@ -782,17 +805,17 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 95</file>
+          <file> 97</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
-          <name>BICOMP</name>
-          <file> 89 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 126 36 42 34 140 143 85 100 59 35 105 119 49 106</file>
+          <name>ICCARM</name>
+          <file> 91 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 127 79 82 80 140 145 87 102 26</file>
         </tool>
         <tool>
-          <name>ICCARM</name>
-          <file> 89 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 126 36 42 34 140 143 85 100 59</file>
+          <name>BICOMP</name>
+          <file> 91 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 127 79 82 80 140 145 87 102 26 72 107 121 16 108</file>
         </tool>
       </inputs>
     </file>
@@ -801,17 +824,17 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 37</file>
+          <file> 76</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
-          <name>BICOMP</name>
-          <file> 42 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 126 36 34 140 89 143 85 100 59 35 105 119 49 106</file>
+          <name>ICCARM</name>
+          <file> 82 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 127 79 80 140 91 145 87 102 26</file>
         </tool>
         <tool>
-          <name>ICCARM</name>
-          <file> 42 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 126 36 34 140 89 143 85 100 59</file>
+          <name>BICOMP</name>
+          <file> 82 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 127 79 80 140 91 145 87 102 26 72 107 121 16 108</file>
         </tool>
       </inputs>
     </file>
@@ -820,17 +843,17 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 145</file>
+          <file> 147</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
-          <name>BICOMP</name>
-          <file> 140 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 126 36 42 34 89 143 85 100 59 35 105 119 49 106</file>
+          <name>ICCARM</name>
+          <file> 140 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 127 79 82 80 91 145 87 102 26</file>
         </tool>
         <tool>
-          <name>ICCARM</name>
-          <file> 140 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 126 36 42 34 89 143 85 100 59</file>
+          <name>BICOMP</name>
+          <file> 140 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 127 79 82 80 91 145 87 102 26 72 107 121 16 108</file>
         </tool>
       </inputs>
     </file>
@@ -839,40 +862,17 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 58</file>
+          <file> 27</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
-          <name>BICOMP</name>
-          <file> 85 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 126 36 42 34 140 89 143 100 59 35 105 119 49 106</file>
-        </tool>
-        <tool>
           <name>ICCARM</name>
-          <file> 85 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 126 36 42 34 140 89 143 100 59</file>
+          <file> 87 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 127 79 82 80 140 91 145 102 26</file>
         </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\Custom libs\Pages\devicespage.c</name>
-      <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 159</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 158</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 156 21 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 32 105 119 49 106 17 81 121 5 23 19 15 10 13 8 6 4 46 98 96</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 156 21 54 149 53 60 73 48 101 132 130 115 154 51 155 141 153 102 66 110 70 94 87 55 78 142 146 69 80 135 44 77 32 105 119 49 106 17 81 121 5 23 19 15 10 13 8 6 4 46 98 96</file>
+          <file> 87 23 151 22 29 41 17 103 134 130 117 154 20 157 143 155 104 35 112 39 96 89 24 45 144 148 34 49 137 83 46 127 79 82 80 140 91 145 102 26 72 107 121 16 108</file>
         </tool>
       </inputs>
     </file>
