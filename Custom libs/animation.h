@@ -9,7 +9,7 @@
 typedef struct{
   	short increment;
 	short value;
-	void * pb;
+	void * object;
 	char (*animate)(void *, int);
 } Animation;
 

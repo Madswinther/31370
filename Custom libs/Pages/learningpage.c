@@ -5,11 +5,6 @@
 
 ProgressBar * pb;
 
-
-
-
-
-
 Page * initLearningPage(){
   // Alloc space
   Page * temp;
@@ -36,7 +31,7 @@ Page * initLearningPage(){
 
 void doLearn(){
   if (!isAnimating()){
-	postAnimation(pb, 1, 0, ProgressBarUpdate);
+	postAnimation(pb, 4, 0, ProgressBarUpdate);
 	GLCD_SetWindow(0, 0, 150, 50);  
 	GLCD_TextSetPos(0,0);
 	GLCD_SetFont(&Terminal_9_12_6,0xFFFFFF,0x000000);

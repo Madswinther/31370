@@ -9,13 +9,16 @@ static Device * devices[6];
 // Iterators to allow for adding devices
 static char size = 0;
 static short mX = 20;
-static short mY = 20;
+static short mY = 60;
 
 // Holder for comparison of measurements
 static Measurement * lastReading;
 static Measurement * lastStationary;
 static char edgeDetected = 0;
 static char steadyDetected = 0;
+
+// ProgressSpinner
+static ProgressSpinner * pSpinner;
 
 Page * initDevicesPage(){
   // Alloc space
@@ -35,12 +38,14 @@ Page * initDevicesPage(){
   thisPage->layout = initLayout();
   thisPage->drawn = 0;
   
-  RectangleWindow * clearbutton = initRectangleWindow(200, 50, 318, 100, BUTTON_BACKGROUND, BUTTON_BORDER);
+  RectangleWindow * clearbutton = initRectangleWindow(110, 5, 210, 55, BUTTON_BACKGROUND, BUTTON_BORDER);
+  pSpinner = ProgressSpinnerInit(258, 0, 60, 0xFFFFFF);
   
   setText(clearbutton, "Clear Devices");
   setOnClick(clearbutton, clearDevices);
   
   addWindow(thisPage->layout, clearbutton);
+  //addWindow(thisPage->layout, pSpinner);
   
   return thisPage;
 }
@@ -69,12 +74,15 @@ void addDevice(double activePower, double reactivePower, double harmonicPower){
 	devices[size]->reactivePower = reactivePower;
 	devices[size]->harmonicPower = harmonicPower;
 	
+	// The button should be in the ON state by default
+	devices[size]->devicebutton->backgroundColor = DEVICE_ON;
+	
 	// show it again without drawing it right away
 	devices[size]->devicebutton->hidden = 0;
   }
   else{
   	// Init Window and add it to the array of devices
-  	RectangleWindow * devicebutton = initRectangleWindow(mX, mY, mX+100, mY+50, DEVICE_ON, BUTTON_BORDER);
+  	RectangleWindow * devicebutton = initRectangleWindow(mX, mY, mX+50, mY+50, DEVICE_ON, BUTTON_BORDER);
   	devices[size] = deviceInit(activePower, reactivePower, harmonicPower, devicebutton);
 	addWindow(thisPage->layout, devicebutton);
   }
@@ -83,8 +91,8 @@ void addDevice(double activePower, double reactivePower, double harmonicPower){
   size++;
   mY += 50;
   if (mY > 150){
-	mY = 20;
-	mX += 100;
+	mY = 60;
+	mX += 50;
   }
 }
 
@@ -95,7 +103,7 @@ void clearDevices(){
   }
   size = 0;
   mX = 20;
-  mY = 20;
+  mY = 60;
 }
 
 
@@ -129,6 +137,15 @@ void checkDevices(Measurement * measurement, Page * currentPage){
 	edgeDetected |= edgeDetection(lastStationary->H_power, measurement->H_power, 5);
 	lastReading->P_power = measurement->P_power;
 	return;
+  }
+  
+  // Notify user that a step input is being processsed
+  if (currentPage == thisPage){
+  	pSpinner->cancelled = 0;
+	
+	// The ProgressSpinner uses an internal count. No need to pass starting value
+	// and increment to it
+  	postAnimation(pSpinner, 0, 0, ProgressSpinnerUpdate);
   }
   
   // A step input has occured, wait for a steady state before checking again
@@ -211,6 +228,9 @@ void checkDevices(Measurement * measurement, Page * currentPage){
 		}
 	  }
 	}
+	
+	// Stop animation
+	pSpinner->cancelled = 1;
   }
   
   // Update the last read values

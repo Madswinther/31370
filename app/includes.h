@@ -48,5 +48,6 @@
 #include "../Custom libs/Pages/navigationbar.h"
 #include "../Custom libs/graphics/graph.h"
 #include "../Custom libs/graphics/ProgressBar.h"
+#include "../Custom libs/graphics/ProgressSpinner.h"
 
 #endif  // __INCLUDES_H

@@ -1863,6 +1863,12 @@
       <file>
         <name>$PROJ_DIR$\Custom libs\graphics\ProgressBar.h</name>
       </file>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\graphics\ProgressSpinner.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\graphics\ProgressSpinner.h</name>
+      </file>
     </group>
     <group>
       <name>Pages</name>
