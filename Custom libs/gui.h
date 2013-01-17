@@ -31,6 +31,7 @@ typedef struct{
   char type;
   short left, right, top, bottom;
   char clickable;
+  char hidden;
   void (*onClick)();
   int backgroundColor, borderColor;
   char * text;
@@ -41,6 +42,7 @@ RectangleWindow * initRectangleWindow(int left, int top, int right, int bottom, 
 void setText(void * window, char * text);
 void setOnClick(void * window, void (*function)());
 void drawWindow(void * window);
+void setHidden(void * window, char hide);
 char onTouch(void * window, int x, int y);
 
 #endif // __GUI_H
