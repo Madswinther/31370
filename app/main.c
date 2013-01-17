@@ -27,6 +27,7 @@ Page * mainPage;
 Page * learningPage;
 Page * graphPage;
 Page * devicesPage;
+Page * navigationBar;
 
 char Buffer[BUFFER_SIZE];
 
@@ -52,6 +53,10 @@ int main(void){
   // Init animations
   initAnimations();
   
+  // Init navigationBar
+  navigationBar = initNavigationBar();
+  
+  // Init pages
   mainPage = initMainPage();
   learningPage = initLearningPage();
   graphPage = initGraphPage();
@@ -61,7 +66,11 @@ int main(void){
   while(1){
 	if(TouchGet(&XY_Touch))
     {
-	  dispatchTouch(currentPage->layout, XY_Touch.X, XY_Touch.Y);
+	  // Check if the current Page accepts the touch
+	  if (!dispatchTouch(currentPage->layout, XY_Touch.X, XY_Touch.Y)){
+		// Touch not accepted, pass it on to the navigationBar
+		dispatchTouch(navigationBar->layout, XY_Touch.X, XY_Touch.Y);
+	  }
       if (Touch == FALSE){
         Touch = TRUE;
       }
@@ -125,6 +134,7 @@ void swapToPage(int page){
   // Clear all graphics before changing page
   CLEAR_SCREEN();
   drawWindows(currentPage->layout);
+  drawWindows(navigationBar->layout);
   currentPage->drawn = 1;
 }
 

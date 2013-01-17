@@ -4,15 +4,9 @@
 #ifndef __GRAPHPAGE_H
 #define __GRAPHPAGE_H
 
-#define VOLTAGE_BUTTON 4
-#define CURRENT_BUTTON 5
-#define POWER_BUTTON 6
-
-extern void swapToPage (int page);
-extern void swapToMain();
-extern void swapToLearning();
-extern void swapToDevices();
-extern void lightLed();
+#define VOLTAGE_BUTTON 0
+#define CURRENT_BUTTON 1
+#define POWER_BUTTON 2
 
 Page * initGraphPage();
 void updateGraphPage(Measurement * measurement, char draw);

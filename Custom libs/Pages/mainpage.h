@@ -13,13 +13,6 @@ typedef struct{
   char drawn;
 } Page;
 
-extern void swapToPage(int page);
-
 Page * initMainPage();
-void swapToMain();
-void swapToLearning();
-void swapToGraph();
-void swapToDevices();
-void lightLed();
 
 #endif

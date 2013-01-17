@@ -19,32 +19,16 @@ Page * initLearningPage(){
   temp->layout = initLayout();
   temp->drawn = 0;
   
-  RectangleWindow * homebutton = initRectangleWindow(0, 190, 80, 239, BUTTON_BACKGROUND, BUTTON_BORDER);
-  RectangleWindow * learnbutton = initRectangleWindow(80, 190, 160, 239, BUTTON_SELECTED, BUTTON_BORDER);
-  RectangleWindow * graphbutton = initRectangleWindow(160, 190, 240, 239, BUTTON_BACKGROUND, BUTTON_BORDER);
-  RectangleWindow * devicebutton = initRectangleWindow(240, 190, 319, 239, BUTTON_BACKGROUND, BUTTON_BORDER);
   RectangleWindow * beginlearning = initRectangleWindow(90, 50, 230, 100, BUTTON_BACKGROUND, BUTTON_BORDER);
   pb = ProgressBarInit(10, 105, 300, 55, 0xFF0000, 0x3F3F3F);
   
-  setText(homebutton, "Home");
-  setText(learnbutton, "Learn");
-  setText(graphbutton, "Graph");
-  setText(devicebutton, "Devices");
   setText(beginlearning, "Start Learning");
   
   // Add windows
-  addWindow(temp->layout, homebutton);
-  addWindow(temp->layout, learnbutton);
-  addWindow(temp->layout, graphbutton);
-  addWindow(temp->layout, devicebutton);
   addWindow(temp->layout, beginlearning);
   addWindow(temp->layout, pb);
   
   // Set onClick listeners
-  setOnClick(homebutton, swapToMain);
-  setOnClick(learnbutton, lightLed);
-  setOnClick(graphbutton, swapToGraph);
-  setOnClick(devicebutton, swapToDevices);
   setOnClick(beginlearning, doLearn);
   
   return temp;

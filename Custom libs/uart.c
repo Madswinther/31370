@@ -7,6 +7,8 @@ char RxFlag = 0;
 
 void UartCheck(char * externUART_Buffer){
   if (RxFlag){	
+	// Flag is high, copy the contents of the internal UART buffer to the main
+	// Buffer
 	for (int i=0; i<BUFFER_SIZE; i++){
 	  externUART_Buffer[i] = UART_Buffer[i];
 	  
@@ -16,6 +18,7 @@ void UartCheck(char * externUART_Buffer){
 	RxFlag = 0;
   }
   else{
+	// A full command has not been received yet.
 	externUART_Buffer[0] = 'E';
   }
 }
@@ -28,6 +31,7 @@ static void Uart0Isr(void){
   if (!RxFlag){
 	if (iterator == 0){
 	  if (U0RBR == 'Z'){
+		// Starting character received
 		UART_Buffer[iterator] = 'Z';
 		iterator = 1;
 	  }
@@ -36,13 +40,18 @@ static void Uart0Isr(void){
 	  // Transmission has been started by a valid character, just continue streaming
 	  UART_Buffer[iterator] = U0RBR;
 	  iterator++;
+	  
+	  // Check for carriage return. This signified the end of a transmission
 	  if (iterator >= BUFFER_SIZE || UART_Buffer[iterator-1] == '\r'){
 		iterator = 0;
+		
+		// Set the flag high to allow the buffer to be passed onto the main program
 		RxFlag = 1;
 	  }
 	}
   }
   else{
+	// U0RBR must always be read
 	if (U0RBR == 0);
   }
   VICADDRESS = 0;  // Clear interrupt in VIC.

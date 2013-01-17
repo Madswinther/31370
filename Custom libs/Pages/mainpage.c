@@ -11,50 +11,13 @@ Page * initMainPage(){
 	temp->layout = initLayout();
 	temp->drawn = 0;
 	
-	int backgroundColor = 0x000000;
 	
-	RectangleWindow * homebutton = initRectangleWindow(0, 190, 80, 239, BUTTON_SELECTED, BUTTON_BORDER);
-	RectangleWindow * learnbutton = initRectangleWindow(80, 190, 160, 239, BUTTON_BACKGROUND, BUTTON_BORDER);
-	RectangleWindow * graphbutton = initRectangleWindow(160, 190, 240, 239, BUTTON_BACKGROUND, BUTTON_BORDER);
-	RectangleWindow * devicesbutton = initRectangleWindow(240, 190, 319, 239, BUTTON_BACKGROUND, BUTTON_BORDER);
+	RectangleWindow * welcome = initRectangleWindow(250, 0, 317, 50, BUTTON_SELECTED, BUTTON_BORDER);
 	
-	setText(homebutton, "Home");
-	setText(learnbutton, "Learn");
-	setText(graphbutton, "Graph");
-	setText(devicesbutton, "Devices");
+	setText(welcome, "Welcome!");
   
 	// Add windows
-	addWindow(temp->layout, homebutton);
-	addWindow(temp->layout, learnbutton);
-	addWindow(temp->layout, graphbutton);
-	addWindow(temp->layout, devicesbutton);
-	
-	// Set onClick listeners
-	setOnClick(homebutton, lightLed);
-	setOnClick(learnbutton, swapToLearning);
-	setOnClick(graphbutton, swapToGraph);
-	setOnClick(devicesbutton, swapToDevices);
+	addWindow(temp->layout, welcome);
 	
 	return temp;
-}
-
-void swapToLearning(){
-  	// 1 means LearningPage
-	swapToPage(1);
-}
-
-void swapToMain(){
-	swapToPage(0);
-}
-
-void swapToGraph(){
-	swapToPage(2);
-}
-
-void swapToDevices(){
-  	swapToPage(3);
-}
-
-void lightLed(){
-	USB_H_LINK_LED_FCLR = USB_H_LINK_LED_MASK;    
 }

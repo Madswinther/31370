@@ -1890,6 +1890,12 @@
       <file>
         <name>$PROJ_DIR$\Custom libs\Pages\mainpage.h</name>
       </file>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\Pages\navigationbar.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\Pages\navigationbar.h</name>
+      </file>
     </group>
     <file>
       <name>$PROJ_DIR$\Custom libs\animation.c</name>
