@@ -1,6 +1,7 @@
 #include "httpd.h"
 #include "httpd-fs.h"
 #include "httpd-fsdata.h"
+#include "../Custom libs/parsing.h"
 #include <stdio.h>
 
 #ifndef NULL
@@ -8,6 +9,7 @@
 #endif
 
 //#include "httpd-fsdata.c"
+
 
 #if HTTPD_FS_STATISTICS
 static u16_t count[HTTPD_FS_NUMFILES];
@@ -18,39 +20,119 @@ static u16_t count[HTTPD_FS_NUMFILES];
 static char XML_Data[XML_DATA_SIZE];
 static char iter = 0;
 
-typedef struct {const char * str; const char len;}String;
+const Streng xml_str = {"<?xml version=\"1.0\" encoding=\"UTF-8\"?>", 38};
+const Streng d_token = {"<D>", 3};
+const Streng d_token_end = {"</D>", 4};
+const Streng m_token = {"<M>", 3};
+const Streng m_token_end = {"</M>", 4};
+const Streng v_token = {"<V>", 3};
+const Streng v_token_end = {"</V>", 4};
+const Streng i_token = {"<I>", 3};
+const Streng i_token_end = {"</I>", 4};
+const Streng p_token = {"<P>", 3};
+const Streng p_token_end = {"</P>", 4};
+const Streng q_token = {"<Q>", 3};
+const Streng q_token_end = {"</Q>", 4};
+const Streng h_token = {"<H>", 3};
+const Streng h_token_end = {"</H>", 4};
 
-const String xml_str = {"<?xml version=\"1.0\" encoding=\"UTF-8\"?>", 38};
-const String d_token = {"<D>", 3};
-const String d_token_end = {"</D>", 4};
-const String v_token = {"<V>", 3};
-const String v_token_end = {"</V>", 4};
 
-void XML_addData(double value){
-  if (iter+XML_ENTRY_SIZE >= XML_DATA_SIZE) return;
-  
-  if (iter == 0){	
-	// Initialize XML stream
-	for (char j = 0; j <  xml_str.len; j++){
-	  XML_Data[j] = xml_str.str[j];
+// Add contents of tekst into the xml data buffer
+void XML_addString(const Streng * tekst) {
+	for (char j = 0; j < tekst->len; j++) {
+		XML_Data[iter+j] = tekst->str[j];
 	}
-	iter += xml_str.len;
+	iter += tekst->len;
+}
+
+// Add element to the xml data buffer
+void XML_addValue(double value, Streng * tag_start, Streng * tag_end) {
 	
-	// Add the root element
-	for (char j=0; j < d_token.len; j++){
-	  XML_Data[iter+j] = d_token.str[j];
+	// Add start tag
+	XML_addString(tag_start);
+
+	// Convert double to string
+	char temp[7];
+	int integers = (int)value;
+	int decimals = (int)((value-integers)*100);
+	snprintf(temp, 7, "%03d.%02d", integers, decimals);
+	
+	// Add value string to the xml buffer
+	for (char j=0; j < 6; j++){
+		XML_Data[iter+j] = temp[j];
 	}
-	iter += d_token.len;
-  }
-  else{
-	iter -= d_token_end.len;
-  }
+	iter += 6;
+	
+	// Add end tag
+	XML_addString(tag_end);
+}
+
+// Add measurement element to the xml
+void XML_addMeasurement(Measurement * data) {
+
+	// Check for file size limit exceeded
+	if (iter+XML_ENTRY_SIZE >= XML_DATA_SIZE) return;
+
+	
+	// Is it the first element to be added to the xml-file?
+	if (iter == 0){
+		// Initialize XML buffer, add xml-header
+		XML_addString(&xml_str);
+		
+		// Add start tag of root element
+		XML_addString(&d_token);
+		
+	} else{
+		// If this is not the first element, overwrite the end tag of root element 
+		iter -= d_token_end.len;
+	}
+		
+	// Add start tag
+	XML_addString(&m_token);
+	
+	// Add elements of measurement
+	XML_addValue(data->voltage, (Streng *)&v_token, (Streng *)&v_token_end);
+	XML_addValue(data->current, (Streng *)&i_token, (Streng *)&i_token_end);
+	XML_addValue(data->P_power, (Streng *)&p_token, (Streng *)&p_token_end);
+	XML_addValue(data->Q_power, (Streng *)&q_token, (Streng *)&q_token_end);
+	XML_addValue(data->H_power, (Streng *)&h_token, (Streng *)&h_token_end);
+
+	// Add end tag of measurement
+	XML_addString((Streng *)&m_token_end);
+	
+	// Add end tag of root element
+	XML_addString((Streng *)&d_token_end);	
+}
+
+
+/*
+void XML_addData(double value){
+
+	// Check for file size limit exceeded
+	if (iter+XML_ENTRY_SIZE >= XML_DATA_SIZE) return;
+
   
-  // Add header
-  for (char j=0; j < v_token.len; j++){
-	XML_Data[iter+j] = v_token.str[j];
-  }
-  iter += v_token.len;
+	if (iter == 0){
+		// Initialize XML stream
+		for (char j = 0; j <  xml_str.len; j++){
+			XML_Data[j] = xml_str.str[j];
+		}
+		iter += xml_str.len;
+		
+		// Add the root element
+		for (char j=0; j < d_token.len; j++){
+		XML_Data[iter+j] = d_token.str[j];
+		}
+		iter += d_token.len;
+	} else{
+		iter -= d_token_end.len;
+	}
+  
+	// Add header
+	for (char j=0; j < v_token.len; j++){
+		XML_Data[iter+j] = v_token.str[j];
+	}
+	iter += v_token.len;
   
   
   // Add data
@@ -76,6 +158,11 @@ void XML_addData(double value){
   }
   iter += d_token_end.len;
 }
+*/
+
+
+
+
 
 static u8_t httpd_fs_strcmp(const char *str1, const char *str2) {
   u8_t i;

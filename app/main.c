@@ -124,7 +124,8 @@ int main(void){
 	  updateGraphPage(&measurement, currentPage == graphPage);
 	  checkDevices(&measurement, currentPage);
 	  
-	  XML_addData(measurement.voltage);
+	  //XML_addData(measurement.voltage);
+	  XML_addMeasurement(&measurement);
 	  
 	  double vRMS = measurement.voltage;
 	  double iRMS = measurement.current;

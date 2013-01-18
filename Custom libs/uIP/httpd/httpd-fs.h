@@ -35,12 +35,20 @@
 #ifndef __HTTPD_FS_H__
 #define __HTTPD_FS_H__
 
+#include "../Custom libs/parsing.h"
+	 
 #define HTTPD_FS_STATISTICS 1
 
 struct httpd_fs_file {
   char *data;
   int len;
 };
+
+typedef struct {
+	const char * str; 
+	const char len;
+}Streng;
+
 
 /* file must be allocated by caller and will be filled in
    by the function. */
@@ -53,6 +61,10 @@ u16_t httpd_fs_count(char *name);
 #endif /* HTTPD_FS_STATISTICS */
 
 void httpd_fs_init(void);
-void XML_addData(double value);
+void XML_addString(const Streng * tekst);
+void XML_addValue(double value, Streng * tag_start, Streng * tag_end);
+void XML_addMeasurement(Measurement * data);
+
+//void XML_addData(double value);
 
 #endif /* __HTTPD_FS_H__ */
