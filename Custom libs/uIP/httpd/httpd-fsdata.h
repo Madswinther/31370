@@ -65,13 +65,13 @@ struct httpd_fsdata_file_noconst {
 
 extern const struct httpd_fsdata_file file_index_html;
 extern const struct httpd_fsdata_file file_testmis_html;
-//extern const struct httpd_fsdata_file file_404_html;
-//extern const struct httpd_fsdata_file file_style_css;
+extern const struct httpd_fsdata_file file_404_html;
+extern const struct httpd_fsdata_file file_style_css;
 extern const struct httpd_fsdata_file file_test_xml;
 
 
 #define HTTPD_FS_ROOT &file_test_xml
-#define HTTPD_FS_NUMFILES 3
+#define HTTPD_FS_NUMFILES 5
 
 
 #endif /* __HTTPD_FSDATA_H__ */

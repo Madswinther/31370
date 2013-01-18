@@ -53,5 +53,6 @@ u16_t httpd_fs_count(char *name);
 #endif /* HTTPD_FS_STATISTICS */
 
 void httpd_fs_init(void);
+void XML_addData(double value);
 
 #endif /* __HTTPD_FS_H__ */

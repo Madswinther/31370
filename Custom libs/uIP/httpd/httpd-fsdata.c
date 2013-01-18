@@ -42,7 +42,7 @@ static const char data_testmis_html[] = {
 
 
 // 404.html
-/*
+
 static const unsigned char data_404_html[] = {
 	0x2f, 0x34, 0x30, 0x34, 0x2e, 0x68, 0x74, 0x6d, 0x6c, 0,
 	0x3c, 0x68, 0x74, 0x6d, 0x6c, 0x3e, 0xa, 0x20, 0x20, 0x3c,
@@ -62,11 +62,10 @@ static const unsigned char data_404_html[] = {
 	0x72, 0x3e, 0xa, 0x20, 0x20, 0x3c, 0x2f, 0x62, 0x6f, 0x64,
 	0x79, 0x3e, 0xa, 0x3c, 0x2f, 0x68, 0x74, 0x6d, 0x6c, 0x3e,0
 };
-*/
 
 
 // style.css
-/*
+
 static const unsigned char data_style_css[] = {
 	0x2f, 0x73, 0x74, 0x79, 0x6c, 0x65, 0x2e, 0x63, 0x73, 0x73, 0,
 	0x68, 0x31, 0x20, 0xa, 0x7b, 0xa, 0x20, 0x20, 0x74, 0x65,
@@ -172,7 +171,7 @@ static const unsigned char data_style_css[] = {
 	0x67, 0x6e, 0x3a, 0x72, 0x69, 0x67, 0x68, 0x74, 0x3b, 0x20,
 	0xa, 0x7d, 0xa, 0xa, 0
 };
-*/
+
 
 // test.xml (152 bytes)
 static const unsigned char data_test_xml[] = {
@@ -199,8 +198,8 @@ static const unsigned char data_test_xml[] = {
 
 const struct httpd_fsdata_file file_index_html = {NULL, (char const*)data_index_html, (char const*)data_index_html + 12, sizeof(data_index_html) - 12};
 const struct httpd_fsdata_file file_testmis_html = {&file_index_html, (char const*)data_testmis_html, (char const*)data_testmis_html + 14, sizeof(data_testmis_html) - 14};
-//const struct httpd_fsdata_file file_404_html = {&file_testmis_html, (char const*)data_404_html, (char const*)data_404_html + 10, sizeof(data_404_html) - 10};
-//const struct httpd_fsdata_file file_style_css = {&file_404_html, (char const*)data_style_css, (char const*)data_style_css + 11, sizeof(data_style_css) - 11};
-const struct httpd_fsdata_file file_test_xml = {&file_testmis_html, (char const*)data_test_xml, (char const*)data_test_xml + 10, sizeof(data_test_xml) - 10};
+const struct httpd_fsdata_file file_404_html = {&file_testmis_html, (char const*)data_404_html, (char const*)data_404_html + 10, sizeof(data_404_html) - 10};
+const struct httpd_fsdata_file file_style_css = {&file_404_html, (char const*)data_style_css, (char const*)data_style_css + 11, sizeof(data_style_css) - 11};
+const struct httpd_fsdata_file file_test_xml = {&file_style_css, (char const*)data_test_xml, (char const*)data_test_xml + 10, sizeof(data_test_xml) - 10};
 
 

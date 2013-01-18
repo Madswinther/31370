@@ -83,6 +83,12 @@ void addDevice(double activePower, double reactivePower, double harmonicPower){
   else{
   	// Init Window and add it to the array of devices
   	RectangleWindow * devicebutton = initRectangleWindow(mX, mY, mX+50, mY+50, DEVICE_ON, BUTTON_BORDER);
+	
+	// Number the devices - requires two bytes of memory to store the number
+	char * number = malloc( sizeof(char) * ( 1 + 1 ) );
+	number[0] = size+0x30;
+	number[1] = '\0';
+	setText(devicebutton, number);
   	devices[size] = deviceInit(activePower, reactivePower, harmonicPower, devicebutton);
 	addWindow(thisPage->layout, devicebutton);
   }

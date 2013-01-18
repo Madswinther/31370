@@ -75,7 +75,7 @@
       <file>$PROJ_DIR$\Custom libs\uIP\lc-switch.h</file>
       <file>$PROJ_DIR$\Custom libs\uIP\lc-addrlabels.h</file>
       <file>$PROJ_DIR$\Custom libs\uIP\clock.h</file>
-      <file>$PROJ_DIR$\Custom libs\uIP\lpc24xx_enet.h</file>
+      <file>$PROJ_DIR$\Custom libs\uIP\LPC24xx_enet.h</file>
       <file>$PROJ_DIR$\Custom libs\uIP\LPC24xx_enet.c</file>
       <file>$PROJ_DIR$\Custom libs\uIP\lc.h</file>
       <file>$PROJ_DIR$\Custom libs\uIP\uip-conf.h</file>
@@ -348,11 +348,11 @@
       <inputs>
         <tool>
           <name>ICCARM</name>
-          <file> 62 75 86 72 159 95 131 146 147 91 24 31 132 63 76 71 66 57 60 82</file>
+          <file> 62 75 86 72 159 95 131 146 147 91 24 31 132 63 76 71 66 57 60 82 45 124 46</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 62 75 86 72 159 95 131 146 147 91 24 31 132 63 76 71 66 57 60 82</file>
+          <file> 62 75 86 72 159 95 131 146 147 91 24 31 132 63 76 71 66 57 60 82 45 124 46</file>
         </tool>
       </inputs>
     </file>
@@ -693,6 +693,10 @@
       <inputs>
         <tool>
           <name>ICCARM</name>
+          <file> 102 111 93 45 95 146 147 91 24 31 132 124 46 92 134 40 48 23 143 53 150 13 11 32 153 39 42 142 157 36 94 154 122 50 129 14 64 79 68 72 159 131 63 62 75 86 76 71 66 57 83 82 73 69 107 3 113 115 109 0 100 98 9 104 1 5</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
           <file> 102 111 93 45 95 146 147 91 24 31 132 124 46 92 134 40 48 23 143 53 150 13 11 32 153 39 42 142 157 36 94 154 122 50 129 14 64 79 68 72 159 131 63 62 75 86 76 71 66 57 83 82 73 69 107 3 113 115 109 0 100 98 9 104 1 5</file>
         </tool>
       </inputs>
