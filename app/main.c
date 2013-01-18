@@ -12,6 +12,7 @@ __root const unsigned crp = NONPROT;
 #endif
 
 #define LCD_VRAM_BASE_ADDR ((Int32U)&SDRAM_BASE_ADDR)
+#define BUF ((struct uip_eth_hdr *)&uip_buf[0])
 
 extern Int32U SDRAM_BASE_ADDR;
 extern FontType_t Terminal_6_8_6;
@@ -36,6 +37,14 @@ int main(void){
   for (int i=0; i<BUFFER_SIZE; i++){
 	Buffer[i] = 0;
   }
+  
+  //uIP
+  unsigned int i;
+  uip_ipaddr_t ipaddr;
+  struct timer periodic_timer, arp_timer;
+  clock_init(2);
+  timer_set(&periodic_timer, CLOCK_SECOND / 2);
+  timer_set(&arp_timer, CLOCK_SECOND * 10);
   
   init();
   
@@ -63,26 +72,48 @@ int main(void){
   devicesPage = initDevicesPage();
   
   swapToPage(0);
+  
+  // Initialize the ethernet device driver
+  do{
+	GLCD_TextSetPos(0,0);
+  }
+  while(!tapdev_init());
+  GLCD_TextSetPos(0,0);
+  
+  // uIP web server
+  // Initialize the uIP TCP/IP stack.
+  uip_init();
+  
+  uip_ipaddr(ipaddr, 192,168,0,100);
+  uip_sethostaddr(ipaddr);
+  uip_ipaddr(ipaddr, 192,168,0,1);
+  uip_setdraddr(ipaddr);
+  uip_ipaddr(ipaddr, 255,255,255,0);
+  uip_setnetmask(ipaddr);
+  
+  // Initialize the HTTP server.
+  httpd_init();
+  
   while(1){
 	if(TouchGet(&XY_Touch))
-    {
+	{
 	  // Check if the current Page accepts the touch
 	  if (!dispatchTouch(currentPage->layout, XY_Touch.X, XY_Touch.Y)){
 		// Touch not accepted, pass it on to the navigationBar
 		dispatchTouch(navigationBar->layout, XY_Touch.X, XY_Touch.Y);
 	  }
-      if (Touch == FALSE){
-        Touch = TRUE;
-      }
-    }
+	  if (Touch == FALSE){
+		Touch = TRUE;
+	  }
+	}
 	else if(Touch)
     {
-      USB_H_LINK_LED_FSET = USB_H_LINK_LED_MASK;
-      Touch = FALSE;
-    }
+	  USB_H_LINK_LED_FSET = USB_H_LINK_LED_MASK;
+	  Touch = FALSE;
+	}
 	
 	
-    // Data from UART0
+	// Data from UART0
 	UartCheck(Buffer);
 	
 	if (Buffer[0] != 'E'){
@@ -104,6 +135,63 @@ int main(void){
 		GLCD_TextSetPos(0,0);
 		GLCD_SetFont(&Terminal_9_12_6,0xFFFFFF,0x000000);
 		GLCD_print(" Voltage: %f\r\n Current: %f\r\n Power: \t%f\r\n Reac: \t%f\r\n Har: \t%f", vRMS, iRMS, pACT, pREAC, pHAR);
+	  }
+	}
+	
+	// HANDLE uIP
+	uip_len = tapdev_read(uip_buf);
+	if(uip_len > 0)
+	{
+	  if(BUF->type == htons(UIP_ETHTYPE_IP)) {
+		uip_arp_ipin();
+		uip_input();
+		/* If the above function invocation resulted in data that
+		should be sent out on the network, the global variable
+		uip_len is set to a value > 0. */
+		if(uip_len > 0) {
+		  uip_arp_out();
+		  tapdev_send(uip_buf,uip_len);
+		}
+	  }
+	  else if(BUF->type == htons(UIP_ETHTYPE_ARP))
+	  {
+		uip_arp_arpin();
+		/* If the above function invocation resulted in data that
+		should be sent out on the network, the global variable
+		uip_len is set to a value > 0. */
+		if(uip_len > 0) {
+		  tapdev_send(uip_buf,uip_len);
+		}
+	  }
+	}
+	else if(timer_expired(&periodic_timer)) {
+	  timer_reset(&periodic_timer);
+	  for(i = 0; i < UIP_CONNS; i++) {
+		uip_periodic(i);
+		/* If the above function invocation resulted in data that
+		should be sent out on the network, the global variable
+		uip_len is set to a value > 0. */
+		if(uip_len > 0) {
+		  uip_arp_out();
+		  tapdev_send(uip_buf,uip_len);
+		}
+	  }
+#if UIP_UDP
+	  for(i = 0; i < UIP_UDP_CONNS; i++) {
+		uip_udp_periodic(i);
+		/* If the above function invocation resulted in data that
+		should be sent out on the network, the global variable
+		uip_len is set to a value > 0. */
+		if(uip_len > 0) {
+		  uip_arp_out();
+		  tapdev_send();
+		}
+	  }
+#endif /* UIP_UDP */
+	  /* Call the ARP timer function every 10 seconds. */
+	  if(timer_expired(&arp_timer)) {
+		timer_reset(&arp_timer);
+		uip_arp_timer();
 	  }
 	}
   }

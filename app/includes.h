@@ -32,7 +32,17 @@
 #include "sys.h"
 #include "sdram_64M_32bit_drv.h"
 #include "drv_glcd.h"
-#include "iar_logo.h"
+
+//uIP
+#include "../Custom libs/uIP/clock-arch.h"
+#include "../Custom libs/uIP/timer.h"
+#include "../Custom libs/uIP/uip-conf.h"
+#include "../Custom libs/uIP/uipopt.h"
+#include "../Custom libs/uIP/uip_arp.h"
+#include "../Custom libs/uIP/uip.h"
+#include "../Custom libs/uIP/tapdev.h"
+#include "../Custom libs/uIP/httpd/httpd.h"
+#include "../Custom libs/uIP/LPC24xx_enet.h"
    
 // User defines
 #include "../Custom libs/animation.h"

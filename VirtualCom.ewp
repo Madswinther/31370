@@ -229,7 +229,7 @@
         <option>
           <name>CCAllowList</name>
           <version>1</version>
-          <state>0000000</state>
+          <state>1111111</state>
         </option>
         <option>
           <name>CCDebugInfo</name>
@@ -320,16 +320,16 @@
         </option>
         <option>
           <name>CCOptLevel</name>
-          <state>1</state>
+          <state>3</state>
         </option>
         <option>
           <name>CCOptStrategy</name>
           <version>0</version>
-          <state>0</state>
+          <state>1</state>
         </option>
         <option>
           <name>CCOptLevelSlave</name>
-          <state>1</state>
+          <state>3</state>
         </option>
         <option>
           <name>CompilerMisraRules98</name>
@@ -575,7 +575,7 @@
         </option>
         <option>
           <name>OOCOutputFile</name>
-          <state></state>
+          <state>VirtualCom.srec</state>
         </option>
         <option>
           <name>OOCCommandLineProducer</name>
@@ -1974,6 +1974,114 @@
     </group>
     <group>
       <name>UARTs</name>
+    </group>
+    <group>
+      <name>uIP</name>
+      <group>
+        <name>httpd</name>
+        <file>
+          <name>$PROJ_DIR$\Custom libs\uIP\httpd\http-strings.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\Custom libs\uIP\httpd\http-strings.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\Custom libs\uIP\httpd\httpd-cgi.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\Custom libs\uIP\httpd\httpd-cgi.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\Custom libs\uIP\httpd\httpd-fs.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\Custom libs\uIP\httpd\httpd-fs.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\Custom libs\uIP\httpd\httpd-fsdata.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\Custom libs\uIP\httpd\httpd-fsdata.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\Custom libs\uIP\httpd\httpd.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\Custom libs\uIP\httpd\httpd.h</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\Custom libs\uIP\httpd\webserver.h</name>
+        </file>
+      </group>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\uIP\clock-arch.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\uIP\clock-arch.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\uIP\clock.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\uIP\lc-addrlabels.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\uIP\lc-switch.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\uIP\lc.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\uIP\LPC24xx_enet.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\uIP\lpc24xx_enet.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\uIP\psock.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\uIP\psock.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\uIP\pt.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\uIP\tapdev.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\uIP\timer.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\uIP\timer.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\uIP\uip-conf.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\uIP\uip.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\uIP\uip.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\uIP\uip_arch.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\uIP\uip_arp.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\uIP\uip_arp.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\uIP\uiplib.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\uIP\uiplib.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\Custom libs\uIP\uipopt.h</name>
+      </file>
     </group>
     <file>
       <name>$PROJ_DIR$\board\sys.c</name>
