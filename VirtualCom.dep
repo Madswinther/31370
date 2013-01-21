@@ -105,7 +105,7 @@
       <file>$PROJ_DIR$\Custom libs\uIP\clock.h</file>
       <file>$PROJ_DIR$\Custom libs\uIP\lc-addrlabels.h</file>
       <file>$PROJ_DIR$\Custom libs\uIP\lc-switch.h</file>
-      <file>$PROJ_DIR$\Custom libs\uIP\LPC24xx_enet.h</file>
+      <file>$PROJ_DIR$\Custom libs\uIP\lpc24xx_enet.h</file>
       <file>$PROJ_DIR$\Custom libs\uIP\LPC24xx_enet.c</file>
       <file>$PROJ_DIR$\Custom libs\uIP\lc.h</file>
       <file>$PROJ_DIR$\app\main.c</file>
