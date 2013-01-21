@@ -20,15 +20,15 @@ extern FontType_t Terminal_9_12_6;
 extern FontType_t Terminal_18_24_12;
 
 void init();
-void swapToPage (int page);
+void swapToLayout (int layout);
 
 Measurement measurement;
-Page * currentPage;
-Page * mainPage;
-Page * learningPage;
-Page * graphPage;
-Page * devicesPage;
-Page * navigationBar;
+Layout * currentLayout;
+Layout * mainLayout;
+Layout * learningLayout;
+Layout * graphLayout;
+Layout * devicesLayout;
+Layout * navigationBar;
 
 char Buffer[BUFFER_SIZE];
 
@@ -59,6 +59,9 @@ int main(void){
   // Init UART
   UartInit(UART_0,4,NORM);
   
+  // Init Real Time Clock
+  RTC_init();
+  
   // Init animations
   initAnimations();
   
@@ -66,12 +69,12 @@ int main(void){
   navigationBar = initNavigationBar();
   
   // Init pages
-  mainPage = initMainPage();
-  learningPage = initLearningPage();
-  graphPage = initGraphPage();
-  devicesPage = initDevicesPage();
+  mainLayout = initMainLayout();
+  learningLayout = initLearningLayout();
+  graphLayout = initGraphLayout();
+  devicesLayout = initDevicesLayout();
   
-  swapToPage(0);
+  swapToLayout(0);
   
   // Initialize the ethernet device driver
   do{
@@ -97,10 +100,10 @@ int main(void){
   while(1){
 	if(TouchGet(&XY_Touch))
 	{
-	  // Check if the current Page accepts the touch
-	  if (!dispatchTouch(currentPage->layout, XY_Touch.X, XY_Touch.Y)){
+	  // Check if the current Layout accepts the touch
+	  if (!dispatchTouch(currentLayout, XY_Touch.X, XY_Touch.Y)){
 		// Touch not accepted, pass it on to the navigationBar
-		dispatchTouch(navigationBar->layout, XY_Touch.X, XY_Touch.Y);
+		dispatchTouch(navigationBar, XY_Touch.X, XY_Touch.Y);
 	  }
 	  if (Touch == FALSE){
 		Touch = TRUE;
@@ -121,8 +124,8 @@ int main(void){
 	  parse(Buffer, &measurement);
 	  
 	  // Notify the graph
-	  updateGraphPage(&measurement, currentPage == graphPage);
-	  checkDevices(&measurement, currentPage);
+	  updateGraphLayout(&measurement, currentLayout == graphLayout);
+	  checkDevices(&measurement, currentLayout);
 	  
 	  //XML_addData(measurement.voltage);
 	  XML_addMeasurement(&measurement);
@@ -133,7 +136,7 @@ int main(void){
 	  double pREAC = measurement.Q_power;
 	  double pHAR = measurement.H_power;
 	  
-	  if (currentPage == mainPage){
+	  if (currentLayout == mainLayout){
 		GLCD_SetWindow(0, 0, 150, 70);  
 		GLCD_TextSetPos(0,0);
 		GLCD_SetFont(&Terminal_9_12_6,0xFFFFFF,0x000000);
@@ -200,33 +203,32 @@ int main(void){
   }
 }
 
-void swapToPage(int page){
+void swapToLayout(int page){
   if (isAnimating()) return;
   
   switch (page){
   case 0:
 	//mainpage
-	if (currentPage == mainPage) return;
-	currentPage = mainPage;	
+	if (currentLayout == mainLayout) return;
+	currentLayout = mainLayout;	
 	break;
   case 1:
-	if (currentPage == learningPage) return;
-	currentPage = learningPage;
+	if (currentLayout == learningLayout) return;
+	currentLayout = learningLayout;
 	break;
   case 2:
-	if (currentPage == graphPage) return;
-	currentPage = graphPage;
+	if (currentLayout == graphLayout) return;
+	currentLayout = graphLayout;
 	break;
   case 3:
-	if (currentPage == devicesPage) return;
-	currentPage = devicesPage;
+	if (currentLayout == devicesLayout) return;
+	currentLayout = devicesLayout;
 	break;
   }
   // Clear all graphics before changing page
   CLEAR_SCREEN();
-  drawWindows(currentPage->layout);
-  drawWindows(navigationBar->layout);
-  currentPage->drawn = 1;
+  drawWindows(currentLayout);
+  drawWindows(navigationBar);
 }
 
 Measurement * getMeasurement(){

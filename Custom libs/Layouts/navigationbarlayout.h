@@ -1,7 +1,7 @@
 #include "../layout.h"
 
-#ifndef __NAVIGATIONBAR_H
-#define __NAVIGATIONBAR_H
+#ifndef __NAVIGATIONBARLAYOUT_H
+#define __NAVIGATIONBARLAYOUT_H
 
 #define BUTTON_BACKGROUND 0x0
 #define BUTTON_SELECTED 0x303030
@@ -9,7 +9,7 @@
 
 extern void swapToPage(int page);
 
-Page * initNavigationBar();
+Layout * initNavigationBar();
 void swapToMain();
 void swapToLearning();
 void swapToGraph();

@@ -1871,36 +1871,36 @@
       </file>
     </group>
     <group>
-      <name>Pages</name>
+      <name>Layouts</name>
       <file>
-        <name>$PROJ_DIR$\Custom libs\Pages\devicespage.c</name>
+        <name>$PROJ_DIR$\Custom libs\Layouts\deviceslayout.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\Pages\devicespage.h</name>
+        <name>$PROJ_DIR$\Custom libs\Layouts\deviceslayout.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\Pages\graphpage.c</name>
+        <name>$PROJ_DIR$\Custom libs\Layouts\graphlayout.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\Pages\graphpage.h</name>
+        <name>$PROJ_DIR$\Custom libs\Layouts\graphlayout.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\Pages\learningpage.c</name>
+        <name>$PROJ_DIR$\Custom libs\Layouts\learninglayout.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\Pages\learningpage.h</name>
+        <name>$PROJ_DIR$\Custom libs\Layouts\learninglayout.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\Pages\mainpage.c</name>
+        <name>$PROJ_DIR$\Custom libs\Layouts\mainlayout.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\Pages\mainpage.h</name>
+        <name>$PROJ_DIR$\Custom libs\Layouts\mainlayout.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\Pages\navigationbar.c</name>
+        <name>$PROJ_DIR$\Custom libs\Layouts\navigationbarlayout.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\Pages\navigationbar.h</name>
+        <name>$PROJ_DIR$\Custom libs\Layouts\navigationbarlayout.h</name>
       </file>
     </group>
     <file>
@@ -1926,6 +1926,12 @@
     </file>
     <file>
       <name>$PROJ_DIR$\Custom libs\parsing.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Custom libs\rtc.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Custom libs\rtc.h</name>
     </file>
     <file>
       <name>$PROJ_DIR$\Custom libs\uart.c</name>

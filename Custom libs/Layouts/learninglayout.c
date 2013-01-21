@@ -1,18 +1,15 @@
-#include "learningpage.h"
-#include "mainpage.h"
 #include "includes.h"
 #include <math.h>
 
 ProgressBar * pb;
 
-Page * initLearningPage(){
+Layout * initLearningLayout(){
   // Alloc space
-  Page * temp;
-  temp = (Page*)malloc(sizeof(*temp));
+  Layout * temp;
+  temp = (Layout*)malloc(sizeof(*temp));
   
   // Create layout
-  temp->layout = initLayout();
-  temp->drawn = 0;
+  temp = initLayout();
   
   RectangleWindow * beginlearning = initRectangleWindow(90, 50, 230, 100, BUTTON_BACKGROUND, BUTTON_BORDER);
   pb = ProgressBarInit(10, 105, 300, 55, 0xFF0000, 0x3F3F3F);
@@ -20,8 +17,8 @@ Page * initLearningPage(){
   setText(beginlearning, "Start Learning");
   
   // Add windows
-  addWindow(temp->layout, beginlearning);
-  addWindow(temp->layout, pb);
+  addWindow(temp, beginlearning);
+  addWindow(temp, pb);
   
   // Set onClick listeners
   setOnClick(beginlearning, doLearn);

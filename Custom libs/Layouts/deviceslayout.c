@@ -1,9 +1,7 @@
-#include "devicespage.h"
-#include "mainpage.h"
 #include "includes.h"
 #include <math.h>
 
-static Page * thisPage;
+static Layout * thisLayout;
 static Device * devices[6];
 
 // Iterators to allow for adding devices
@@ -20,9 +18,9 @@ static char steadyDetected = 0;
 // ProgressSpinner
 static ProgressSpinner * pSpinner;
 
-Page * initDevicesPage(){
+Layout * initDevicesLayout(){
   // Alloc space
-  thisPage = (Page*)malloc(sizeof(*thisPage));
+  thisLayout = (Layout*)malloc(sizeof(*thisLayout));
   lastReading = (Measurement*)malloc(sizeof(Measurement));
   lastStationary = (Measurement*)malloc(sizeof(Measurement));
   
@@ -35,8 +33,7 @@ Page * initDevicesPage(){
   lastStationary->H_power = 0;
   
   // Create layout
-  thisPage->layout = initLayout();
-  thisPage->drawn = 0;
+  thisLayout = initLayout();
   
   RectangleWindow * clearbutton = initRectangleWindow(110, 5, 210, 55, BUTTON_BACKGROUND, BUTTON_BORDER);
   pSpinner = ProgressSpinnerInit(258, 0, 60, 0xFFFFFF);
@@ -44,10 +41,9 @@ Page * initDevicesPage(){
   setText(clearbutton, "Clear Devices");
   setOnClick(clearbutton, clearDevices);
   
-  addWindow(thisPage->layout, clearbutton);
-  //addWindow(thisPage->layout, pSpinner);
+  addWindow(thisLayout, clearbutton);
   
-  return thisPage;
+  return thisLayout;
 }
 
 
@@ -65,7 +61,7 @@ Device * deviceInit(double activePower, double reactivePower, double harmonicPow
 
 void addDevice(double activePower, double reactivePower, double harmonicPower){
   // Do not exceed the allocated space
-  if (thisPage->layout->size >= 10) return;
+  if (thisLayout->size >= 10) return;
   
   // Check if button has existed at some point in the past
   if (devices[size] != NULL){
@@ -90,7 +86,7 @@ void addDevice(double activePower, double reactivePower, double harmonicPower){
 	number[1] = '\0';
 	setText(devicebutton, number);
   	devices[size] = deviceInit(activePower, reactivePower, harmonicPower, devicebutton);
-	addWindow(thisPage->layout, devicebutton);
+	addWindow(thisLayout, devicebutton);
   }
   
   // Update iterators
@@ -129,7 +125,7 @@ char edgeDetection(double compareVal, double newVal, double tol) {
 }
 
 
-void checkDevices(Measurement * measurement, Page * currentPage){
+void checkDevices(Measurement * measurement, Layout * currentLayout){
   
   // Detect errors
   if (measurement->P_power > 1000 || measurement->Q_power > 1000 || measurement->H_power > 1000){
@@ -146,7 +142,7 @@ void checkDevices(Measurement * measurement, Page * currentPage){
   }
   
   // Notify user that a step input is being processsed
-  if (currentPage == thisPage){
+  if (currentLayout == thisLayout){
   	pSpinner->cancelled = 0;
 	
 	// The ProgressSpinner uses an internal count. No need to pass starting value
@@ -209,7 +205,7 @@ void checkDevices(Measurement * measurement, Page * currentPage){
 				}
 			  }
 			  // Window might need a redraw if its backgroundcolor has changed
-			  if (redraw && currentPage == thisPage)	drawWindow(devices[i]->devicebutton);
+			  if (redraw && currentLayout == thisLayout)	drawWindow(devices[i]->devicebutton);
 			}
 		  }
 		}

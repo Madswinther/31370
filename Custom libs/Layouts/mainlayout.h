@@ -8,11 +8,7 @@
 #define BUTTON_BORDER 0xFFFFFF
 
 
-typedef struct{
-  Layout * layout;
-  char drawn;
-} Page;
 
-Page * initMainPage();
+Layout * initMainLayout();
 
 #endif

@@ -1,5 +1,4 @@
-#include "../layout.h"
-#include "mainpage.h"
+#include "includes.h"
 
 #ifndef __GRAPHPAGE_H
 #define __GRAPHPAGE_H
@@ -8,8 +7,9 @@
 #define CURRENT_BUTTON 1
 #define POWER_BUTTON 2
 
-Page * initGraphPage();
-void updateGraphPage(Measurement * measurement, char draw);
+
+Layout * initGraphLayout();
+void updateGraphLayout(Measurement * measurement, char draw);
 void addPoint();
 void changeToVoltage();
 void changeToCurrent();

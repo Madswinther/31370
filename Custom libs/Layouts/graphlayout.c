@@ -1,20 +1,18 @@
-#include "learningpage.h"
-#include "mainpage.h"
+#include "includes.h"
 
 Graph * voltageGraph;
 Graph * currentGraph;
 Graph * powerGraph;
 Graph * activeGraph;
 
-static Page * thisPage;
+static Layout * thisLayout;
 
-Page * initGraphPage(){
+Layout * initGraphLayout(){
   // Alloc space
-  thisPage = (Page*)malloc(sizeof(*thisPage));
+  thisLayout = (Layout*)malloc(sizeof(*thisLayout));
   
   // Create layout
-  thisPage->layout = initLayout();
-  thisPage->drawn = 0;
+  thisLayout = initLayout();
   
   // Buttons for changing graph window
   RectangleWindow * voltagebutton = initRectangleWindow(285, 10, 320, 45, BUTTON_SELECTED, BUTTON_BORDER);
@@ -31,20 +29,20 @@ Page * initGraphPage(){
   activeGraph = voltageGraph;
  
   // Add windows
-  addWindow(thisPage->layout, voltagebutton);
-  addWindow(thisPage->layout, currentbutton);
-  addWindow(thisPage->layout, powerbutton);
-  addWindow(thisPage->layout, voltageGraph);
+  addWindow(thisLayout, voltagebutton);
+  addWindow(thisLayout, currentbutton);
+  addWindow(thisLayout, powerbutton);
+  addWindow(thisLayout, voltageGraph);
   
   // Set onClick listeners
   setOnClick(voltagebutton, changeToVoltage);
   setOnClick(currentbutton, changeToCurrent);
   setOnClick(powerbutton, changeToPower);
   
-  return thisPage;
+  return thisLayout;
 }
 
-void updateGraphPage(Measurement * measurement, char draw){
+void updateGraphLayout(Measurement * measurement, char draw){
   if (draw){
 	Graph_addPoint(voltageGraph, activeGraph, measurement->voltage);
 	Graph_addPoint(currentGraph, activeGraph, measurement->current);
@@ -60,8 +58,8 @@ void updateGraphPage(Measurement * measurement, char draw){
 void changeToVoltage(){
   if (activeGraph != voltageGraph){
 	activeGraph = voltageGraph;
-	removeWindow(thisPage->layout);
-	addWindow(thisPage->layout, voltageGraph);
+	removeWindow(thisLayout);
+	addWindow(thisLayout, voltageGraph);
 	
 	//change selected state
 	setSelected(VOLTAGE_BUTTON);
@@ -72,8 +70,8 @@ void changeToVoltage(){
 void changeToCurrent(){
   if (activeGraph != currentGraph){
 	activeGraph = currentGraph;
-	removeWindow(thisPage->layout);
-	addWindow(thisPage->layout, currentGraph);
+	removeWindow(thisLayout);
+	addWindow(thisLayout, currentGraph);
 	
 	//change selected state
 	setSelected(CURRENT_BUTTON);
@@ -84,8 +82,8 @@ void changeToCurrent(){
 void changeToPower(){
   if (activeGraph != powerGraph){
 	activeGraph = powerGraph;
-	removeWindow(thisPage->layout);
-	addWindow(thisPage->layout, powerGraph);
+	removeWindow(thisLayout);
+	addWindow(thisLayout, powerGraph);
 	
 	//change selected state
 	setSelected(POWER_BUTTON);
@@ -98,16 +96,16 @@ static void setSelected(int button){
   for (int i=0; i<3; i++){
 	if (i == button){
 	  // Set a specific graph button to display the selected state
-	  ((RectangleWindow*)thisPage->layout->windows[button])->backgroundColor = BUTTON_SELECTED;
+	  ((RectangleWindow*)thisLayout->windows[button])->backgroundColor = BUTTON_SELECTED;
 	}
 	else{
-	  ((RectangleWindow*)thisPage->layout->windows[i])->backgroundColor = BUTTON_BACKGROUND;
+	  ((RectangleWindow*)thisLayout->windows[i])->backgroundColor = BUTTON_BACKGROUND;
 	}
-	drawWindow(thisPage->layout->windows[i]);
+	drawWindow(thisLayout->windows[i]);
   }
   
 }
 
 void refreshGraph(){
-  drawWindows(thisPage->layout);
+  drawWindows(thisLayout);
 }

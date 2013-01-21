@@ -1,6 +1,4 @@
-#include "draw.h"
 #include "includes.h"
-#include "drv_glcd.h"
 #include <math.h>
 
 void drawHorizontalLine(int x0, int y0, int length, int lineColor) {

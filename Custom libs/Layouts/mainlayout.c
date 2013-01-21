@@ -1,23 +1,20 @@
-#include "mainpage.h"
 #include "includes.h"
 
 
-Page * initMainPage(){
+Layout * initMainLayout(){
 	// Alloc space
-	Page * temp;
-	temp = (Page*)malloc(sizeof(*temp));
+	Layout * temp;
+	temp = (Layout*)malloc(sizeof(*temp));
 	
 	// Create layout
-	temp->layout = initLayout();
-	temp->drawn = 0;
-	
+	temp = initLayout();
 	
 	RectangleWindow * welcome = initRectangleWindow(250, 0, 317, 50, BUTTON_SELECTED, BUTTON_BORDER);
 	
 	setText(welcome, "Welcome!");
   
 	// Add windows
-	addWindow(temp->layout, welcome);
+	addWindow(temp, welcome);
 	
 	return temp;
 }
