@@ -45,13 +45,16 @@ struct httpd_fs_file {
 };
 
 
+static void XML_addStates(char deviceStates);
+static void XML_addTime();
+
 
 void XML_copyString(const char * string);
 void XML_startTag(char id);
 void XML_endTag(char id);
 void XML_addDouble(double value);
 void XML_addNode(double value, char id);
-void XML_addMeasurement(Measurement * m);
+void XML_addMeasurement(Measurement * m, char deviceStates);
 
 
 

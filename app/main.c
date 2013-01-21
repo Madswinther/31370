@@ -57,7 +57,7 @@ int main(void){
   GLCD_SetFont(&Terminal_9_12_6,0xFFFFFF,0x000000);
   
   // Init UART
-  UartInit(UART_0,4,NORM);
+  UART_init(UART_0,4,NORM);
   
   // Init Real Time Clock
   RTC_init();
@@ -101,9 +101,9 @@ int main(void){
 	if(TouchGet(&XY_Touch))
 	{
 	  // Check if the current Layout accepts the touch
-	  if (!dispatchTouch(currentLayout, XY_Touch.X, XY_Touch.Y)){
+	  if (!Layout_dispatchTouch(currentLayout, XY_Touch.X, XY_Touch.Y)){
 		// Touch not accepted, pass it on to the navigationBar
-		dispatchTouch(navigationBar, XY_Touch.X, XY_Touch.Y);
+		Layout_dispatchTouch(navigationBar, XY_Touch.X, XY_Touch.Y);
 	  }
 	  if (Touch == FALSE){
 		Touch = TRUE;
@@ -117,18 +117,15 @@ int main(void){
 	
 	
 	// Data from UART0
-	UartCheck(Buffer);
+	UART_Check(Buffer);
 	
 	if (Buffer[0] != 'E'){
 	  
-	  parse(Buffer, &measurement);
+	  Parsing_parse(Buffer, &measurement);
 	  
 	  // Notify the graph
 	  updateGraphLayout(&measurement, currentLayout == graphLayout);
 	  checkDevices(&measurement, currentLayout);
-	  
-	  //XML_addData(measurement.voltage);
-	  XML_addMeasurement(&measurement);
 	  
 	  double vRMS = measurement.voltage;
 	  double iRMS = measurement.current;
@@ -227,8 +224,8 @@ void swapToLayout(int page){
   }
   // Clear all graphics before changing page
   CLEAR_SCREEN();
-  drawWindows(currentLayout);
-  drawWindows(navigationBar);
+  Layout_drawWindows(currentLayout);
+  Layout_drawWindows(navigationBar);
 }
 
 Measurement * getMeasurement(){

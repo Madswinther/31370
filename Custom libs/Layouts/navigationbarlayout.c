@@ -7,29 +7,29 @@ Layout * initNavigationBar(){
   thisLayout = (Layout*)malloc(sizeof(Layout));
   
   // Create layout
-  thisLayout = initLayout();
+  thisLayout = Layout_initLayout();
   
-  RectangleWindow * homebutton = initRectangleWindow(0, 190, 80, 239, BUTTON_SELECTED, BUTTON_BORDER);
-  RectangleWindow * learnbutton = initRectangleWindow(80, 190, 160, 239, BUTTON_BACKGROUND, BUTTON_BORDER);
-  RectangleWindow * graphbutton = initRectangleWindow(160, 190, 240, 239, BUTTON_BACKGROUND, BUTTON_BORDER);
-  RectangleWindow * devicesbutton = initRectangleWindow(240, 190, 319, 239, BUTTON_BACKGROUND, BUTTON_BORDER);
+  RectangleWindow * homebutton = GUI_initRectangleWindow(0, 190, 80, 239, BUTTON_SELECTED, BUTTON_BORDER);
+  RectangleWindow * learnbutton = GUI_initRectangleWindow(80, 190, 160, 239, BUTTON_BACKGROUND, BUTTON_BORDER);
+  RectangleWindow * graphbutton = GUI_initRectangleWindow(160, 190, 240, 239, BUTTON_BACKGROUND, BUTTON_BORDER);
+  RectangleWindow * devicesbutton = GUI_initRectangleWindow(240, 190, 319, 239, BUTTON_BACKGROUND, BUTTON_BORDER);
   
-  setText(homebutton, "Home");
-  setText(learnbutton, "Learn");
-  setText(graphbutton, "Graph");
-  setText(devicesbutton, "Devices");
+  GUI_setText(homebutton, "Home");
+  GUI_setText(learnbutton, "Learn");
+  GUI_setText(graphbutton, "Graph");
+  GUI_setText(devicesbutton, "Devices");
   
   // Add windows
-  addWindow(thisLayout, homebutton);
-  addWindow(thisLayout, learnbutton);
-  addWindow(thisLayout, graphbutton);
-  addWindow(thisLayout, devicesbutton);
+  Layout_addWindow(thisLayout, homebutton);
+  Layout_addWindow(thisLayout, learnbutton);
+  Layout_addWindow(thisLayout, graphbutton);
+  Layout_addWindow(thisLayout, devicesbutton);
   
   // Set onClick listeners
-  setOnClick(homebutton, swapToMain);
-  setOnClick(learnbutton, swapToLearning);
-  setOnClick(graphbutton, swapToGraph);
-  setOnClick(devicesbutton, swapToDevices);
+  GUI_setOnClick(homebutton, swapToMain);
+  GUI_setOnClick(learnbutton, swapToLearning);
+  GUI_setOnClick(graphbutton, swapToGraph);
+  GUI_setOnClick(devicesbutton, swapToDevices);
   
   return thisLayout;
 }

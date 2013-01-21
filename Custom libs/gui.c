@@ -1,7 +1,7 @@
 #include "gui.h"
 #include "includes.h"
 
-PictureWindow * initPictureWindow(int left, int top, int right, int bottom, Bmp_t * pic){
+PictureWindow * GUI_initPictureWindow(int left, int top, int right, int bottom, Bmp_t * pic){
   // Initializes a window specified by absolute coordinates and a bitmap
   PictureWindow * temp;
   temp = (PictureWindow*)malloc(sizeof(*temp));
@@ -16,7 +16,7 @@ PictureWindow * initPictureWindow(int left, int top, int right, int bottom, Bmp_
   return temp;
 }
 
-RectangleWindow * initRectangleWindow(int left, int top, int right, int bottom, int backgroundColor, int borderColor){
+RectangleWindow * GUI_initRectangleWindow(int left, int top, int right, int bottom, int backgroundColor, int borderColor){
   // Initializes a window specified by absolute coordinates, a background- and a bordercolor
   RectangleWindow * temp;
   temp = (RectangleWindow*)malloc(sizeof(*temp));
@@ -35,12 +35,12 @@ RectangleWindow * initRectangleWindow(int left, int top, int right, int bottom, 
   return temp;
 }
 
-void setText(void * window, char * text){
-  // Sets the text to draw within a given window
+void GUI_setText(void * window, char * text){
+  // Sets the text to Draw_ within a given window
   ((RectangleWindow*)window)->text = text;
 }
 
-void setOnClick(void * window, void (*function)()){
+void GUI_setOnClick(void * window, void (*function)()){
   // Sets a function to be called when this window is clicked
   ((Window*)window)->onClick = function;
   
@@ -48,7 +48,7 @@ void setOnClick(void * window, void (*function)()){
   ((Window*)window)->clickable = 1;
 }
 
-void drawWindow(void * window){
+void GUI_drawWindow(void * window){
   // Draw the window based on its type. The type is contained within the first
   // byte of all the window structs
   Window * temp = (Window*)window;
@@ -57,17 +57,17 @@ void drawWindow(void * window){
   
   switch (temp->type){
   case PICTUREWINDOW:
-	// This is a picturewindow, draw the bitmap using the GLCD command
+	// This is a picturewindow, Draw_ the bitmap using the GLCD command
 	GLCD_LoadPic(temp->left,temp->top, ((PictureWindow*)temp)->picture, 0);
 	break;
   case RECTANGLEWINDOW:
-	// This is a rectanglewindow, draw a rectangle using the user made graphics lib
+	// This is a rectanglewindow, Draw_ a rectangle using the user made graphics lib
 	tempRect = (RectangleWindow*)window;
 	
-	// Should this window be drawn?
+	// Should this window be Draw_n?
 	if (tempRect->hidden == 1) return;
 	
-	drawFilledRectangle(tempRect->left, tempRect->top, tempRect->right - tempRect->left,
+	Draw_FilledRectangle(tempRect->left, tempRect->top, tempRect->right - tempRect->left,
 						tempRect->bottom - tempRect->top, tempRect->backgroundColor, tempRect->borderColor, 1);
 	
 	// Draw the text by computing the coordinates required to position the text in the
@@ -91,17 +91,17 @@ void drawWindow(void * window){
 	}
 	break;
   case PROGRESSBAR:
-	// This is a progressbar, draw it using the specifically designed progressbar method
-	ProgressBarDrawFull((ProgressBar*)window);
+	// This is a progressbar, Draw_ it using the specifically designed progressbar method
+	ProgressBar_DrawFull((ProgressBar*)window);
 	break;
   case GRAPH:
-	// This is a graph, draw it using the specifically designed graph method
+	// This is a graph, Draw_ it using the specifically designed graph method
 	Graph_draw((Graph*)window);
 	break;
   }
 }
 
-void setHidden(void * window, char hide){
+void GUI_setHidden(void * window, char hide){
   // This only applies to rectanglewindows sofar
   if (((Window*)window)->type != RECTANGLEWINDOW) return;
   
@@ -111,15 +111,15 @@ void setHidden(void * window, char hide){
   tempRect->hidden = hide;
   
   if (hide){
-	drawFilledRectangle(tempRect->left, tempRect->top, tempRect->right - tempRect->left,
+	Draw_FilledRectangle(tempRect->left, tempRect->top, tempRect->right - tempRect->left,
 						tempRect->bottom - tempRect->top, 0x0, 0x0, 1);
   }
   else{
-	drawWindow(window);
+	GUI_drawWindow(window);
   }
 }
 
-char onTouch(void * window, int x, int y){
+char GUI_onTouch(void * window, int x, int y){
   // Checks wether the touch is within the bounds of this particular window
   Window * temp = (Window*)window;
   

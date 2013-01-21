@@ -13,10 +13,10 @@ typedef struct {
 } ProgressBar;
 
 
-ProgressBar * ProgressBarInit(int x0, int y0, int width, int height, int foreGroundColor, int backgroundColor);
+ProgressBar * ProgressBar_Init(int x0, int y0, int width, int height, int foreGroundColor, int backgroundColor);
 
-int getPixelWidth(int progress, int width);
-void ProgressBarDrawFull(ProgressBar * pbar);
-char ProgressBarUpdate(void * object, int newProgress);
+static int getPixelWidth(int progress, int width);
+void ProgressBar_DrawFull(ProgressBar * pbar);
+char ProgressBar_Update(void * object, int newProgress);
 
 #endif

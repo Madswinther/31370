@@ -15,6 +15,9 @@ static Measurement * lastStationary;
 static char edgeDetected = 0;
 static char steadyDetected = 0;
 
+// Bitmask of device states
+static char deviceStates = 0;
+
 // ProgressSpinner
 static ProgressSpinner * pSpinner;
 
@@ -33,15 +36,15 @@ Layout * initDevicesLayout(){
   lastStationary->H_power = 0;
   
   // Create layout
-  thisLayout = initLayout();
+  thisLayout = Layout_initLayout();
   
-  RectangleWindow * clearbutton = initRectangleWindow(110, 5, 210, 55, BUTTON_BACKGROUND, BUTTON_BORDER);
-  pSpinner = ProgressSpinnerInit(258, 0, 60, 0xFFFFFF);
+  RectangleWindow * clearbutton = GUI_initRectangleWindow(110, 5, 210, 55, BUTTON_BACKGROUND, BUTTON_BORDER);
+  pSpinner = ProgressSpinner_Init(258, 0, 60, 0xFFFFFF);
   
-  setText(clearbutton, "Clear Devices");
-  setOnClick(clearbutton, clearDevices);
+  GUI_setText(clearbutton, "Clear Devices");
+  GUI_setOnClick(clearbutton, clearDevices);
   
-  addWindow(thisLayout, clearbutton);
+  Layout_addWindow(thisLayout, clearbutton);
   
   return thisLayout;
 }
@@ -61,7 +64,7 @@ Device * deviceInit(double activePower, double reactivePower, double harmonicPow
 
 void addDevice(double activePower, double reactivePower, double harmonicPower){
   // Do not exceed the allocated space
-  if (thisLayout->size >= 10) return;
+  if (thisLayout->size >= 7) return;
   
   // Check if button has existed at some point in the past
   if (devices[size] != NULL){
@@ -78,15 +81,15 @@ void addDevice(double activePower, double reactivePower, double harmonicPower){
   }
   else{
   	// Init Window and add it to the array of devices
-  	RectangleWindow * devicebutton = initRectangleWindow(mX, mY, mX+50, mY+50, DEVICE_ON, BUTTON_BORDER);
+  	RectangleWindow * devicebutton = GUI_initRectangleWindow(mX, mY, mX+50, mY+50, DEVICE_ON, BUTTON_BORDER);
 	
 	// Number the devices - requires two bytes of memory to store the number
 	char * number = malloc( sizeof(char) * ( 1 + 1 ) );
 	number[0] = size+0x30;
 	number[1] = '\0';
-	setText(devicebutton, number);
+	GUI_setText(devicebutton, number);
   	devices[size] = deviceInit(activePower, reactivePower, harmonicPower, devicebutton);
-	addWindow(thisLayout, devicebutton);
+	Layout_addWindow(thisLayout, devicebutton);
   }
   
   // Update iterators
@@ -101,7 +104,7 @@ void addDevice(double activePower, double reactivePower, double harmonicPower){
 void clearDevices(){
   for (int i = 0; i<size; i++){
 	// Hide the devices and decrement size
-	setHidden(devices[i]->devicebutton, 1);
+	GUI_setHidden(devices[i]->devicebutton, 1);
   }
   size = 0;
   mX = 20;
@@ -147,7 +150,7 @@ void checkDevices(Measurement * measurement, Layout * currentLayout){
 	
 	// The ProgressSpinner uses an internal count. No need to pass starting value
 	// and increment to it
-  	postAnimation(pSpinner, 0, 0, ProgressSpinnerUpdate);
+  	postAnimation(pSpinner, 0, 0, ProgressSpinner_Update);
   }
   
   // A step input has occured, wait for a steady state before checking again
@@ -194,6 +197,7 @@ void checkDevices(Measurement * measurement, Layout * currentLayout){
 				  devices[i]->devicebutton->backgroundColor = DEVICE_ON;
 				  redraw = 1;
 				  checking = 0;
+				  deviceStates |= 1<<i;
 				}  
 			  }
 			  else{
@@ -202,10 +206,11 @@ void checkDevices(Measurement * measurement, Layout * currentLayout){
 				  devices[i]->devicebutton->backgroundColor = DEVICE_OFF;
 				  redraw = 1;
 				  checking = 0;
+				  deviceStates &= ~(1<<i);
 				}
 			  }
 			  // Window might need a redraw if its backgroundcolor has changed
-			  if (redraw && currentLayout == thisLayout)	drawWindow(devices[i]->devicebutton);
+			  if (redraw && currentLayout == thisLayout) GUI_drawWindow(devices[i]->devicebutton);
 			}
 		  }
 		}
@@ -226,10 +231,14 @@ void checkDevices(Measurement * measurement, Layout * currentLayout){
 	  for (int i = 0; i < size; i++){
 		if (devices[i]->devicebutton->backgroundColor != DEVICE_OFF){
 		  devices[i]->devicebutton->backgroundColor = DEVICE_OFF;
-		  drawWindow(devices[i]->devicebutton);
+		  GUI_drawWindow(devices[i]->devicebutton);
+		  deviceStates = 0;
 		}
 	  }
 	}
+	
+	// New stationary value - update website
+	XML_addMeasurement(measurement, deviceStates);
 	
 	// Stop animation
 	pSpinner->cancelled = 1;

@@ -7,14 +7,14 @@ Layout * initMainLayout(){
 	temp = (Layout*)malloc(sizeof(*temp));
 	
 	// Create layout
-	temp = initLayout();
+	temp = Layout_initLayout();
 	
-	RectangleWindow * welcome = initRectangleWindow(250, 0, 317, 50, BUTTON_SELECTED, BUTTON_BORDER);
+	RectangleWindow * welcome = GUI_initRectangleWindow(250, 0, 317, 50, BUTTON_SELECTED, BUTTON_BORDER);
 	
-	setText(welcome, "Welcome!");
+	GUI_setText(welcome, "Welcome!");
   
 	// Add windows
-	addWindow(temp, welcome);
+	Layout_addWindow(temp, welcome);
 	
 	return temp;
 }

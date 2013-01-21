@@ -39,7 +39,7 @@ void Graph_xlim(Graph * graph, double x_min, double x_max) {
   graph->x_max = x_max;
 }
 
-void Graph_drawAxisNumber(Graph * graph, char axis, double pos) {
+void Graph_Draw_AxisNumber(Graph * graph, char axis, double pos) {
   
   int x0, y0, x1, y1;
   
@@ -80,7 +80,7 @@ void Graph_drawAxisNumber(Graph * graph, char axis, double pos) {
 
 void Graph_clear(Graph * graph){
   // Draw background of the graph
-  drawFilledRectangle(graph->axis_x0, graph->axis_y0, 
+  Draw_FilledRectangle(graph->axis_x0, graph->axis_y0, 
 					  graph->axis_width, graph->axis_height, 
 					  GRAPH_BACK_COLOR, GRAPH_STROKE_COLOR, 1);
 }
@@ -91,13 +91,13 @@ void Graph_draw(Graph * graph) {
   
   // Draw x-axis numbers
   for (char i = 1; i < 5; i++) {
-	Graph_drawAxisNumber(graph, X_AXIS, i * 20.0);
+	Graph_Draw_AxisNumber(graph, X_AXIS, i * 20.0);
   }
   
   
   // Draw y-axis numbers
   for (char i = 0; i < 3; i++) {
-	Graph_drawAxisNumber(graph, Y_AXIS, i * 50.0);
+	Graph_Draw_AxisNumber(graph, Y_AXIS, i * 50.0);
   }
   
   Graph_plotPoints(graph);
@@ -162,13 +162,13 @@ void Graph_plotPoints(Graph * graph) {
   
   // Draw plot
   for (int i = 0; i < GRAPH_DATA_POINTS - 1; i++) {
-	drawLine(graph->xpoints[i], graph->ypoints[i], 
+	Draw_Line(graph->xpoints[i], graph->ypoints[i], 
 			 graph->xpoints[i+1], graph->ypoints[i+1], 
 			 GRAPH_LINE_COLOR);
 	
-	drawFilledCircle(graph->xpoints[i], graph->ypoints[i], 4, GRAPH_LINE_COLOR, 0, 0); 
+	Draw_FilledCircle(graph->xpoints[i], graph->ypoints[i], 4, GRAPH_LINE_COLOR, 0, 0); 
   }
-  drawFilledCircle(graph->xpoints[GRAPH_DATA_POINTS-1], graph->ypoints[GRAPH_DATA_POINTS-1], 4, GRAPH_LINE_COLOR, 0, 0); 
+  Draw_FilledCircle(graph->xpoints[GRAPH_DATA_POINTS-1], graph->ypoints[GRAPH_DATA_POINTS-1], 4, GRAPH_LINE_COLOR, 0, 0); 
 }
 
 

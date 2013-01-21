@@ -9,12 +9,11 @@ typedef struct{
 	Window * windows[10];
 } Layout;
 
-Layout * initLayout();
-void addWindow(Layout * layout, void * window);
-void * getWindow(Layout * layout, char pos);
-void removeWindow(Layout * layout);
-void drawWindows(Layout * layout);
-char dispatchTouch(Layout * layout, int x, int y);
-void ged();
+Layout * Layout_initLayout();
+void Layout_addWindow(Layout * layout, void * window);
+void * Layout_getWindow(Layout * layout, char pos);
+void Layout_removeWindow(Layout * layout);
+void Layout_drawWindows(Layout * layout);
+char Layout_dispatchTouch(Layout * layout, int x, int y);
 
 #endif // __LAYOUT_H

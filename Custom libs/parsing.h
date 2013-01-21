@@ -23,9 +23,7 @@ typedef struct{
   double H_power;
 } Measurement;
 
-
-
-void parse(char * Buffer, Measurement * measurement);
+void Parsing_parse(char * Buffer, Measurement * measurement);
 static double convertVoltage(int Vrms);
 static double convertCurrent(int Irms);
 static double convertP_power(int P_power);

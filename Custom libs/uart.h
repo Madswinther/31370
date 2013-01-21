@@ -45,9 +45,9 @@ typedef struct _UartLineCoding_t
 
 extern Int32U SYS_GetFpclk(Int32U Periphery);
 
-void UartCheck(char * externUART_Buffer);
+void UART_Check(char * externUART_Buffer);
 void Uart0Isr(void);
-Boolean UartInit(UartNum_t Uart,Int32U IrqSlot, UartMode_t UartMode);
+Boolean UART_init(UartNum_t Uart,Int32U IrqSlot, UartMode_t UartMode);
 void UartSetLineCoding(UartNum_t Uart,UartLineCoding_t UartCoding);
 void UartCalcDivider(Int32U Freq, Int32U Baud, pInt32U pDiv, pInt32U pAddDiv, pInt32U pMul);
 

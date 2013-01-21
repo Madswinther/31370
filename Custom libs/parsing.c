@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-void parse(char * Buffer, Measurement * measurement){
+void Parsing_parse(char * Buffer, Measurement * measurement){
   // All parameters are received as hexidecimal strings. These are converted
   // to doubles using the strtol function and multiplying by factors obtained through
   // measurements.

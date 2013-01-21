@@ -1,9 +1,8 @@
-#include "../draw.h"
-#include "../../app/includes.h"
+#include "includes.h"
 #include <math.h>
 #include "ProgressSpinner.h"
 
-ProgressSpinner * ProgressSpinnerInit(int x0, int y0, int size, int borderColor) {
+ProgressSpinner * ProgressSpinner_Init(int x0, int y0, int size, int borderColor) {
   
   ProgressSpinner * pspinner = (ProgressSpinner *)malloc(sizeof(ProgressSpinner));
   
@@ -27,11 +26,11 @@ ProgressSpinner * ProgressSpinnerInit(int x0, int y0, int size, int borderColor)
   return pspinner;
 }
 
-char ProgressSpinnerUpdate(void * object, int newProgress) {
+char ProgressSpinner_Update(void * object, int newProgress) {
   ProgressSpinner * pspinner = (ProgressSpinner*)object;
   
   // Delete old one
-  drawCircle(pspinner->x0+pspinner->size/2+pspinner->progressX, pspinner->y0+pspinner->size/2+pspinner->progressY, 
+  Draw_Circle(pspinner->x0+pspinner->size/2+pspinner->progressX, pspinner->y0+pspinner->size/2+pspinner->progressY, 
 			 pspinner->size/5, 0);
   
   // Check for cancellation
@@ -58,12 +57,12 @@ char ProgressSpinnerUpdate(void * object, int newProgress) {
   }
   
   // Draw new one
-  drawCircle(pspinner->x0+pspinner->size/2+pspinner->progressX, pspinner->y0+pspinner->size/2+pspinner->progressY,
+  Draw_Circle(pspinner->x0+pspinner->size/2+pspinner->progressX, pspinner->y0+pspinner->size/2+pspinner->progressY,
 			 pspinner->size/5, pspinner->borderColor);
   return 0;
 }
 
-void cancelProgressSpinner(ProgressSpinner * pspinner){
+void ProgressSpinner_Cancel(ProgressSpinner * pspinner){
   pspinner->cancelled = 1;
 }
 

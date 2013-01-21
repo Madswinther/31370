@@ -1,9 +1,8 @@
-#include "../draw.h"
-#include "../../app/includes.h"
+#include "includes.h"
 #include <math.h>
 #include "ProgressBar.h"
 
-ProgressBar * ProgressBarInit(int x0, int y0, int width, int height, 
+ProgressBar * ProgressBar_Init(int x0, int y0, int width, int height, 
 							int foregroundColor, int backgroundColor) {
 
 	ProgressBar * pbar;
@@ -21,12 +20,12 @@ ProgressBar * ProgressBarInit(int x0, int y0, int width, int height,
 }
 
 
-int getPixelWidth(int progress, int width) {
+static int getPixelWidth(int progress, int width) {
 	return (progress * width) / MAX_PROGRESS;
 }
 
 
-void ProgressBarDrawFull(ProgressBar * pbar) {
+void ProgressBar_DrawFull(ProgressBar * pbar) {
 	int x0 = pbar->x0, y0 = pbar->y0; 
 	int width = pbar->width, height = pbar->height;
 	int foregroundColor = pbar->foregroundColor;
@@ -34,14 +33,14 @@ void ProgressBarDrawFull(ProgressBar * pbar) {
 	int blank = 0xFFFFFF;
 	
 	// Draw background rectangle
-	drawFilledRectangle(x0, y0, width, height, backgroundColor, blank, 0);
+	Draw_FilledRectangle(x0, y0, width, height, backgroundColor, blank, 0);
 
 	// Draw progress
 	int pWidth = getPixelWidth(pbar->progress, pbar->width);
-	drawFilledRectangle(x0, y0, pWidth, height, foregroundColor, blank, 0);
+	Draw_FilledRectangle(x0, y0, pWidth, height, foregroundColor, blank, 0);
 }
 
-char ProgressBarUpdate(void * object, int newProgress) {
+char ProgressBar_Update(void * object, int newProgress) {
 	ProgressBar * pbar = (ProgressBar*)object;
   
 	if (newProgress > MAX_PROGRESS) newProgress = MAX_PROGRESS;
@@ -65,7 +64,7 @@ char ProgressBarUpdate(void * object, int newProgress) {
 		int width = newPixWidth - oldPixWidth;
 		
 		// Draw new foreground
-		drawFilledRectangle(xpos, ypos, width, pbar->height, pbar->foregroundColor, 0, 0);
+		Draw_FilledRectangle(xpos, ypos, width, pbar->height, pbar->foregroundColor, 0, 0);
 			
 	} else if (dp < 0) {
 		// Progress should decrease
@@ -74,7 +73,7 @@ char ProgressBarUpdate(void * object, int newProgress) {
 		int width = oldPixWidth - newPixWidth;
 		
 		// Draw background
-		drawFilledRectangle(xpos, ypos, width, pbar->height, pbar->backgroundColor, 0, 0);
+		Draw_FilledRectangle(xpos, ypos, width, pbar->height, pbar->backgroundColor, 0, 0);
 	}	
 	return 0;
 }

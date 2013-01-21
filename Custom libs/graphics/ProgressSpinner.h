@@ -14,10 +14,9 @@ typedef struct {
 } ProgressSpinner;
 
 
-ProgressSpinner * ProgressSpinnerInit(int x0, int y0, int size, int borderColor);
+ProgressSpinner * ProgressSpinner_Init(int x0, int y0, int size, int borderColor);
 
-int getPixelWidth(int progress, int width);
-char ProgressSpinnerUpdate(void * object, int newProgress);
-void cancelProgressSpinner(ProgressSpinner * pspinner);
+char ProgressSpinner_Update(void * object, int newProgress);
+void ProgressSpinner_Cancel(ProgressSpinner * pspinner);
 
 #endif

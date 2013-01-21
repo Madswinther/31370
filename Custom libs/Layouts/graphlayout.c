@@ -12,15 +12,15 @@ Layout * initGraphLayout(){
   thisLayout = (Layout*)malloc(sizeof(*thisLayout));
   
   // Create layout
-  thisLayout = initLayout();
+  thisLayout = Layout_initLayout();
   
   // Buttons for changing graph window
-  RectangleWindow * voltagebutton = initRectangleWindow(285, 10, 320, 45, BUTTON_SELECTED, BUTTON_BORDER);
-  RectangleWindow * currentbutton = initRectangleWindow(285, 60, 320, 95, BUTTON_BACKGROUND, BUTTON_BORDER);
-  RectangleWindow * powerbutton = initRectangleWindow(285, 110, 320, 145, BUTTON_BACKGROUND, BUTTON_BORDER);
-  setText(voltagebutton, "V");
-  setText(currentbutton, "I");
-  setText(powerbutton, "P");
+  RectangleWindow * voltagebutton = GUI_initRectangleWindow(285, 10, 320, 45, BUTTON_SELECTED, BUTTON_BORDER);
+  RectangleWindow * currentbutton = GUI_initRectangleWindow(285, 60, 320, 95, BUTTON_BACKGROUND, BUTTON_BORDER);
+  RectangleWindow * powerbutton = GUI_initRectangleWindow(285, 110, 320, 145, BUTTON_BACKGROUND, BUTTON_BORDER);
+  GUI_setText(voltagebutton, "V");
+  GUI_setText(currentbutton, "I");
+  GUI_setText(powerbutton, "P");
   
   // Setup Graph
   voltageGraph = Graph_init(0, 0, 280, 180, 230, 240);
@@ -29,15 +29,15 @@ Layout * initGraphLayout(){
   activeGraph = voltageGraph;
  
   // Add windows
-  addWindow(thisLayout, voltagebutton);
-  addWindow(thisLayout, currentbutton);
-  addWindow(thisLayout, powerbutton);
-  addWindow(thisLayout, voltageGraph);
+  Layout_addWindow(thisLayout, voltagebutton);
+  Layout_addWindow(thisLayout, currentbutton);
+  Layout_addWindow(thisLayout, powerbutton);
+  Layout_addWindow(thisLayout, voltageGraph);
   
   // Set onClick listeners
-  setOnClick(voltagebutton, changeToVoltage);
-  setOnClick(currentbutton, changeToCurrent);
-  setOnClick(powerbutton, changeToPower);
+  GUI_setOnClick(voltagebutton, changeToVoltage);
+  GUI_setOnClick(currentbutton, changeToCurrent);
+  GUI_setOnClick(powerbutton, changeToPower);
   
   return thisLayout;
 }
@@ -58,8 +58,8 @@ void updateGraphLayout(Measurement * measurement, char draw){
 void changeToVoltage(){
   if (activeGraph != voltageGraph){
 	activeGraph = voltageGraph;
-	removeWindow(thisLayout);
-	addWindow(thisLayout, voltageGraph);
+	Layout_removeWindow(thisLayout);
+	Layout_addWindow(thisLayout, voltageGraph);
 	
 	//change selected state
 	setSelected(VOLTAGE_BUTTON);
@@ -70,8 +70,8 @@ void changeToVoltage(){
 void changeToCurrent(){
   if (activeGraph != currentGraph){
 	activeGraph = currentGraph;
-	removeWindow(thisLayout);
-	addWindow(thisLayout, currentGraph);
+	Layout_removeWindow(thisLayout);
+	Layout_addWindow(thisLayout, currentGraph);
 	
 	//change selected state
 	setSelected(CURRENT_BUTTON);
@@ -82,8 +82,8 @@ void changeToCurrent(){
 void changeToPower(){
   if (activeGraph != powerGraph){
 	activeGraph = powerGraph;
-	removeWindow(thisLayout);
-	addWindow(thisLayout, powerGraph);
+	Layout_removeWindow(thisLayout);
+	Layout_addWindow(thisLayout, powerGraph);
 	
 	//change selected state
 	setSelected(POWER_BUTTON);
@@ -101,11 +101,11 @@ static void setSelected(int button){
 	else{
 	  ((RectangleWindow*)thisLayout->windows[i])->backgroundColor = BUTTON_BACKGROUND;
 	}
-	drawWindow(thisLayout->windows[i]);
+	GUI_drawWindow(thisLayout->windows[i]);
   }
   
 }
 
 void refreshGraph(){
-  drawWindows(thisLayout);
+  Layout_drawWindows(thisLayout);
 }

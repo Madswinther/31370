@@ -5,7 +5,7 @@ static char UART_Buffer[BUFFER_SIZE];
 static int iterator = 0;
 char RxFlag = 0;
 
-void UartCheck(char * externUART_Buffer){
+void UART_Check(char * externUART_Buffer){
   if (RxFlag){	
 	// Flag is high, copy the contents of the internal UART buffer to the main
 	// Buffer
@@ -58,7 +58,7 @@ static void Uart0Isr(void){
 }
 
 
-Boolean UartInit(UartNum_t Uart,Int32U IrqSlot, UartMode_t UartMode){
+Boolean UART_init(UartNum_t Uart,Int32U IrqSlot, UartMode_t UartMode){
   volatile Int8U Tmp;
   // Init buffer
   for (int i=0; i<BUFFER_SIZE; i++){
