@@ -19,6 +19,6 @@
 @REM 
 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 6.5\common\bin\cspybat" "C:\Program Files (x86)\IAR Systems\Embedded Workbench 6.5\arm\bin\armproc.dll" "C:\Program Files (x86)\IAR Systems\Embedded Workbench 6.5\arm\bin\armjlink.dll"  %1 --plugin "C:\Program Files (x86)\IAR Systems\Embedded Workbench 6.5\arm\bin\armbat.dll" --macro "C:\Users\mwj\Desktop\31370\Source\31370\31370\config\lpc2478.mac" --flash_loader "C:\Program Files (x86)\IAR Systems\Embedded Workbench 6.5\arm\config\flashloader\NXP\FlashNXPLPC512k2.board" --backend -B "--endian=little" "--cpu=ARM7TDMI-S" "--fpu=None" "-p" "C:\Program Files (x86)\IAR Systems\Embedded Workbench 6.5\arm\CONFIG\debugger\NXP\LPC2478.ddf" "--drv_verify_download" "--semihosting" "--device=LPC2478" "--drv_communication=USB0" "--jlink_speed=adaptive" "--jlink_reset_strategy=0,9" 
+"F:\Program Files\common\bin\cspybat" "F:\Program Files\arm\bin\armproc.dll" "F:\Program Files\arm\bin\armjlink.dll"  %1 --plugin "F:\Program Files\arm\bin\armbat.dll" --macro "C:\Users\gedemis\Desktop\31370\31370\config\lpc2478.mac" --flash_loader "F:\Program Files\arm\config\flashloader\NXP\FlashNXPLPC512k2.board" --backend -B "--endian=little" "--cpu=ARM7TDMI-S" "--fpu=None" "-p" "F:\Program Files\arm\CONFIG\debugger\NXP\LPC2478.ddf" "--drv_verify_download" "--semihosting" "--device=LPC2478" "--drv_communication=USB0" "--jlink_speed=adaptive" "--jlink_reset_strategy=0,9" 
 
 

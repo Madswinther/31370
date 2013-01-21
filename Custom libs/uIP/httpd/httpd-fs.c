@@ -21,30 +21,30 @@ static u16_t count[HTTPD_FS_NUMFILES];
 #define TAG_END_LENGTH 4
 
 static char XML_Data[XML_DATA_SIZE];
-static int xml_length = 0;
+static int XML_Length = 0;
 
 const char * xml_header = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
 
 // Copy a string into current position in xml buffer
 void XML_copyString(const char * string) {	
 	while (*string != '\0') {
-		XML_data[xml_length++] = *(string++);
+		XML_Data[XML_Length++] = *(string++);
 	}
 }
 
 // Add start tag of an xml node
 void XML_startTag(char id) {
-	XML_data[xml_length++] = '<';
-	XML_data[xml_length++] = id;
-	XML_data[xml_length++] = '>';
+	XML_Data[XML_Length++] = '<';
+	XML_Data[XML_Length++] = id;
+	XML_Data[XML_Length++] = '>';
 }
 
 // Add end tag of an xml node
 void XML_endTag(char id) {
-	XML_data[xml_length++] = '<';
-	XML_data[xml_length++] = '/';
-	XML_data[xml_length++] = id;
-	XML_data[xml_length++] = '>';
+	XML_Data[XML_Length++] = '<';
+	XML_Data[XML_Length++] = '/';
+	XML_Data[XML_Length++] = id;
+	XML_Data[XML_Length++] = '>';
 }
 
 // Convert double to string and add to buffer
@@ -79,16 +79,16 @@ void XML_addNode(double value, char id) {
 void XML_addMeasurement(Measurement * m) {
 	
 	// Check for free space in the xml file
-	if (xml_length + XML_ENTRY_SIZE >= XML_DATA_SIZE) return;
+	if (XML_Length + XML_ENTRY_SIZE >= XML_DATA_SIZE) return;
 	
 	// If this is first measurement to be added, add xml header and root element
-	if (xml_length == 0) {
+	if (XML_Length == 0) {
 		XML_copyString(xml_header);
 		XML_startTag('D');
 	} else {
 		// If this is not the first element to be added, 
 		// overwrite the end tag of the root element
-		xml_length -= TAG_END_LENGTH;
+		XML_Length -= TAG_END_LENGTH;
 	}
 
 	// Add measurement nodes
@@ -132,9 +132,9 @@ int httpd_fs_open(const char *name, struct httpd_fs_file *file) {
 	#endif /* HTTPD_FS_STATISTICS */
   
   
-  if (httpd_fs_strcmp(name, "/mis.xml") == 0){
+  if (httpd_fs_strcmp(name, "/data.xml") == 0){
 	file->data = (char *) XML_Data;
-	file->len = iter;
+	file->len = XML_Length;
 	return 1;
   }
   

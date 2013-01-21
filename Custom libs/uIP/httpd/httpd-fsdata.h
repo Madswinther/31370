@@ -70,8 +70,8 @@ extern const struct httpd_fsdata_file file_style_css;
 extern const struct httpd_fsdata_file file_test_xml;
 
 
-#define HTTPD_FS_ROOT &file_test_xml
-#define HTTPD_FS_NUMFILES 5
+#define HTTPD_FS_ROOT &file_404_html
+#define HTTPD_FS_NUMFILES 2
 
 
 #endif /* __HTTPD_FSDATA_H__ */
