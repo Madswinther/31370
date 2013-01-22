@@ -41,12 +41,12 @@ int httpd_fs_open(const char *name, struct httpd_fs_file *file) {
   
   
   if (httpd_fs_strcmp(name, "/data.xml") == 0){
-	file->data = (char *) XML_getContent(XML_DATA);
+	file->data = XML_getContent(XML_DATA);
 	file->len = XML_getLength(XML_DATA);
 	return 1;
   }
   else if (httpd_fs_strcmp(name, "/devices.xml") == 0){
-	file->data = (char *) XML_getContent(XML_DEVICES);
+	file->data = XML_getContent(XML_DEVICES);
 	file->len = XML_getLength(XML_DEVICES);
 	return 1;
   }

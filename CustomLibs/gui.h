@@ -1,5 +1,4 @@
 #include "includes.h"
-#include "../Custom libs/draw.h"
 #include <string.h>
 
 #define PICTUREWINDOW 0

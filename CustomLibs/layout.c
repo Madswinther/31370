@@ -1,5 +1,4 @@
 #include "layout.h"
-#include "../Custom libs/gui.h"
 
 Layout * Layout_initLayout(){
   	// Initialize a layout. This is basically a struct holding pointers to a

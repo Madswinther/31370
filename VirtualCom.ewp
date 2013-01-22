@@ -1842,120 +1842,120 @@
     </settings>
   </configuration>
   <group>
-    <name>Custom libs</name>
+    <name>CustomLibs</name>
     <group>
       <name>graphics</name>
       <file>
-        <name>$PROJ_DIR$\Custom libs\draw.c</name>
+        <name>$PROJ_DIR$\CustomLibs\graphics\graph.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\draw.h</name>
+        <name>$PROJ_DIR$\CustomLibs\graphics\graph.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\graphics\graph.c</name>
+        <name>$PROJ_DIR$\CustomLibs\graphics\next.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\graphics\graph.h</name>
+        <name>$PROJ_DIR$\CustomLibs\graphics\next.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\graphics\next.c</name>
+        <name>$PROJ_DIR$\CustomLibs\graphics\previous.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\graphics\next.h</name>
+        <name>$PROJ_DIR$\CustomLibs\graphics\previous.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\graphics\previous.c</name>
+        <name>$PROJ_DIR$\CustomLibs\graphics\ProgressBar.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\graphics\previous.h</name>
+        <name>$PROJ_DIR$\CustomLibs\graphics\ProgressBar.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\graphics\ProgressBar.c</name>
+        <name>$PROJ_DIR$\CustomLibs\graphics\ProgressSpinner.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\graphics\ProgressBar.h</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\Custom libs\graphics\ProgressSpinner.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\Custom libs\graphics\ProgressSpinner.h</name>
+        <name>$PROJ_DIR$\CustomLibs\graphics\ProgressSpinner.h</name>
       </file>
     </group>
     <group>
       <name>Layouts</name>
       <file>
-        <name>$PROJ_DIR$\Custom libs\Layouts\deviceslayout.c</name>
+        <name>$PROJ_DIR$\CustomLibs\Layouts\deviceslayout.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\Layouts\deviceslayout.h</name>
+        <name>$PROJ_DIR$\CustomLibs\Layouts\deviceslayout.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\Layouts\graphlayout.c</name>
+        <name>$PROJ_DIR$\CustomLibs\Layouts\graphlayout.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\Layouts\graphlayout.h</name>
+        <name>$PROJ_DIR$\CustomLibs\Layouts\graphlayout.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\Layouts\learninglayout.c</name>
+        <name>$PROJ_DIR$\CustomLibs\Layouts\learninglayout.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\Layouts\learninglayout.h</name>
+        <name>$PROJ_DIR$\CustomLibs\Layouts\learninglayout.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\Layouts\mainlayout.c</name>
+        <name>$PROJ_DIR$\CustomLibs\Layouts\mainlayout.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\Layouts\mainlayout.h</name>
+        <name>$PROJ_DIR$\CustomLibs\Layouts\mainlayout.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\Layouts\navigationbarlayout.c</name>
+        <name>$PROJ_DIR$\CustomLibs\Layouts\navigationbarlayout.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\Layouts\navigationbarlayout.h</name>
+        <name>$PROJ_DIR$\CustomLibs\Layouts\navigationbarlayout.h</name>
       </file>
     </group>
     <file>
-      <name>$PROJ_DIR$\Custom libs\animation.c</name>
+      <name>$PROJ_DIR$\CustomLibs\animation.c</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\Custom libs\animation.h</name>
+      <name>$PROJ_DIR$\CustomLibs\animation.h</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\Custom libs\gui.c</name>
+      <name>$PROJ_DIR$\CustomLibs\draw.c</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\Custom libs\gui.h</name>
+      <name>$PROJ_DIR$\CustomLibs\draw.h</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\Custom libs\layout.c</name>
+      <name>$PROJ_DIR$\CustomLibs\gui.c</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\Custom libs\layout.h</name>
+      <name>$PROJ_DIR$\CustomLibs\gui.h</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\Custom libs\parsing.c</name>
+      <name>$PROJ_DIR$\CustomLibs\layout.c</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\Custom libs\parsing.h</name>
+      <name>$PROJ_DIR$\CustomLibs\layout.h</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\Custom libs\rtc.c</name>
+      <name>$PROJ_DIR$\CustomLibs\parsing.c</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\Custom libs\rtc.h</name>
+      <name>$PROJ_DIR$\CustomLibs\parsing.h</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\Custom libs\uart.c</name>
+      <name>$PROJ_DIR$\CustomLibs\rtc.c</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\Custom libs\uart.h</name>
+      <name>$PROJ_DIR$\CustomLibs\rtc.h</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\Custom libs\xml.c</name>
+      <name>$PROJ_DIR$\CustomLibs\uart.c</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\Custom libs\xml.h</name>
+      <name>$PROJ_DIR$\CustomLibs\uart.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\CustomLibs\xml.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\CustomLibs\xml.h</name>
     </file>
   </group>
   <group>
@@ -2004,107 +2004,107 @@
       <group>
         <name>httpd</name>
         <file>
-          <name>$PROJ_DIR$\Custom libs\uIP\httpd\http-strings.c</name>
+          <name>$PROJ_DIR$\CustomLibs\uIP\httpd\http-strings.c</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\Custom libs\uIP\httpd\http-strings.h</name>
+          <name>$PROJ_DIR$\CustomLibs\uIP\httpd\http-strings.h</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\Custom libs\uIP\httpd\httpd-cgi.c</name>
+          <name>$PROJ_DIR$\CustomLibs\uIP\httpd\httpd-cgi.c</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\Custom libs\uIP\httpd\httpd-cgi.h</name>
+          <name>$PROJ_DIR$\CustomLibs\uIP\httpd\httpd-cgi.h</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\Custom libs\uIP\httpd\httpd-fs.c</name>
+          <name>$PROJ_DIR$\CustomLibs\uIP\httpd\httpd-fs.c</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\Custom libs\uIP\httpd\httpd-fs.h</name>
+          <name>$PROJ_DIR$\CustomLibs\uIP\httpd\httpd-fs.h</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\Custom libs\uIP\httpd\httpd-fsdata.c</name>
+          <name>$PROJ_DIR$\CustomLibs\uIP\httpd\httpd-fsdata.c</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\Custom libs\uIP\httpd\httpd-fsdata.h</name>
+          <name>$PROJ_DIR$\CustomLibs\uIP\httpd\httpd-fsdata.h</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\Custom libs\uIP\httpd\httpd.c</name>
+          <name>$PROJ_DIR$\CustomLibs\uIP\httpd\httpd.c</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\Custom libs\uIP\httpd\httpd.h</name>
+          <name>$PROJ_DIR$\CustomLibs\uIP\httpd\httpd.h</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\Custom libs\uIP\httpd\webserver.h</name>
+          <name>$PROJ_DIR$\CustomLibs\uIP\httpd\webserver.h</name>
         </file>
       </group>
       <file>
-        <name>$PROJ_DIR$\Custom libs\uIP\clock-arch.c</name>
+        <name>$PROJ_DIR$\CustomLibs\uIP\clock-arch.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\uIP\clock-arch.h</name>
+        <name>$PROJ_DIR$\CustomLibs\uIP\clock-arch.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\uIP\clock.h</name>
+        <name>$PROJ_DIR$\CustomLibs\uIP\clock.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\uIP\lc-addrlabels.h</name>
+        <name>$PROJ_DIR$\CustomLibs\uIP\lc-addrlabels.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\uIP\lc-switch.h</name>
+        <name>$PROJ_DIR$\CustomLibs\uIP\lc-switch.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\uIP\lc.h</name>
+        <name>$PROJ_DIR$\CustomLibs\uIP\lc.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\uIP\LPC24xx_enet.c</name>
+        <name>$PROJ_DIR$\CustomLibs\uIP\LPC24xx_enet.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\uIP\lpc24xx_enet.h</name>
+        <name>$PROJ_DIR$\CustomLibs\uIP\lpc24xx_enet.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\uIP\psock.c</name>
+        <name>$PROJ_DIR$\CustomLibs\uIP\psock.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\uIP\psock.h</name>
+        <name>$PROJ_DIR$\CustomLibs\uIP\psock.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\uIP\pt.h</name>
+        <name>$PROJ_DIR$\CustomLibs\uIP\pt.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\uIP\tapdev.h</name>
+        <name>$PROJ_DIR$\CustomLibs\uIP\tapdev.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\uIP\timer.c</name>
+        <name>$PROJ_DIR$\CustomLibs\uIP\timer.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\uIP\timer.h</name>
+        <name>$PROJ_DIR$\CustomLibs\uIP\timer.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\uIP\uip-conf.h</name>
+        <name>$PROJ_DIR$\CustomLibs\uIP\uip-conf.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\uIP\uip.c</name>
+        <name>$PROJ_DIR$\CustomLibs\uIP\uip.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\uIP\uip.h</name>
+        <name>$PROJ_DIR$\CustomLibs\uIP\uip.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\uIP\uip_arch.h</name>
+        <name>$PROJ_DIR$\CustomLibs\uIP\uip_arch.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\uIP\uip_arp.c</name>
+        <name>$PROJ_DIR$\CustomLibs\uIP\uip_arp.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\uIP\uip_arp.h</name>
+        <name>$PROJ_DIR$\CustomLibs\uIP\uip_arp.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\uIP\uiplib.c</name>
+        <name>$PROJ_DIR$\CustomLibs\uIP\uiplib.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\uIP\uiplib.h</name>
+        <name>$PROJ_DIR$\CustomLibs\uIP\uiplib.h</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\Custom libs\uIP\uipopt.h</name>
+        <name>$PROJ_DIR$\CustomLibs\uIP\uipopt.h</name>
       </file>
     </group>
     <file>

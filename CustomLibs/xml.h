@@ -6,7 +6,7 @@
 
 #define XML_DATA_SIZE 3650
 #define XML_DEVICES_SIZE 300
-#define XML_ENTRY_SIZE 15
+#define XML_ENTRY_SIZE 100
 #define TAG_START_LENGTH 3
 #define TAG_END_LENGTH 4
 
@@ -24,6 +24,6 @@ void XML_addMeasurement(Measurement * m, char deviceStates);
 void XML_addDevice(char * name);
 void XML_clearDevices();
 char * XML_getContent(char which);
-char XML_getLength(char which);
+int XML_getLength(char which);
 
 #endif // __XML_H

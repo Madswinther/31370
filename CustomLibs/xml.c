@@ -1,5 +1,4 @@
 #include "includes.h"
-#include "xml.h"
 
 
 static char XML_Data[XML_DATA_SIZE];
@@ -149,7 +148,7 @@ char * XML_getContent(char which){
   return NULL;
 }
 
-char XML_getLength(char which){
+int XML_getLength(char which){
   if (which == XML_DATA) return XML_Data_Length;
   if (which == XML_DEVICES) return XML_Devices_Length;
   
