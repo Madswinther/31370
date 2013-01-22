@@ -4,9 +4,8 @@
 
 ProgressBar * ProgressBar_Init(int x0, int y0, int width, int height, 
 							int foregroundColor, int backgroundColor) {
-
-	ProgressBar * pbar;
-	pbar = (ProgressBar *)malloc(sizeof(*pbar));
+							  
+	ProgressBar * pbar = (ProgressBar *)malloc(sizeof(ProgressBar));
 	pbar->type = 2;
 	pbar->x0 = x0;
 	pbar->y0 = y0;

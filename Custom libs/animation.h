@@ -14,9 +14,9 @@ typedef struct{
 } Animation;
 
 
-void initAnimations();
-void postAnimation(void * object, int increment, int value, char (*animate)(void *, int));
+void Animation_init();
+void Animation_post(void * object, int increment, int value, char (*animate)(void *, int));
 void Timer2IntrHandler(void);
-char isAnimating();
+char Animation_isRunning();
 
 #endif

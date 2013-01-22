@@ -1,11 +1,11 @@
 #include "includes.h"
 #include "graphics/ProgressBar.h"
 
-Animation * animationHolder;
-char mAnimating;
+static Animation * animationHolder;
+static char mAnimating = 0;
 
 // All animations run on a 20ms interrupt-based routine
-void initAnimations(){
+void Animation_init(){
   // enable clock for this peripheral (timer2)
   PCONP_bit.PCTIM2 = 1;                 
   
@@ -28,16 +28,15 @@ void initAnimations(){
   
   // Allocate memory for the animationHolder
   animationHolder = (Animation*)malloc(sizeof(*animationHolder));
-  animationHolder->object = NULL;
   mAnimating = 0;
 }
 
-void postAnimation(void * object, int increment, int value, char (*animatecall)(void *, int)){
+void Animation_post(void * object, int increment, int value, char (*animatecall)(void *, int)){
   // Posts an animation to be run using timer2. This call requires a starting value and a value
   // that is used as increment between frames. The object that is to be animated must itself
   // implement an update-function that returns 1 if the animation is finished, and 0 if the animation
   // is not yet done. This update-function must also be passed into this function (animatecall)
-  if (animationHolder->object == NULL){
+  if (!mAnimating){
 	animationHolder->animate = animatecall;
 	animationHolder->increment = increment;
 	animationHolder->value = value;
@@ -51,13 +50,12 @@ void postAnimation(void * object, int increment, int value, char (*animatecall)(
 }
 
 void Timer2IntrHandler(void){
-  // Update current animation
-  if (animationHolder->object != NULL){
+  // Update current animation if applicable
+  if (mAnimating){
 	// Add increment to current value
 	animationHolder->value += animationHolder->increment;
 	if (animationHolder->animate(animationHolder->object, animationHolder->value)){
 	  // The update-function returned 1 - the animation is done. Remove it
-	  animationHolder->object = NULL;
 	  mAnimating = 0;
 	  
 	  // Stop the timer (disable counting)
@@ -70,7 +68,7 @@ void Timer2IntrHandler(void){
   VICADDRESS = 0;
 }
 
-char isAnimating(){
+char Animation_isRunning(){
   // Returns animation state
   return mAnimating;
 }

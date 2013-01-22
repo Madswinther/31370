@@ -6,7 +6,7 @@ static Device * devices[6];
 
 // Iterators to allow for adding devices
 static char size = 0;
-static short mX = 20;
+static short mX = 10;
 static short mY = 60;
 
 // Holder for comparison of measurements
@@ -50,7 +50,7 @@ Layout * initDevicesLayout(){
 }
 
 
-Device * deviceInit(double activePower, double reactivePower, double harmonicPower, RectangleWindow * window) {
+Device * deviceInit(char name[], double activePower, double reactivePower, double harmonicPower, RectangleWindow * window) {
   // Initialiaze a new device given average values and a pointer to a Window.
   Device * device = (Device * ) malloc(sizeof(Device));
   
@@ -59,10 +59,14 @@ Device * deviceInit(double activePower, double reactivePower, double harmonicPow
   device->harmonicPower = harmonicPower;
   device->devicebutton = window;
   
+  for (int i=0; i<5; i++){
+  	device->name[i] = name[i];
+  }
+  
   return device;
 }
 
-void addDevice(double activePower, double reactivePower, double harmonicPower){
+void addDevice(char name[], double activePower, double reactivePower, double harmonicPower){
   // Do not exceed the allocated space
   if (thisLayout->size >= 7) return;
   
@@ -73,6 +77,11 @@ void addDevice(double activePower, double reactivePower, double harmonicPower){
 	devices[size]->reactivePower = reactivePower;
 	devices[size]->harmonicPower = harmonicPower;
 	
+	// Update name
+	for (int i=0; i<5; i++){
+	  devices[size]->name[i] = name[i];
+	}
+	
 	// The button should be in the ON state by default
 	devices[size]->devicebutton->backgroundColor = DEVICE_ON;
 	
@@ -81,23 +90,21 @@ void addDevice(double activePower, double reactivePower, double harmonicPower){
   }
   else{
   	// Init Window and add it to the array of devices
-  	RectangleWindow * devicebutton = GUI_initRectangleWindow(mX, mY, mX+50, mY+50, DEVICE_ON, BUTTON_BORDER);
-	
-	// Number the devices - requires two bytes of memory to store the number
-	char * number = malloc( sizeof(char) * ( 1 + 1 ) );
-	number[0] = size+0x30;
-	number[1] = '\0';
-	GUI_setText(devicebutton, number);
-  	devices[size] = deviceInit(activePower, reactivePower, harmonicPower, devicebutton);
+  	RectangleWindow * devicebutton = GUI_initRectangleWindow(mX, mY, mX+100, mY+50, DEVICE_ON, BUTTON_BORDER);
+  	devices[size] = deviceInit(name, activePower, reactivePower, harmonicPower, devicebutton);
+	GUI_setText(devicebutton, devices[size]->name);
 	Layout_addWindow(thisLayout, devicebutton);
   }
+  
+  // Update XML
+  XML_addDevice(name);
   
   // Update iterators
   size++;
   mY += 50;
   if (mY > 150){
 	mY = 60;
-	mX += 50;
+	mX += 100;
   }
 }
 
@@ -109,6 +116,9 @@ void clearDevices(){
   size = 0;
   mX = 20;
   mY = 60;
+  
+  // Update XML
+  XML_clearDevices();
 }
 
 
@@ -150,7 +160,7 @@ void checkDevices(Measurement * measurement, Layout * currentLayout){
 	
 	// The ProgressSpinner uses an internal count. No need to pass starting value
 	// and increment to it
-  	postAnimation(pSpinner, 0, 0, ProgressSpinner_Update);
+  	Animation_post(pSpinner, 0, 0, ProgressSpinner_Update);
   }
   
   // A step input has occured, wait for a steady state before checking again

@@ -51,6 +51,7 @@
 #include "../Custom libs/rtc.h"
 #include "../Custom libs/gui.h"
 #include "../Custom libs/draw.h"
+#include "../Custom libs/xml.h"
 #include "../Custom libs/layout.h"
 #include "../Custom libs/Layouts/mainlayout.h"
 #include "../Custom libs/Layouts/learninglayout.h"
@@ -58,6 +59,8 @@
 #include "../Custom libs/Layouts/deviceslayout.h"
 #include "../Custom libs/Layouts/navigationbarlayout.h"
 #include "../Custom libs/graphics/graph.h"
+#include "../Custom libs/graphics/next.h"
+#include "../Custom libs/graphics/previous.h"
 #include "../Custom libs/graphics/ProgressBar.h"
 #include "../Custom libs/graphics/ProgressSpinner.h"
 

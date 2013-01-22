@@ -63,7 +63,7 @@ int main(void){
   RTC_init();
   
   // Init animations
-  initAnimations();
+  Animation_init();
   
   // Init navigationBar
   navigationBar = initNavigationBar();
@@ -201,7 +201,7 @@ int main(void){
 }
 
 void swapToLayout(int page){
-  if (isAnimating()) return;
+  if (Animation_isRunning()) return;
   
   switch (page){
   case 0:

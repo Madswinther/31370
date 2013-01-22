@@ -9,5 +9,10 @@ extern char Buffer[BUFFER_SIZE];
 
 Layout * initLearningLayout();
 void doLearn();
+static void nextLetter();
+static void previousLetter();
+static void addToWord();
+static char resetTimeout(void * null, int newValue);
+static void resetAll();
 
 #endif

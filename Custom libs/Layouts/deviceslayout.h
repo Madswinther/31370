@@ -9,6 +9,7 @@
 typedef struct {
 	double activePower, reactivePower, harmonicPower;
 	RectangleWindow * devicebutton;
+	char name[5];
 } Device;
 
 extern void swapToLayout (int layout);
@@ -17,9 +18,9 @@ extern void swapToLearning();
 extern void swapToGraph();
 extern void lightLed();
 
-Device * deviceInit(double activePower, double reactivePower, double harmonicPower, RectangleWindow * knap);
+Device * deviceInit(char name[], double activePower, double reactivePower, double harmonicPower, RectangleWindow * window);
 Layout * initDevicesLayout();
-void addDevice(double activePower, double reactivePower, double harmonicPower);
+void addDevice(char name[], double activePower, double reactivePower, double harmonicPower);
 void clearDevices();
 char edgeDetection(double compareVal, double newVal, double tol);
 void checkDevices(Measurement * measurement, Layout * currentLayout);

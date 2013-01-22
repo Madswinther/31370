@@ -34,8 +34,6 @@
  */
 #ifndef __HTTPD_FS_H__
 #define __HTTPD_FS_H__
-
-#include "../Custom libs/parsing.h"
 	 
 #define HTTPD_FS_STATISTICS 1
 
@@ -43,19 +41,6 @@ struct httpd_fs_file {
   char *data;
   int len;
 };
-
-
-static void XML_addStates(char deviceStates);
-static void XML_addTime();
-
-
-void XML_copyString(const char * string);
-void XML_startTag(char id);
-void XML_endTag(char id);
-void XML_addDouble(double value);
-void XML_addNode(double value, char id);
-void XML_addMeasurement(Measurement * m, char deviceStates);
-
 
 
 /* file must be allocated by caller and will be filled in

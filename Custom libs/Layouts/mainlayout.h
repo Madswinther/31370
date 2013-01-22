@@ -11,6 +11,5 @@
 
 Layout * initMainLayout();
 
-static void nextLetter();
 
 #endif

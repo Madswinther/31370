@@ -1,0 +1,143 @@
+\ProvidesPackage{MadsPack}
+
+% MARGENER
+\usepackage{geometry}
+\geometry{left=3cm,top=3cm,right=3cm,bottom=3cm}
+
+\usepackage[pdftex]{graphicx}
+\usepackage{cite}
+%\usepackage{pdfpages}
+
+\usepackage[font=small,format=plain,labelfont=bf,up,textfont=it,up]{caption}
+
+% ENCODING
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% ORDDELING
+\usepackage[english]{babel}
+\renewcommand\englishhyphenmins{22}
+
+% FONT OG SYMBOLER:
+%\usepackage{fourier}
+%\usepackage{utopia}
+\usepackage{courier}
+\usepackage{amsmath,amssymb}
+\usepackage{mathtools}
+\usepackage{bm}
+
+% VARIOUS
+\usepackage{fixltx2e}
+\renewcommand*\eminnershape{scshape}
+\usepackage{ragged2e}
+
+% KODEVISNING
+\usepackage{listings}
+\usepackage{setspace}
+\lstset{
+  breaklines=true,                              
+  basicstyle=\ttfamily\small\color{sort},
+  backgroundcolor=\color{mapleback},
+  showlines=true
+}
+
+
+% GRAPHICS AND COLOR
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage[thmmarks,framed]{ntheorem}
+
+% TÆLLERFORMAT
+\numberwithin{equation}{section}
+
+% COLOR DEFINITIONS
+\definecolor{maplered}{rgb}{1.0,0.0,0.0}
+\definecolor{sort}{rgb}{0.0,0.0,0.0}
+\definecolor{hvid}{rgb}{1,1,1}
+\definecolor{mapleback}{rgb}{0.9,0.9,0.9}
+\definecolor{maplehead}{rgb}{0.2,0.2,0.2}
+\definecolor{mapleheadtext}{rgb}{1,1,1}
+\definecolor{vhdlemph}{rgb}{0.627,0.173,0.537}
+\definecolor{vhdlcomment}{rgb}{0.176,0.314,0.086}
+\definecolor{codeblock}{rgb}{0.715,0.766,0.781}
+
+
+
+% CUSTOM COMMANDS
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\code}[1]{\textit{#1}}
+
+
+\newcommand{\Sektion}[1]{\section{\Large #1}}
+
+\newcommand{\ColorHeader}[2]{\noindent\colorbox{maplehead}{\begin{minipage}{\linewidth-2\fboxsep} \textcolor{mapleheadtext}{\textbf{#1}\hspace*{0.4 cm} #2} \end{minipage}}}
+
+\lstnewenvironment{Maple}[2]{\centering\ColorHeader{#1}{#2}\\[-7pt]}{}
+
+\lstnewenvironment{Vhdl}{
+\lstset{
+	language=VHDL,
+	numbersep=200pt,
+	breaklines=true,
+	tabsize=4,
+	basicstyle=\ttfamily\footnotesize\color{sort},
+	numbers=left,
+	numberstyle=\tiny, 
+	stepnumber=1,
+	backgroundcolor=\color{hvid},
+	xleftmargin=1cm,
+	numbersep=2em,
+	showlines=true,
+	keywordstyle=\color{blue},
+	stringstyle=\color{red},
+	commentstyle=\color{vhdlcomment},
+	emph={std_logic,std_logic_vector,rising_edge},
+	emphstyle=\color{vhdlemph}
+}
+}{}
+
+
+\lstnewenvironment{Clang} {
+\lstset{
+	language=C,
+	numbersep=200pt,
+	breaklines=true,
+	tabsize=4,
+	basicstyle=\ttfamily\footnotesize\color{sort},
+	numbers=left,
+	numberstyle=\tiny, 
+	stepnumber=1,
+	backgroundcolor=\color{hvid},
+	showspaces=false,
+	showtabs=false,
+	showstringspaces=false,
+	xleftmargin=1cm,
+	numbersep=2em,
+	showlines=true,
+	keywordstyle=\color{blue},
+	stringstyle=\color{red},
+	commentstyle=\color{vhdlcomment},
+	%emph={std_logic,std_logic_vector,rising_edge},
+	%emphstyle=\color{vhdlemph}
+}
+}{}
+
+
+
+% CUSTOM ENVIRONMENTS
+
+\newenvironment{Opgave}[2]%
+{\subsection*{Opgave #1} \textit{#2}\\[0.7cm]\noindent\ignorespaces}
+{\par\noindent\ignorespacesafterend}
+
+
+
+
+
+
+
+
+
+ 
+
