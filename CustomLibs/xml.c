@@ -12,6 +12,9 @@ const char * xml_header = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
 // Reset the XML buffers
 void XML_resetData(){
   XML_Data_Length = 0;
+  
+  // Reset the RTC to get a proper graph
+  RTC_setTime(0, 0, 0);
 }
 
 // Copy a string into current position in xml buffer

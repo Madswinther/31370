@@ -13,11 +13,8 @@ void RTC_init(){
   CIIR = 0;
   CISS = 0;
   
-  // Reset current time
+  // Reset current time(Will start the timer)
   RTC_setTime(0,0,0);
-  
-  // Enable counting
-  CCR_bit.CLKEN = 1;
 }
 
 char RTC_getSeconds(){
@@ -36,7 +33,13 @@ char RTC_getHours(){
 }
 
 void RTC_setTime(char hours, char minutes, char seconds){
+  // Disable counting
+  CCR_bit.CLKEN = 0;
+  
   HOUR = hours;
   MIN = minutes;
   SEC = seconds;
+  
+  // Enable counting
+  CCR_bit.CLKEN = 1;
 }

@@ -45,11 +45,11 @@ Layout * initDevicesLayout(){
   
   // Set text
   GUI_setText(clearbutton, "Clear Devices");
-  GUI_setText(resetxmlbutton, "Reset XML");
+  GUI_setText(resetxmlbutton, "Reset Data");
   
   // Add onClick functions
   GUI_setOnClick(clearbutton, clearDevices);
-  GUI_setOnClick(clearbutton, XML_resetData);
+  GUI_setOnClick(resetxmlbutton, XML_resetData);
   
   // Add to layout
   Layout_addWindow(thisLayout, clearbutton);
