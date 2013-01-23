@@ -1,19 +1,19 @@
 \select@language {english}
-\contentsline {section}{\numberline {1}Introduction}{2}
-\contentsline {section}{\numberline {2}Abstract}{2}
-\contentsline {section}{\numberline {3}Disaggregation Algorithm}{2}
-\contentsline {subsection}{\numberline {3.1}Learning New Devices}{2}
-\contentsline {subsection}{\numberline {3.2}Detecting Changes in Steady State}{2}
-\contentsline {subsection}{\numberline {3.3}Device Checking}{2}
-\contentsline {section}{\numberline {4}Graphical User Interface}{2}
-\contentsline {subsection}{\numberline {4.1}Windows}{2}
-\contentsline {subsection}{\numberline {4.2}Layouts}{3}
-\contentsline {subsection}{\numberline {4.3}Animations}{3}
-\contentsline {subsection}{\numberline {4.4}Graphs}{3}
-\contentsline {section}{\numberline {5}Web Server}{3}
-\contentsline {subsection}{\numberline {5.1}Storing Data as XML}{3}
-\contentsline {subsection}{\numberline {5.2}JavaScript User Interface}{3}
-\contentsline {section}{\numberline {6}Discussion}{3}
-\contentsline {subsection}{\numberline {6.1}Problems}{3}
-\contentsline {subsection}{\numberline {6.2}Further Enhancements}{3}
-\contentsline {section}{\numberline {7}Conclusion}{3}
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}
+\contentsline {section}{\numberline {2}Abstract}{2}{section.2}
+\contentsline {section}{\numberline {3}Disaggregation Algorithm}{2}{section.3}
+\contentsline {subsection}{\numberline {3.1}Learning New Devices}{2}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Detecting Changes in Steady State}{2}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Device Checking}{2}{subsection.3.3}
+\contentsline {section}{\numberline {4}Graphical User Interface}{2}{section.4}
+\contentsline {subsection}{\numberline {4.1}Windows}{2}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Layouts}{3}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Animations}{3}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Graphs}{3}{subsection.4.4}
+\contentsline {section}{\numberline {5}Web Server}{3}{section.5}
+\contentsline {subsection}{\numberline {5.1}Storing Data as XML}{3}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}JavaScript User Interface}{3}{subsection.5.2}
+\contentsline {section}{\numberline {6}Discussion}{3}{section.6}
+\contentsline {subsection}{\numberline {6.1}Problems}{3}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Further Enhancements}{3}{subsection.6.2}
+\contentsline {section}{\numberline {7}Conclusion}{3}{section.7}
