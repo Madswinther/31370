@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2012.4.11)  22 JAN 2013 15:40
+This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2012.4.11)  23 JAN 2013 10:59
 entering extended mode
 **Report.tex
 (C:\Users\gedemis\Desktop\31370\31370\Rapport\Report.tex
@@ -689,23 +689,20 @@ File: lstlang1.sty 2004/09/05 1.3 listings language file
 ("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
 File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
-File: lstlang1.sty 2004/09/05 1.3 listings language file
-)
 (C:\Users\gedemis\Desktop\31370\31370\Rapport\Report.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Try loading font information for T1+ptm on input line 80.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 61.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\t1ptm.fd"
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
@@ -763,11 +760,11 @@ Package caption Info: listings package is loaded.
 Package caption Info: subfigure package is loaded.
 Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Info: Redefining \selectfont on input line 80.
+LaTeX Info: Redefining \selectfont on input line 61.
 \c@lstlisting=\count139
 \AtBeginShipoutBox=\box36
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 85.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 66.
  (C:\Users\gedemis\Desktop\31370\31370\Rapport\Report.toc
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 2.
@@ -786,64 +783,47 @@ File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 95.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 76.
 
 <Figurer/derp.png, id=7, 47.17625pt x 27.10126pt>
 File: Figurer/derp.png Graphic file (type png)
  <use Figurer/derp.png>
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 104.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 86.
 
-(C:\Users\gedemis\Desktop\31370\31370\Rapport\Cappendix.tex [2 <C:/Users/gedemi
-s/Desktop/31370/31370/Rapport/Figurer/derp.png>]
-(C:\Users\gedemis\Desktop\31370\31370\CustomLibs\gui.h
-LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 1.
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 18.
+Underfull \hbox (badness 10000) in paragraph at lines 91--92
 
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 96.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omsptm.fd"
 File: omsptm.fd 
 )
-LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <9> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 18.
-)
-(C:\Users\gedemis\Desktop\31370\31370\CustomLibs\gui.c [3] [4] [5])
-(C:\Users\gedemis\Desktop\31370\31370\CustomLibs\layout.h)
-(C:\Users\gedemis\Desktop\31370\31370\CustomLibs\layout.c [6])
-(C:\Users\gedemis\Desktop\31370\31370\CustomLibs\draw.h [7])
-(C:\Users\gedemis\Desktop\31370\31370\CustomLibs\draw.c [8]
-LaTeX Font Info:    Font shape `OMS/ptm/m/it' in size <9> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 68.
- [9])
-(C:\Users\gedemis\Desktop\31370\31370\CustomLibs\animation.h)
-(C:\Users\gedemis\Desktop\31370\31370\CustomLibs\animation.c [10] [11])
-(C:\Users\gedemis\Desktop\31370\31370\CustomLibs\parsing.h)
-(C:\Users\gedemis\Desktop\31370\31370\CustomLibs\parsing.c [12] [13])
-(C:\Users\gedemis\Desktop\31370\31370\CustomLibs\rtc.h) [14]
-(C:\Users\gedemis\Desktop\31370\31370\CustomLibs\rtc.c)
-(C:\Users\gedemis\Desktop\31370\31370\CustomLibs\xml.h [15])
-(C:\Users\gedemis\Desktop\31370\31370\CustomLibs\xml.c [16] [17]) [18]
-(C:\Users\gedemis\Desktop\31370\31370\CustomLibs\uart.h)
-(C:\Users\gedemis\Desktop\31370\31370\CustomLibs\uart.c [19] [20] [21]))
-\tf@thm=\write4
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 96.
+ [2 <C:/Users/gedemis/Desktop/31370/31370/Rapport/Figurer/derp.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 108--109
 
-[22] (C:\Users\gedemis\Desktop\31370\31370\Rapport\Report.aux) ) 
+ []
+
+\tf@thm=\write4
+[3] (C:\Users\gedemis\Desktop\31370\31370\Rapport\Report.aux) ) 
 Here is how much of TeX's memory you used:
- 9553 strings out of 494019
- 133030 string characters out of 3146492
- 673021 words of memory out of 3000000
- 12578 multiletter control sequences out of 15000+200000
- 45941 words of font info for 78 fonts, out of 3000000 for 9000
+ 8423 strings out of 494019
+ 118048 string characters out of 3146492
+ 224845 words of memory out of 3000000
+ 11512 multiletter control sequences out of 15000+200000
+ 33541 words of font info for 57 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 43i,7n,49p,249b,1622s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Fil
-es/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program Files/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmsy9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/u
+ 43i,6n,49p,409b,378s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program File
+s/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program Files/MiKTeX 2.9/fonts
+/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/u
 rw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.p
 fb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Report.pdf (22 pages, 175484 bytes).
+Output written on Report.pdf (3 pages, 54895 bytes).
 PDF statistics:
- 93 PDF objects out of 1000 (max. 8388607)
+ 32 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

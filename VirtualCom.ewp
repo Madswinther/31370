@@ -325,7 +325,7 @@
         <option>
           <name>CCOptStrategy</name>
           <version>0</version>
-          <state>1</state>
+          <state>2</state>
         </option>
         <option>
           <name>CCOptLevelSlave</name>
@@ -2059,7 +2059,7 @@
         <name>$PROJ_DIR$\CustomLibs\uIP\LPC24xx_enet.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\CustomLibs\uIP\lpc24xx_enet.h</name>
+        <name>$PROJ_DIR$\CustomLibs\uIP\LPC24xx_enet.h</name>
       </file>
       <file>
         <name>$PROJ_DIR$\CustomLibs\uIP\psock.c</name>

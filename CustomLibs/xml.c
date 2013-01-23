@@ -77,7 +77,8 @@ static void XML_addTime(){
 
 static void XML_addStates(char deviceStates){
   XML_startTag('S', XML_Data, &XML_Data_Length);
-  XML_Data[XML_Data_Length++] = deviceStates+0x30;
+  XML_Data[XML_Data_Length++] = deviceStates/10+0x30;
+  XML_Data[XML_Data_Length++] = deviceStates%10+0x30;
   XML_endTag('S', XML_Data, &XML_Data_Length);
 }
 

@@ -241,10 +241,15 @@ void checkDevices(Measurement * measurement, Layout * currentLayout){
 	  for (int i = 0; i < size; i++){
 		if (devices[i]->devicebutton->backgroundColor != DEVICE_OFF){
 		  devices[i]->devicebutton->backgroundColor = DEVICE_OFF;
-		  GUI_drawWindow(devices[i]->devicebutton);
-		  deviceStates = 0;
+		  
+		  // Only draw if user is viewing the devices
+		  if (currentLayout == thisLayout){
+		  	GUI_drawWindow(devices[i]->devicebutton);
+		  }
 		}
 	  }
+	  // All devices are now off
+	  deviceStates = 0;
 	}
 	
 	// New stationary value - update website
