@@ -23,7 +23,7 @@ static ProgressSpinner * pSpinner;
 
 Layout * initDevicesLayout(){
   // Alloc space
-  thisLayout = (Layout*)malloc(sizeof(*thisLayout));
+  thisLayout = (Layout*)malloc(sizeof(Layout));
   lastReading = (Measurement*)malloc(sizeof(Measurement));
   lastStationary = (Measurement*)malloc(sizeof(Measurement));
   
@@ -77,7 +77,7 @@ Device * deviceInit(char name[], double activePower, double reactivePower, doubl
 
 void addDevice(char name[], double activePower, double reactivePower, double harmonicPower){
   // Do not exceed the allocated space
-  if (thisLayout->size >= 7) return;
+  if (thisLayout->size > 7) return;
   
   // Check if button has existed at some point in the past
   if (devices[size] != NULL){
