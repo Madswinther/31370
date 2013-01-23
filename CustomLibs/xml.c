@@ -9,6 +9,11 @@ static int XML_Devices_Length = 0;
 
 const char * xml_header = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
 
+// Reset the XML buffers
+void XML_resetData(){
+  XML_Data_Length = 0;
+}
+
 // Copy a string into current position in xml buffer
 static void XML_copyString(const char * string, char * array, int * length){	
   while (*string != '\0') {

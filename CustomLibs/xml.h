@@ -22,6 +22,7 @@ static void XML_addTime();
 static void XML_addStates(char deviceStates);
 void XML_addMeasurement(Measurement * m, char deviceStates);
 void XML_addDevice(char * name);
+void XML_resetData();
 void XML_clearDevices();
 char * XML_getContent(char which);
 int XML_getLength(char which);

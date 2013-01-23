@@ -38,13 +38,22 @@ Layout * initDevicesLayout(){
   // Create layout
   thisLayout = Layout_initLayout();
   
-  RectangleWindow * clearbutton = GUI_initRectangleWindow(110, 5, 210, 55, BUTTON_BACKGROUND, BUTTON_BORDER);
+  // Create Windows
+  RectangleWindow * clearbutton = GUI_initRectangleWindow(60, 5, 160, 55, BUTTON_BACKGROUND, BUTTON_BORDER);
+  RectangleWindow * resetxmlbutton = GUI_initRectangleWindow(160, 5, 260, 55, BUTTON_BACKGROUND, BUTTON_BORDER);
   pSpinner = ProgressSpinner_Init(258, 0, 60, 0xFFFFFF);
   
+  // Set text
   GUI_setText(clearbutton, "Clear Devices");
-  GUI_setOnClick(clearbutton, clearDevices);
+  GUI_setText(resetxmlbutton, "Reset XML");
   
+  // Add onClick functions
+  GUI_setOnClick(clearbutton, clearDevices);
+  GUI_setOnClick(clearbutton, XML_resetData);
+  
+  // Add to layout
   Layout_addWindow(thisLayout, clearbutton);
+  Layout_addWindow(thisLayout, resetxmlbutton);
   
   return thisLayout;
 }
@@ -114,7 +123,7 @@ void clearDevices(){
 	GUI_setHidden(devices[i]->devicebutton, 1);
   }
   size = 0;
-  mX = 20;
+  mX = 10;
   mY = 60;
   
   // Update XML
@@ -141,7 +150,8 @@ char edgeDetection(double compareVal, double newVal, double tol) {
 void checkDevices(Measurement * measurement, Layout * currentLayout){
   
   // Detect errors
-  if (measurement->P_power > 1000 || measurement->Q_power > 1000 || measurement->H_power > 1000){
+  if (measurement->P_power > 1000 || measurement->Q_power > 1000 || 
+	  measurement->H_power > 1000 || size == 0){
 	return;
   }
   
