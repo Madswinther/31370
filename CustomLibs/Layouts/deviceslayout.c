@@ -152,8 +152,8 @@ void checkDevices(Measurement * measurement, Layout * currentLayout){
   // Detect errors
   if (measurement->P_power > 1000 || measurement->Q_power > 1000 || 
 	  measurement->H_power > 1000 || size == 0){
-	return;
-  }
+		return;
+	  }
   
   if (!edgeDetected){
 	// No step input detected yet. Keep scanning for one
@@ -183,69 +183,6 @@ void checkDevices(Measurement * measurement, Layout * currentLayout){
 	edgeDetected = 0;
 	steadyDetected = 0;
 	
-	// Compute the changes in P, Q and H
-	double dPst = measurement->P_power - lastStationary->P_power;
-	double dQst = measurement->Q_power - lastStationary->Q_power;
-	double dHst = measurement->H_power - lastStationary->H_power;
-	
-	// Does this signify a device turning on or off?
-	char posChange = (dPst >= 0);
-	
-	// Get the absolute change in P, Q and H
-	dPst = fabs(dPst);
-	dQst = fabs(dQst);
-	dHst = fabs(dHst);
-	
-	// Init conditional and tolerance variables
-	char checking = 1;
-	double pTol = 0.5;
-	char redraw = 0;
-	
-	// CHECK DEVICES
-	while (checking){ 
-	  for (int i = 0; i < size; i++){
-		redraw = 0;
-		if (devices[i]->activePower - pTol <= dPst  && dPst <= devices[i]->activePower + pTol){
-		  // P matches
-		  if (devices[i]->reactivePower - pTol <= dQst  && dQst <= devices[i]->reactivePower + pTol){
-			// Q matches
-			if (devices[i]->harmonicPower - pTol <= dHst  && dHst <= devices[i]->harmonicPower + pTol){			
-			  // H matches
-			  if (posChange){
-				// This device has been turned ON! Switch it on graphically if needed
-				if (devices[i]->devicebutton->backgroundColor != DEVICE_ON){
-				  devices[i]->devicebutton->backgroundColor = DEVICE_ON;
-				  redraw = 1;
-				  checking = 0;
-				  deviceStates |= 1<<i;
-				}  
-			  }
-			  else{
-				// This device has been turned OFF! Switch it off graphically if needed
-				if (devices[i]->devicebutton->backgroundColor != DEVICE_OFF){
-				  devices[i]->devicebutton->backgroundColor = DEVICE_OFF;
-				  redraw = 1;
-				  checking = 0;
-				  deviceStates &= ~(1<<i);
-				}
-			  }
-			  // Window might need a redraw if its backgroundcolor has changed
-			  if (redraw && currentLayout == thisLayout) GUI_drawWindow(devices[i]->devicebutton);
-			}
-		  }
-		}
-	  }
-	  // No device has been accepted as the cause of the step. Increase tolerance and go again.
-	  pTol += 0.5;
-	  
-	  // Don't increase tolerance beyond a sensible value - 
-	  // doing so might cause a wrong device to be accepted
-	  if (pTol >= 4.0) checking = 0;
-	}
-	
-	// Update the last stationary values
-	(*lastStationary) = (*measurement);
-	
 	// Special case is all devices turned off - this would register as a power below 1 watt
 	if (measurement->P_power < 1.0){
 	  for (int i = 0; i < size; i++){
@@ -261,6 +198,70 @@ void checkDevices(Measurement * measurement, Layout * currentLayout){
 	  // All devices are now off
 	  deviceStates = 0;
 	}
+	else{
+	  // Compute the changes in P, Q and H
+	  double dPst = measurement->P_power - lastStationary->P_power;
+	  double dQst = measurement->Q_power - lastStationary->Q_power;
+	  double dHst = measurement->H_power - lastStationary->H_power;
+	  
+	  // Does this signify a device turning on or off?
+	  char posChange = (dPst >= 0);
+	  
+	  // Get the absolute change in P, Q and H
+	  dPst = fabs(dPst);
+	  dQst = fabs(dQst);
+	  dHst = fabs(dHst);
+	  
+	  // Init conditional and tolerance variables
+	  char checking = 1;
+	  double pTol = 0.5;
+	  char redraw = 0;
+	  
+	  // CHECK DEVICES
+	  while (checking){ 
+		for (int i = 0; i < size; i++){
+		  redraw = 0;
+		  if (devices[i]->activePower - pTol <= dPst  && dPst <= devices[i]->activePower + pTol){
+			// P matches
+			if (devices[i]->reactivePower - pTol <= dQst  && dQst <= devices[i]->reactivePower + pTol){
+			  // Q matches
+			  if (devices[i]->harmonicPower - pTol <= dHst  && dHst <= devices[i]->harmonicPower + pTol){			
+				// H matches
+				if (posChange){
+				  // This device has been turned ON! Switch it on graphically if needed
+				  if (devices[i]->devicebutton->backgroundColor != DEVICE_ON){
+					devices[i]->devicebutton->backgroundColor = DEVICE_ON;
+					redraw = 1;
+					checking = 0;
+					deviceStates |= 1<<i;
+				  }  
+				}
+				else{
+				  // This device has been turned OFF! Switch it off graphically if needed
+				  if (devices[i]->devicebutton->backgroundColor != DEVICE_OFF){
+					devices[i]->devicebutton->backgroundColor = DEVICE_OFF;
+					redraw = 1;
+					checking = 0;
+					deviceStates &= ~(1<<i);
+				  }
+				}
+				// Window might need a redraw if its backgroundcolor has changed
+				if (redraw && currentLayout == thisLayout) GUI_drawWindow(devices[i]->devicebutton);
+			  }
+			}
+		  }
+		}
+		// No device has been accepted as the cause of the step. Increase tolerance and go again.
+		pTol += 0.5;
+		
+		// Don't increase tolerance beyond a sensible value - 
+		// doing so might cause a wrong device to be accepted
+		if (pTol >= 4.0) checking = 0;
+	  }
+	}
+	
+	// Update the last stationary values
+	(*lastStationary) = (*measurement);
 	
 	// New stationary value - update website
 	XML_addMeasurement(measurement, deviceStates);
@@ -272,5 +273,4 @@ void checkDevices(Measurement * measurement, Layout * currentLayout){
   // Update the last read values
   (*lastReading) = (*measurement);
 }
-
 
