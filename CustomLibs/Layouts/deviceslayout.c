@@ -157,9 +157,9 @@ void checkDevices(Measurement * measurement, Layout * currentLayout){
   
   if (!edgeDetected){
 	// No step input detected yet. Keep scanning for one
-	edgeDetected = edgeDetection(lastStationary->P_power, measurement->P_power, 5);
-	edgeDetected |= edgeDetection(lastStationary->Q_power, measurement->Q_power, 5);
-	edgeDetected |= edgeDetection(lastStationary->H_power, measurement->H_power, 5);
+	edgeDetected = edgeDetection(lastStationary->P_power, measurement->P_power, 1);
+	edgeDetected |= edgeDetection(lastStationary->Q_power, measurement->Q_power, 1);
+	edgeDetected |= edgeDetection(lastStationary->H_power, measurement->H_power, 1);
 	lastReading->P_power = measurement->P_power;
 	return;
   }
@@ -175,7 +175,7 @@ void checkDevices(Measurement * measurement, Layout * currentLayout){
   
   // A step input has occured, wait for a steady state before checking again
   steadyDetected = !edgeDetection(lastReading->P_power, measurement->P_power, 0.05);
-  steadyDetected &= !edgeDetection(lastReading->Q_power, measurement->Q_power, 0.2);
+  steadyDetected &= !edgeDetection(lastReading->Q_power, measurement->Q_power, 0.15);
   steadyDetected &= !edgeDetection(lastReading->H_power, measurement->H_power, 0.2);
   if (steadyDetected){
 	
@@ -184,7 +184,7 @@ void checkDevices(Measurement * measurement, Layout * currentLayout){
 	steadyDetected = 0;
 	
 	// Special case is all devices turned off - this would register as a power below 1 watt
-	if (measurement->P_power < 1.0){
+	if (measurement->P_power < 1.0 && measurement->Q_power < 0.5 && measurement->H_power < 0.5){
 	  for (int i = 0; i < size; i++){
 		if (devices[i]->devicebutton->backgroundColor != DEVICE_OFF){
 		  devices[i]->devicebutton->backgroundColor = DEVICE_OFF;
@@ -256,7 +256,7 @@ void checkDevices(Measurement * measurement, Layout * currentLayout){
 		
 		// Don't increase tolerance beyond a sensible value - 
 		// doing so might cause a wrong device to be accepted
-		if (pTol >= 4.0) checking = 0;
+		if (pTol >= 8.0) checking = 0;
 	  }
 	}
 	
